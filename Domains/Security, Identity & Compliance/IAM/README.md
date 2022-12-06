@@ -2,12 +2,14 @@
 
 <img height=100px; src="../../../images/IAM_logo.png" />
 
+<p>&nbsp;</p>
+
 AWS Service responsible for user management and their level of access to the AWS Console.
 
-- Centralized (Controle centralizado da conta)
-- Access (Compartilhar acesso a conta)
-- Permissions (Concessão de permissões granulares de acesso a conta)
-- Identity Federation (Suporte a integração de identity providers como Google, Facebook...)
+- **Centralized** (Controle centralizado da conta)
+- **Access** (Compartilhar acesso a conta)
+- **Permissions** (Concessão de permissões granulares de acesso a conta)
+- **Identity Federation** (Suporte a integração de identity providers como Google, Facebook...)
 
 ## Features
 
@@ -19,7 +21,7 @@ AWS Service responsible for user management and their level of access to the AWS
 
 ## Divided In
 
-- Users: Pessoas
-- Groups: Conjunto de usuários/pessoas
-- Roles: Attach de uma "Função" para conceder um conjunto de permissões
-- Policies: Concessão de uma permissão específica (JSON)
+- **Users**: Pessoas
+- **Groups**: Conjunto de usuários/pessoas
+- **Roles**: Attach de uma "Função" para conceder um conjunto de permissões
+- **Policies**: Concessão de uma permissão específica (JSON)
