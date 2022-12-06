@@ -1,10 +1,10 @@
 # IAM - Identity Access Management
 
-<img height=100px; src="../../../images/IAM_logo.png" />
+<img height=100px; alt="iam_logo" src="../../../images/IAM_logo.png" />
 
 <p>&nbsp;</p>
 
-AWS Service responsible for user management and their level of access to the AWS Console.
+IAM is an AWS **Universal Service** responsible for user management and their level of access to the AWS Console.
 
 - **Centralized** (Controle centralizado da conta)
 - **Access** (Compartilhar acesso a conta)
@@ -25,3 +25,25 @@ AWS Service responsible for user management and their level of access to the AWS
 - **Groups**: Conjunto de usuários/pessoas
 - **Roles**: Attach de uma "Função" para conceder um conjunto de permissões
 - **Policies**: Concessão de uma permissão específica (JSON)
+
+> Users has not permissions when first created. Permissions need to be granted.
+
+## Access Types
+
+- **Console**
+- **Programmatic Access** - Necessário para utilização do AWS CLI, SDKs e API calls
+
+## Tools
+
+### Policy Simulator
+
+Serviço de simulação de policies em tempo real.
+
+#### Using Scenarios
+
+- Verificar se determinada policy possui acesso a uma determinada ação de um serviço específico.
+- Auxiliar no troubleshooting quando suspeitamos que é um problema de acesso.
+
+> Exemplo: A imagem abaixo verifica se o grupo `adminGroup` possui acesso para `listar tabelas` no `DynamoDb`.
+
+![iam policy simulator](../../../images/aws_iam_policy_simulator.png)
