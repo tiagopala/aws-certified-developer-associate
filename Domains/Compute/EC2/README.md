@@ -59,4 +59,4 @@ Outro diferencial notável é ter a possibilidade de termos novos servidores rod
     - **On Demand**
     - **Reserved**
 
-> Pode ser usado em conjunto com o [Saving Plans](../../AWS%20Cost%20Management/AWS%20Cost%20Explorer/README.md?plain=1#L11)
+> Pode ser usado em conjunto com o [Saving Plans](../../AWS%20Cost%20Management/AWS%20Cost%20Explorer/README.md#saving-plans)
