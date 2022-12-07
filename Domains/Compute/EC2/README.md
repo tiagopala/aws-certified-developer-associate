@@ -27,18 +27,36 @@ Outro diferencial notável é ter a possibilidade de termos novos servidores rod
 
 #### On Demand
 
-- **Flexibility**
+- **Flexibility** - Subir instâncias a qualquer momento por uma preço fixo.
 - **Short-Term** - Sem pagamento antecipado ou compromissos/contratos de longo prazo. Aconselhável para aplicações com tempo de uso curto, *spikes* ou aplicações com workload imprevisível.
 - **<em>Testing the water</em>** - Aplicações sendo desenvolvidas pela primeira vez.
 
 #### Reserved
 
-- **Predictable Usage**
-- **Specific Capacity Required**
-- **Pay Up-Front**
+- **Predictable Usage** - Aplicações estáveis ou com uso previsível.
+- **Specific Capacity Required** - Aplicações que requerem uma capacidade específica.
+- **Pay Up-Front** - Pagamento adiantado para reduzir custos (descontos).
 
-Reserved Instances Types:
+    Types:
 
-- **Standard RIs**
-- **Convertible RIs**
-- **Scheduled RIs**
+    - **Standard RIs** - Não é possível alterar o tipo de instância contratado.
+    - **Convertible RIs** - É possível alterar o tipo de instância de preço igual ou maior.
+    - **Scheduled RIs** - Quando o horário de execução da aplicação é previsível.
+
+#### Spot
+
+- **Flexible start and end times** - Aplicações devem possuir um tempo de início e finalização flexíveis, pois o preço da instância pode subir e suas instâncias spot podem ser finalizas.
+- **Cost Sensitive** - Aplicações que só valem a pena se o custo for extremamente baixo.
+- **Urgent Capacity** - Aplicações que requerem uma grande capacidade adicional.
+
+#### Dedicated Hosts
+
+- **Compliance** - Quando é necessário respeitarmos requisitos regulatórios.
+- **Licensing** - Quando é necessário respeitarmos licenças que não suportam multi-tenancy.
+
+    Types:
+
+    - **On Demand**
+    - **Reserved**
+
+> Pode ser usado em conjunto com o [Saving Plans](../../AWS%20Cost%20Management/AWS%20Cost%20Explorer/README.md?plain=1#L11)

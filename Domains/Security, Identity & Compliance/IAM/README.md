@@ -39,6 +39,8 @@ IAM is an AWS **Universal Service** responsible for user management and their le
 
 Serviço de simulação de policies em tempo real.
 
+Link do serviço: [policysim.aws.amazon.com](https://policysim.aws.amazon.com/home/index.jsp).
+
 #### Using Scenarios
 
 - Verificar se determinada policy possui acesso a uma determinada ação de um serviço específico.
@@ -47,3 +49,4 @@ Serviço de simulação de policies em tempo real.
 > Exemplo: A imagem abaixo verifica se o grupo `adminGroup` possui acesso para `listar tabelas` no `DynamoDb`.
 
 ![iam policy simulator](../../../images/aws_iam_policy_simulator.png)
+
