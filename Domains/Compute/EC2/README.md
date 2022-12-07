@@ -61,10 +61,14 @@ Outro diferencial notável é ter a possibilidade de termos novos servidores rod
 
 > Pode ser usado em conjunto com o [Saving Plans](../../AWS%20Cost%20Management/AWS%20Cost%20Explorer/README.md#saving-plans)
 
-## Instance Type
+## Instance Types
 
 O tipo de instância determina o tipo de hardware do host que a aplicação irá ser hospedada.
 
 Para o exame, devemos lembrar que cada tipo de instância oferece uma capacidade diferente, como poder computacional (compute), memória (memory) e armazenamento (storage).
 
 Importante lembrar que o agrupamento dessas instências é realizado em famílias de capacidades.
+
+## Storage
+
+- [EBS](./EBS/README.md)
