@@ -72,3 +72,7 @@ Importante lembrar que o agrupamento dessas instências é realizado em família
 ## Storage
 
 - [EBS](./EBS/README.md)
+
+## Load Balancing
+
+- [ELB](./ELB/README.md)
