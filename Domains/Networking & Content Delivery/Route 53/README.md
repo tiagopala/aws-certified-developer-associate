@@ -1,6 +1,6 @@
 # Amazon Route 53
 
-<img height=100px; alt="iam_logo" src="../../../images/amazon-route-53.drawio.png" />
+<img height=100px; alt="route53_logo" src="../../../images/amazon-route-53.drawio.png" />
 
 <p>&nbsp;</p>
 
