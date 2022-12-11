@@ -50,3 +50,12 @@ Link do serviço: [policysim.aws.amazon.com](https://policysim.aws.amazon.com/ho
 
 ![iam policy simulator](../../../images/aws_iam_policy_simulator.png)
 
+## Best Practices
+
+Quando for conceder acesso a serviços, sempre opte por ***roles*** e ***policies*** com os menores níveis de acesso necessários, pois são a opção mais segura, dessa forma não é necessário utilizar as credenciais - *access key id* e *secret access key* - *hard coded* dentro de suas instâncias ec2, por exemplo.
+
+## Tips
+
+- Alterações em policies que estão *'attached'* a uma role são aplicadas instantâneamente.
+
+- Podemos '*attach*' ou '*detach*' roles sem pararmos (stop) ou terminarmos nossas instâncias. Esta operação pode ser feita com a instância em execução.
