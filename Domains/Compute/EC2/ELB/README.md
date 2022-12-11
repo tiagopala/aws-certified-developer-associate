@@ -7,7 +7,7 @@
 ELB is an EC2 feature responsible for automatically distribute incoming application traffic across multiple targets and virtual appliances in one or more AZs.
 
 <div align="center">
-    <img height=450px; alt="elb_workflow_visualization" src="../../../../images/elb.drawio.png" />
+    <img height=400px; alt="elb_workflow_visualization" src="../../../../images/elb.drawio.png" />
 </div>
 
 ## Types
