@@ -7,7 +7,7 @@
 ELB is an EC2 feature responsible for automatically distribute incoming application traffic across multiple targets and virtual appliances in one or more AZs.
 
 <div align="center">
-    <img height=300px; alt="elb_workflow_visualization" src="../../../../images/elb.drawio.png" />
+    <img height=450px; alt="elb_workflow_visualization" src="../../../../images/elb.drawio.png" />
 </div>
 
 ## Types
@@ -26,7 +26,7 @@ ELB is an EC2 feature responsible for automatically distribute incoming applicat
 Realiza o balanceamanto de carga através das portas 80 (HTTP) and 443 (HTTPS). É considerado um balanceamento inteligente visto que ele pode capturar informações da aplicação (digamos que ela é *"application aware"*) e criar requisições de roteamento avançadas/customizadas utilizando inclusive paramêtros do cabeçalho da requisição (*HTTP headers*) durante o balanceamento dos workloads devido o balanceamento ocorrer na camada 7 (application).
 
 <div align="center">
-    <img width=350px; alt="elb_workflow_visualization" src="../../../../images/alb.drawio.png" />
+    <img width=500px; alt="elb_workflow_visualization" src="../../../../images/alb.drawio.png" />
 </div>
 
 ### Network Load Balancer (NLB)
@@ -50,7 +50,7 @@ Features
 É uma feature que permite que identificarmos o IP de origem de uma requisição após ela ser roteada através de um load balancer, incluindo o valor do ip de origem dentro do header, para ser capturado pelo web server.
 
 <div align="center">
-    <img width="350px" alt="elb_workflow_visualization" src="../../../../images/clb.drawio.png" />
+    <img width="500px" alt="elb_workflow_visualization" src="../../../../images/clb.drawio.png" />
 </div>
 
 ## Common ELB Errors
