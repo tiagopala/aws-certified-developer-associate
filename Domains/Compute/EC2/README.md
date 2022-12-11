@@ -1,6 +1,6 @@
 # EC2 - Elastic Compute Cloud
 
-<img height=100px; alt="iam_logo" src="../../../images/ec2.svg" />
+<img height=100px; alt="ec2_logo" src="../../../images/ec2.svg" />
 
 <p>&nbsp;</p>
 
