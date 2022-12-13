@@ -26,6 +26,14 @@ RDS é uma ótima opção quandos estamos tratando com o processamento de divers
 
 ## Features
 
-- **Multi-AZ** - disaster recovery (DI) & automatic failover capabilities
-- **Read Replicas** - performance
+- [**Multi-AZ**](./README.md#multi-az) - disaster recovery (DI) & automatic failover capabilities
+- [**Read Replicas**](./README.md#read-replicas) - performance
 - **Automated Backups**
+
+### Multi-AZ
+
+- TODO: Explain in more details
+
+### Read Replicas
+
+- TODO: Explain in more details
