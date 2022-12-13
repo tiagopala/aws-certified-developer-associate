@@ -32,7 +32,17 @@ RDS é uma ótima opção quandos estamos tratando com o processamento de divers
 
 ### Multi-AZ
 
-- TODO: Explain in more details
+Basicamente, o Multi-AZ é uma feature para **disaster recovery**.
+
+#### Funcionamento
+
+Todas as operações que ocorrerem em nossa base de dados **primária** serão **replicados automaticamente** para uma instância **secundária**, assim temos sempre as duas bases *'syncadas'*.
+
+![rds-multi-az](../../../images/rds-multi-az.drawio.png)
+
+Caso ocorra algum **problema** em nossa instância **primária** ou por algum motivo perdermos a conexão com a nossa instância primária, a **própria aws** se encarrega de **automaticamente redirecionar** o fluxo para a instância **secundária** enquanto a primária não retorna, como podemos ver na imagem abaixo.
+
+![rds-multi-az-failure](../../../images/rds-multi-az-failure.drawio.png)
 
 ### Read Replicas
 
