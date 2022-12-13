@@ -34,16 +34,22 @@ RDS é uma ótima opção quandos estamos tratando com o processamento de divers
 
 Basicamente, o Multi-AZ é uma feature para **disaster recovery**.
 
-#### Funcionamento
-
 Todas as operações que ocorrerem em nossa base de dados **primária** serão **replicados automaticamente** para uma instância **secundária**, assim temos sempre as duas bases *'syncadas'*.
 
 ![rds-multi-az](../../../images/rds-multi-az.drawio.png)
 
-Caso ocorra algum **problema** em nossa instância **primária** ou por algum motivo perdermos a conexão com a nossa instância primária, a **própria aws** se encarrega de **automaticamente redirecionar** o fluxo para a instância **secundária** enquanto a primária não retorna, como podemos ver na imagem abaixo.
+Caso ocorra algum **problema** em nossa instância **primária** ou por algum motivo perdermos a conexão com a nossa instância primária, a **própria aws** se encarrega de automaticamente redirecionar (***automatic failover***) o fluxo para a instância **secundária** enquanto a primária não retorna, como podemos ver na imagem abaixo.
 
 ![rds-multi-az-failure](../../../images/rds-multi-az-failure.drawio.png)
 
 ### Read Replicas
 
-- TODO: Explain in more details
+Já as Read Replicas devem ser usadas para um ganho de performance. Elas são basicamente cópias da nossa base de dados primária, porém, somente leitura.
+
+Cada read replica possuirá seu próprio endpoint em que podemos nos conectar diretamente, sendo um de seus papeis de *desafogar* nossa base de dados primária.
+
+> Uma premissa para conseguirmos habilitar as read replicas é estar com o **automated backup ligado**.
+
+Importante lembrar também que as read replicas podem ser na **same AZ**, **cross-AZ** e **cross-region**.
+
+![rds-multi-az-failure](../../../images/rds-read-replica.drawio.png)
