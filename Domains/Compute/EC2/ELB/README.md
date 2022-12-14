@@ -49,6 +49,8 @@ Features
 
 É uma feature que permite que identificarmos o IP de origem de uma requisição após ela ser roteada através de um load balancer, incluindo o valor do ip de origem dentro do header, para ser capturado pelo web server.
 
+> Feature disponível apenas para o Application Load Balancer e Classic Load Balancer
+
 <div align="center">
     <img width="500px" alt="elb_workflow_visualization" src="../../../../images/clb.drawio.png" />
 </div>
