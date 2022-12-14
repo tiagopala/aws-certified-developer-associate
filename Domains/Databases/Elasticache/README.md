@@ -4,9 +4,9 @@
 
 <p>&nbsp;</p>
 
-Amazon Elasticache is a fully managed, In-Memory Cache service. By using elasticache you can speed up your applications and databases (queries) by caching frequently accessed data.
+Amazon Elasticache is a fully managed, **In-Memory Cache service**. By using elasticache you can **speed up** your applications and databases (queries) by **caching frequently accessed data**.
 
-O Elasticache deve ser uma opção em cenários em que temos ocorre uma busca frequente pelos mesmos dados em nossa base de dados. Para aumentar a performance - tempo de resposta da aplicação - e aliviar nossa base de dados, devemos armazenar o conteúdo desta querie no elasticache e apenas retorná-la sem a necessidade de consultar a base de dados.
+O Elasticache deve ser uma opção em cenários em que temos ocorre uma busca frequente pelos mesmos dados em nossa base de dados. Para **aumentar a performance** - tempo de resposta da aplicação - e aliviar nossa base de dados, devemos armazenar o conteúdo desta querie no elasticache e apenas retorná-la sem a necessidade de consultar a base de dados.
 
 - Os dados armazenados no elasticache são do tipo key/value pair.
 
@@ -14,18 +14,18 @@ O Elasticache deve ser uma opção em cenários em que temos ocorre uma busca fr
 
 ## Compatibility 
 
-- Redis
 - Memcached
+- Redis
 
 ### MemcacheD
 
-Opção mais simples, deve ser utilizada quando o objetivo é apenas para utilização do In-Memory cache.
+Opção mais **simples**, deve ser utilizada quando o objetivo é apenas para utilização do In-Memory cache.
 
 > Horizontal scaling.
 
 ### Redis
 
-Opção mais sofisticada com features enterprise com persistência, replicação, Multi-AZ e failover.
+Opção mais **sofisticada** com features enterprise com persistência, replicação, Multi-AZ e failover.
 
 Possível também suporte a ordenação, ranqueamento de dados e utilização de tipos complexos de dados como listas e hashes.
 
