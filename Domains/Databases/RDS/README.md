@@ -28,7 +28,6 @@ RDS é uma ótima opção quandos estamos tratando com o processamento de divers
 
 - [**Multi-AZ**](./README.md#multi-az) - disaster recovery (DI) & automatic failover capabilities
 - [**Read Replicas**](./README.md#read-replicas) - performance
-- **Automated Backups**
 
 ### Multi-AZ
 
@@ -53,3 +52,46 @@ Cada read replica possuirá seu próprio endpoint em que podemos nos conectar di
 Importante lembrar também que as read replicas podem ser na **same AZ**, **cross-AZ** e **cross-region**.
 
 ![rds-multi-az-failure](../../../images/rds-read-replica.drawio.png)
+
+## Backups
+
+- **Automated Backups**
+- **Snapshots**
+
+#### Automated Backup
+
+Os automated backups já são habilitados por default.
+
+- **Point-In-Time Recovery** - Permite retornarmos nossa base para qualquer estado dentro de 1 à 35 dias.
+- **Full Daily Backup** - Realiza um backup diário ou criação de um snap e armazena os *transaction logs*.
+
+O processo de backup (***backup process***) ocorrerá em uma janela de tempo previamente configurada, em que o I/O será suspenso por alguns segundos e durante o processo de inicialização do backup podemos ter aumento na latência.
+
+O processo de recuperação (***recovery process***) iniciará a partir do backup diário mais recente de acordo com a hora de recuperação informada pelo usuário e junto aos transaction logs, retornará o estado exatamente como estava no segundo solicitado.
+
+To Remember
+
+- Os backups são armazenados no S3.
+- O espaço gratuito é equivalente ao tamanho da base de dados.
+
+#### Snapshots
+
+- Os snapshots devem ser ***"startados"*** manualmente, não são automáticos.
+- Não possuem período de retenção, inclusive, se eventualmente deletarmos a própria base de dados e backups, o snapshot ainda permanecerá.
+- O processo de recuperação através de um snapshot retornará a nossa base de dados para o período exato no tempo em que aquele snapshot foi tirado.
+
+### Restoring
+
+Caso seja necessário realizar o restore da nossa base de dados, seja ele atráves de um automated backup ou de um snapshot, ambos irão criar uma nova base contendo um novo endpoint.
+
+## Encryption
+
+A **criptografia** somente pode ser **habilitada** no **momento de criação** da base de dados.
+
+O tipo de criptografia utilizado é através do AWS Key Management Service (KMS) utilizando o padrão de criptografia AES-256.
+
+Importante lembrar também que uma vez ligado a criptografia, todos os níveis abaixo serão também criptografados, exemplo: automated backups, snapshots, logs e read replicas.
+
+### How to encrypt an unencrypted instance?
+
+Basicamente, para "ligarmos" a criptografia, devemos criar um snapshot da base, criptografá-lo e restaurar a base de dados à partir deste snapshot criptografado e pronto, já teremos nossa base criptografada.
