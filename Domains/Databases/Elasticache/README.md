@@ -12,6 +12,17 @@ O Elasticache deve ser uma opção em cenários em que temos ocorre uma busca fr
 
 > Um ponto importante para nos atentarmos é o tempo em que o resultado das queries ficarão em *cache* em vez de consultar o banco de dados.
 
+## How it works
+
+Na primeira execução, a query frequentemente acessada irá capturar o resultado diretamente do banco de dados, cachear estes dados no elasticache e retornar ao usuário.
+
+![elasticache-workflow](../../../images/elasticache-flow.drawio.png)
+
+Porém, em uma segunda solicitação a essa mesma query, ele não irá mais solicitar ao banco de dados já retornando o conteúdo cacheado, sendo muito mais performático e não onerando nossa base, como podemos ver na imagem abaixo.
+
+![elasticache-cached-workflow](../../../images/elasticache-cached-flow.drawio.png)
+
+
 ## Compatibility 
 
 - Memcached
