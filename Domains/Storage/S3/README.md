@@ -29,9 +29,29 @@ Os nomes dos buckets são compartilhados (**shared namespaces**), portanto devem
 
 ## Features
 
-- **Tiering**
+- [**Tiering/Storage Classes**](#storage-classes)
 - **Lifecycle Management**
 - **Versioning**
+
+### Storage Classes
+
+- S3 Standard
+- S3 Standard-Infrequent Access
+- S3 One Zone-Infrequent Access
+- S3 Glacier
+- S3 Glacier Deep Archive
+- S3 Intelligent Tearing
+
+#### Comparison
+
+| Storage Class | Availability | Durability | Number AZs | Minimum Storage Time | Use Cases |
+| ------------- | ------------ | ---------- | ---------- | -------------------- | --------- |
+| **S3 Standard** | 99.99% | 11 9's | >= 3 | N/A | Utilizado pela maioria das aplicações |
+| **S3 Standard-Infrequent Access** | 99.9% | 11 9's | >= 3 | 30 dias | Dados acessados ocasionalmente, porém entregues rapidamente quando solicitado | 
+| **S3 One Zone-Infrequent Access** | **99.5%** | 11 9's | **1** | 30 dias | Aconselhável para dados não críticos acessados ocasionalmente, porém entregues rapidamente quando solicitado |
+| **S3 Glacier | 99.99%** | 11 9's | >= 3 | 90 dias | Armazenamento (arquivamento) de longa duração, para dados que precisam ser acessados em minutos até horas |
+| **S3 Glacier Deep Archive** | 99.99% | 11 9's | >= 3 | 180 dias | Armazenamento (arquivamento) extrema duração, para dados raramente acessados, com recuperação dos dados em até 12 horas |
+| **S3 Intelligent Tearing** | 99.9% | 11 9's | >= 3 | 30 dias | Aconselhável quando desconhecemos o padrão de acesso aos dados |
 
 ## Restricting access
 
