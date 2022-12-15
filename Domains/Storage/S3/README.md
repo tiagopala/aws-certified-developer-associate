@@ -53,11 +53,31 @@ Os nomes dos buckets são compartilhados (**shared namespaces**), portanto devem
 | **S3 Glacier Deep Archive** | 99.99% | 11 9's | >= 3 | 180 dias | Armazenamento (arquivamento) extrema duração, para dados raramente acessados, com recuperação dos dados em até 12 horas |
 | **S3 Intelligent Tearing** | 99.9% | 11 9's | >= 3 | 30 dias | Aconselhável quando desconhecemos o padrão de acesso aos dados |
 
-## Restricting access
+## Security
 
-- **Server Side Encryption** - Pode deixar a opção default habilitado e todos os novos arquivos já serão armazenados criptografados.
-- **Access Control Lists (ACL's)**
-- **Bucket Policies**
+Por **default**, todo novo bucket criado é **privado**. Somente o bucket owner possui permissões para subir, editar, mover e remover arquivos.
+
+### Access Control
+
+**Bucket Policies**
+
+As bucket policies são **aplicadas** em **nível de bucket**, portanto se aplicam a **todos os objetos** dentro deste bucket.
+
+> Um caso de uso, é quando desejamos compartilhar permissões de todos os arquivos do bucket para outra pessoa ou aplicação de forma simples e centralizada.
+
+**Access Control Lists (ACL's)**
+
+Os ACL's são aplicados a objetos individuais, podendo definir quais contas, grupos e seu respectivo nível de acesso ao arquivo. Através dos ACL's temos um controle de acesso granular, podendo conceder diferentes permissões para cada arquivo.
+
+## Access logs
+
+Para termos maior segurança do que está acontecendo dentro de nossos buckets, podemos habilitar o s3 access logs para logar todas as chamadas feitas para nosso bucket, sendo elas de upload, read ou delete.
+
+> Os logs podem ficar em outro bucket, informando no momento em que estivermos habilitando esta configuração.
+
+## Criptografia
+
+Podemos habilitar a seguinte opção de **Server Side Encryption** e assim todos os novos arquivos já serão armazenados criptografados.
 
 ## Supported File Formats
 
