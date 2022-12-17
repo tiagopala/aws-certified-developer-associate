@@ -79,6 +79,35 @@ Para termos maior segurança do que está acontecendo dentro de nossos buckets, 
 
 Podemos habilitar a seguinte opção de **Server Side Encryption** e assim todos os novos arquivos já serão armazenados criptografados.
 
+### Ways of encrypting data
+
+- In Transit
+- Server Side
+- Client Side
+
+**In Transit**
+
+Usando uma conexão segura através do HTTPS em que os dados trafegados utilizam um dos protocolos a seguir TLS (Transport Layer Security) e SSL (Secure Sockets Layer) para fazer o upload dos arquivos.
+
+**Server Side Encryption** 
+
+- SSE-S3 - Chaves gerenciadas pelo próprio S3. O padrão de criptografia usado: AES 256-bit encryption.
+- SSE-KMS - Utiliza o serviço do KMS para gerenciamento das chaves.
+- SSE-C - O próprio cliente (dono da conta) gerencia as chaves.
+
+Ways to enforce *server side encryption*:
+
+- Selecionar *'Enable' option for server-side encryption* através do ***console***.
+- Criar um *statement* através das ***bucket policies*** para permitir que somente requests que possuam o *header x-amz-server-side-encryption* sejam permitidas.
+
+**Client Side Encryption**
+
+O próprio dono dos arquivos criptografa os dados previamente antes de realizar o upload.
+
+Ways to enforce *client side encryption*:
+
+- Criar um *statement* através também das ***bucket policies*** para negar todas as requisições em que o valor *aws:SecureTransport* esteja falso. Permitindo somente trafegar arquivos que sejam provenientes de uma conexão HTTPS. 
+
 ## Supported File Formats
 
 - Photos
