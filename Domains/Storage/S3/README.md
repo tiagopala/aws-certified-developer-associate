@@ -91,9 +91,9 @@ Usando uma conexão segura através do HTTPS em que os dados trafegados utilizam
 
 **Server Side Encryption** 
 
-- SSE-S3 - Chaves gerenciadas pelo próprio S3. O padrão de criptografia usado: AES 256-bit encryption.
-- SSE-KMS - Utiliza o serviço do KMS para gerenciamento das chaves.
-- SSE-C - O próprio cliente (dono da conta) gerencia as chaves.
+- **SSE-S3** - Chaves gerenciadas pelo próprio S3. O padrão de criptografia usado: AES 256-bit encryption.
+- **SSE-KMS** - Utiliza o serviço do KMS para gerenciamento das chaves.
+- **SSE-C** - O próprio cliente (dono da conta) gerencia as chaves.
 
 Ways to enforce *server side encryption*:
 
@@ -107,6 +107,12 @@ O próprio dono dos arquivos criptografa os dados previamente antes de realizar 
 Ways to enforce *client side encryption*:
 
 - Criar um *statement* através também das ***bucket policies*** para negar todas as requisições em que o valor *aws:SecureTransport* esteja falso. Permitindo somente trafegar arquivos que sejam provenientes de uma conexão HTTPS. 
+
+## CORS (Cross Origin Resource Sharing)
+
+Em buckets, usualmente necessitamos capturar informações entre buckets, um exemplo é quando temos um site estático que consome imagens de um bucket, scripts de outro e assim por diante. O **CORS** deve ser **configurado** no **bucket que será consumido**, informando a origem que poderá consumir seus arquivos, como pode ser visto no exemplo abaixo. Depois da configuração do CORS, o bucket de origem já poderá consumir os arquivos solicitados normalmente.
+
+![bucket-cors-example](../../../images/s3-bucket-cors-example.png)
 
 ## Supported File Formats
 
