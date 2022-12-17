@@ -30,6 +30,7 @@ Os nomes dos buckets são compartilhados (**shared namespaces**), portanto devem
 ## Features
 
 - [**Tiering/Storage Classes**](#storage-classes)
+- [**Transfer Acceleration**](#transfer-acceleration)
 - **Lifecycle Management**
 - **Versioning**
 
@@ -52,6 +53,10 @@ Os nomes dos buckets são compartilhados (**shared namespaces**), portanto devem
 | **S3 Glacier** | 99.99% | 11 9's | >= 3 | 90 dias | Armazenamento (arquivamento) de longa duração, para dados que precisam ser acessados em minutos até horas |
 | **S3 Glacier Deep Archive** | 99.99% | 11 9's | >= 3 | 180 dias | Armazenamento (arquivamento) extrema duração, para dados raramente acessados, com recuperação dos dados em até 12 horas |
 | **S3 Intelligent Tearing** | 99.9% | 11 9's | >= 3 | 30 dias | Aconselhável quando desconhecemos o padrão de acesso aos dados |
+
+### Transfer Acceleration
+
+É a principal feature do s3 para realização de uploads. Com o transfer acceleration habilitado o **upload** do arquivo é realizado no **edge location ([cloudfront](../../Networking%20%26%20Content%20Delivery/Cloudfront/README.md)) mais próximo** e através da própria rede interna da amazon, o arquivo será entregue ao s3, sendo muito **mais performático**.
 
 ## Security
 
