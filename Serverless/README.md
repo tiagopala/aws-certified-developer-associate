@@ -22,7 +22,7 @@ Basicamente o conceito de serverless significa "**sem servidor**", na verdade os
 
 ## Most important serverless technologies
 
-### <img height=15px; alt="lambda-icon" src="../images/lambda.png" />  **Lambda (compute)** 
+### **[<img height=15px; alt="lambda-icon" src="../images/lambda.png" /> Lambda](../Domains/Compute/Lambda/README.md)** 
  
 - Serviço para execução de blocos de códigos da própria aws.
 
@@ -34,7 +34,7 @@ Basicamente o conceito de serverless significa "**sem servidor**", na verdade os
 
 - Serviço de notificações da própria aws.
 
-### <img height=15px; alt="api-gateway-icon" src="../images/api-gateway.png" /> **Api Gateway (network content & delivery)**
+### <img height=15px; alt="api-gateway-icon" src="../images/api-gateway.png" /> **Api Gateway**
 
 - Serviço de gerenciamento de API's da própria aws.
 
