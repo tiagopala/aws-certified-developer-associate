@@ -24,11 +24,22 @@ O nome dado ao tempo em que o conteúdo fica cacheado é **TTL** e o valor é de
 
 > Importante lembrar que caso necessário, é possível invalidar o conteúdo (atualizar o conteúdo *'cacheado'*), porém você será cobrado por isto.
 
+## Allowed Methods
+
+Os Cloudfront Allowed Methods basicamente é uma configuração para **definir as características** da sua **distribuição** do cloudfront. 
+
+Por exemplo, imagine que seu site seja apenas um blog pessoal, em que seus usuários apenas consumirão o conteúdo presente. Neste caso, podemos liberar apenas os métodos HTTP GET, HEAD e OPTIONS. Porém, imagine agora que você possui um e-commerce, em que seus usuários irão interagir com os produtos através da criação de listas de consumo, adição de itens ao carrinho de compras e finalização de uma compra, todos as ações comentadas anteriormente são interativas portanto os métodos POST, PUT, PATCH e DELETE também serão necessários.
+
+**To Remember**
+
+- **Read-only** website: **GET**, **HEAD**, **OPTIONS**
+- **Interactive** website: **POST**, **PUT**, **PATCH**, **DELETE**
+
 ## Origin Access Identity
 
 Caso seja interessante **restringir acesso** somente pelo endpoint do **cloudfront**, podemos criar um ***Origin Access Identity*** que é basicamente um **usuário especial do cloudfront** com permissão de leitura em nossa origem e remover o acesso público da nossa origem na internet.
 
-Exemplo: Caso tenhamos uma imagem em nosso bucket exposta na internet, podemos criar uma distruição do cloudfront, criar um OAI, atualizar as buckets policies - processo realizado automaticamente pelo cloudfront - e bloquear o acesso ao bucket pela internet. Assim, somente requisições provenientes de nosso cloudfront irão conseguir consumir a imagem, não sendo mais possível visulizá-la diretamente através do endpoint do próprio s3.
+Por exemplo, caso tenhamos uma imagem em nosso bucket exposta na internet, podemos criar uma distruição do cloudfront, criar um OAI, atualizar as buckets policies - processo realizado automaticamente pelo cloudfront - e bloquear o acesso ao bucket pela internet. Assim, somente requisições provenientes de nosso cloudfront irão conseguir consumir a imagem, não sendo mais possível visulizá-la diretamente através do endpoint do próprio s3.
 
 ## Terminology
 
