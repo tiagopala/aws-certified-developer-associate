@@ -34,7 +34,7 @@ Basicamente o conceito de serverless significa "**sem servidor**", na verdade os
 
 - Serviço de notificações da própria aws.
 
-### <img height=15px; alt="api-gateway-icon" src="../images/api-gateway.png" /> **Api Gateway**
+### **[<img height=15px; alt="api-gateway-icon" src="../images/api-gateway.png" /> Api Gateway](../Domains/Networking%20%26%20Content%20Delivery/Api%20Gateway/README.md)**
 
 - Serviço de gerenciamento de API's da própria aws.
 
