@@ -41,6 +41,14 @@ Abaixo a visualização do exemplo acima:
 
 > Importante lembrar que caso realizemos a atualização do código ($LATEST), porém os serviços integrados estão utilizando o alias de prod, não será atualizado automaticamente com a versão mais recente de nosso código. 
 
+## Accessing Resources inside Private VPC
+
+É possível que nossa lambda se comunique com recursos dentro de uma VPC, porém é necesário algumas configurações para que isto ocorra.
+
+Esta configuração pode ser realizada via **AWS CLI** ou pelo próprio **console**. Primeiramente precisamos informar os seguintes dados - **private subnet id** e **security group id** - da VPC em que os recursos estão localizados.
+
+A lambda utilizará os seguintes dados para configurar um **Elastic Network Interface (ENI)** utilizando um IP disponível dentro do CIDR range da subnet e assim será possível acessar os recursos desejados dentro da VPC.
+
 ## Lambda Triggers
 
 - Api Gateway
