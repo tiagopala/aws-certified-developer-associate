@@ -43,7 +43,7 @@ Abaixo a visualização do exemplo acima:
 
 ## Accessing Resources inside Private VPC
 
-É possível que nossa lambda se comunique com recursos dentro de uma VPC, porém é necesário algumas configurações para que isto ocorra.
+É possível que nossa lambda se comunique com recursos dentro de uma VPC, porém é necessário algumas configurações para que isto ocorra.
 
 Esta configuração pode ser realizada via **AWS CLI** ou pelo próprio **console**. Primeiramente precisamos informar os seguintes dados - **private subnet id** e **security group id** - da VPC em que os recursos estão localizados.
 
