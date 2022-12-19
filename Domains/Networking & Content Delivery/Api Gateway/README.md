@@ -6,7 +6,7 @@
 
 Amazon API Gateway is aws' own API service.
 
-Através do API Gateway, podemos **publicar**, **gerir** e **monitorar API's** em qualquer escala.
+Através dele podemos **publicar**, **gerir** e **monitorar API's** em qualquer escala.
 
 Permite a criação de endpoints únicos para cada interação necessária.
 
