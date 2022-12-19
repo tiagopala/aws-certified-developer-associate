@@ -14,34 +14,15 @@ A lambda utiliza uma arquitetura de eventos (***event-driven architecture***) pa
 
 > A integração entre o API Gateway + Lambda é uma das mais interessantes, transformando suas lambdas em pequenas API's. Abaixo, uma lista com outros serviços que podem *'triggar'* uma *lambda function*.
 
-### Lambda Triggers
+## Lambda Concurrent Executions Limit
 
-- Api Gateway
-- ALB
-- Alexa
-- S3
-- DynamoDb
-- Kinesis
-- SQS
-- SNS
-- SES
-- Cloudfront
-- Cloudformation
-- CloudWatch
-- CodeCommit
-- CodePipeline
+Apesar das lambdas serem um recurso serverless em que a escalabilidade é gerenciada pela própria Amazon, é importante ter em mente que existe um ***soft limit*** (limite que pode ser alterado) de **1000 execuções simultâneas** (no mesmo segundo) **por conta**.
 
-#### Supported Languages
+Caso o número de execuções simultâneas seja **atingido**, próximas invocações retornarão um **HTTP Status Code 429 - Too Many Requests**. Para resolvermos este problema, devemos apenas abrir uma **solicitação para aumentar o limite**.
 
-- C#
-- Java
-- Go
-- NodeJs
-- Python
-- Ruby
-- Powershell
+> Importante lembrar que podemos configurar o **reserved concurrency**, que são um número de execuções que estão **sempre disponíveis** para **funções críticas**.
 
-## Versioning
+## Lambda Versioning
 
 A lambda possui suporte para **versionamento** de código de uma maneira muito simples. Por **padrão** a lambda sempre utiliza a versão **$LATEST** que corresponde a **versão mais atualizada**. Quando utilizamos o ARN de uma lambda, por padrão sempre referenciamos o $LATEST ao menos que seja informado a **versão** ou ***alias*** desejado.
 
@@ -59,6 +40,33 @@ Abaixo a visualização do exemplo acima:
 - arn:aws:lambda:sa-east-1:123456789012:function:mylambda:**$LATEST**
 
 > Importante lembrar que caso realizemos a atualização do código ($LATEST), porém os serviços integrados estão utilizando o alias de prod, não será atualizado automaticamente com a versão mais recente de nosso código. 
+
+## Lambda Triggers
+
+- Api Gateway
+- ALB
+- Alexa
+- S3
+- DynamoDb
+- Kinesis
+- SQS
+- SNS
+- SES
+- Cloudfront
+- Cloudformation
+- CloudWatch
+- CodeCommit
+- CodePipeline
+
+## Supported Languages
+
+- C#
+- Java
+- Go
+- NodeJs
+- Python
+- Ruby
+- Powershell
 
 ## Pricing
 
