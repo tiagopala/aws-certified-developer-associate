@@ -24,14 +24,38 @@ Cada step é executado de acordo com a regra de negócio, sendo o output de uma 
 
 ## Workflow Types
 
-### Sequential Workflow
+### Standard Workflow
 
-<img width=400px; alt="step-functions-sequential-workflow" src="../../../images/step-functions-sequential-workflow.png" />
+- **Long-Running** - De longa duração, duráveis e auditáveis, podendo uma execução chegar até 1 ano. O histórico de execução fica disponível por 90 dias.
+- **At-Most-Once Model** - Tasks não são executadas mais que uma vez, ao menos que seja configurado com ações de retry.
+- **Non-Idempotent Actions** - Não idempotente significa que toda vez for solicitado, ele irá causar a alteração no estado. Exemplo: Envio de um e-mail, ele sempre irá gerar o envio de um novo e-mail.
 
-### Parallel Workflow
+### Express Workflow
 
-<img width=400px; alt="step-functions-parallel-workflow" src="../../../images/step-functions-parallel-workflow.png" />
+- **Short-lived** - De curta duração, alto volume e geralmente para processamento de eventos.
+- **At-Least-One** - Tem a possibilidade de ser executado mais de uma vez ou até em concorrência.
+- **Idempotent Actions** - Ações que não causam alteração no estado, ou seja, caso requisições adicionais sejam realizadas o resultado sempre será o mesmo.
 
-### Branching Workflow
+> Para facilitar, idempotente significa que requisições idênticas, caso sejam chamadas uma ou várias vezes, sempre terão o mesmo resultado. Caso isto não ocorra, é uma ação não idempotente.
 
-<img width=400px; alt="step-functions-branching-workflow" src="../../../images/step-functions-branching-workflow.png" />
+**Express Workflows Types**
+
+- **Synchronous Express Workflow** - Aguarda um retorno para execução do próximo step.
+- **Asynchronous Express Workflow** - Não aguarda o retorno de uma ação para iniciar a outra.
+
+## Workflow Patterns
+
+<details>
+    <summary>Sequential Workflow</summary>
+    <img width=400px; alt="step-functions-sequential-workflow" src="../../../images/step-functions-sequential-workflow.png" />
+</details>
+
+<details>
+    <summary>Parallel Workflow</summary>
+    <img width=400px; alt="step-functions-parallel-workflow" src="../../../images/step-functions-parallel-workflow.png" />
+</details>
+
+<details>
+    <summary>Branching Workflow</summary>
+    <img width=400px; alt="step-functions-branching-workflow" src="../../../images/step-functions-branching-workflow.png" />
+</details>
