@@ -32,7 +32,7 @@ Cada step é executado de acordo com a regra de negócio, sendo o output de uma 
 
 ### Express Workflow
 
-- **Short-lived** - De curta duração, alto volume e geralmente para processamento de eventos.
+- **Short-lived** - De curta duração (máximo de 5 minutos), alto volume e geralmente para processamento de eventos.
 - **At-Least-One** - Tem a possibilidade de ser executado mais de uma vez ou até em concorrência.
 - **Idempotent Actions** - Ações que não causam alteração no estado, ou seja, caso requisições adicionais sejam realizadas o resultado sempre será o mesmo.
 
