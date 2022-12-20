@@ -26,10 +26,13 @@ API significa ***Application Programming Interface*** e seu papel é de fazer um
 ## Features
 
 - **Versioning** - Suporte para múltiplas versões ao mesmo tempo.
-- **Logging using Cloudwatch** - Logging de chamadas, latências e taxas de erros através do cloudwatch.
+- **Logging using Cloudwatch** - *Logging* de chamadas, latências e taxas de erros através do cloudwatch.
+- **Import existing APIs** - O API Gateway possui suporte para importação de API's utilizando o formato OpenAPI.
+- **Caching** - Armazena o *response* de uma requisição em *memory cache* por um *TTL* (default 300s) e assim que uma nova requisição igual for solicitada, ele irá retornar o *response* já *'cacheado'*. É uma *feature* que promove aumento de performance. 
 - **Throttling** - Suporte a throttling para facilitar o gerenciamento da quantidade de chamadas para os serviços backend.
-    > Throttling significa interromper chamadas que superem uma quantidade de requisições por segundo para não impactar nos serviços backend, finalizando a requisição logo na ponta.
+    > Throttling significa interromper chamadas que superem uma quantidade de requisições por segundo para não impactar nos serviços backend, finalizando a requisição logo na ponta.Valores limites por padrão: 10.000 RPS (*requests per second*) e 5.000 requisições concorrentes. Esses valores são apenas *soft limits* e podem ser alterados.
 
+> O API Gateway possui suporte para trabalhar com protocolos legados como **SOAP** através das seguintes formas: Configurando o API Gateway como um **SOAP web service** ou podemos utilizar o API Gateway apenas para **converter responses XML em JSON**.
 
 ## AWS Services Integration
 
