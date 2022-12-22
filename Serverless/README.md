@@ -38,7 +38,7 @@ Basicamente o conceito de serverless significa "**sem servidor**", na verdade os
 
 - Serviço de gerenciamento de API's da própria aws.
 
-### <img height=15px; alt="dynamodb-icon" src="../images/dynamodb.png" /> **DynamoDB** 
+### **[<img height=15px; alt="dynamodb-icon" src="../images/dynamodb.png" /> DynamoDB](../Domains/Databases/DynamoDb/README.md)** 
 
 - Serviço de base de dados não relacional da própria aws.
 
