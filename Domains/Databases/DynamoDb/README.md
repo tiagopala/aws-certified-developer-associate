@@ -11,30 +11,51 @@ DynamoDB is aws' own NoSQL Database.
 - **Fast And Flexible** - Consistente e ainda com uma latência inferior a alguns milissegundos (extremamente performático).
 - **Fully Managed** - Possui suporte para modelos *key-value pair*. Os tipos suportados são: JSON, HTML e XML.
 
-### Features
+## Features
 
 - [Support for ACID Transactions (*DynamoDB transactions*)](#dynamodb-transactions)
 - [DynamoDB Indexes](#dynamodb-indexes)
+- [Query & Scans](#query-and-scans)
 
-#### DynamoDB Transactions
+### DynamoDB Transactions
 
 O dynamo possui suporte para ***All-Or-Nothing transactions***, ou seja, caso seja necessário concluirmos uma série de passos antes de criarmos ou atualizarmos um registro no banco de dados, através do dynamodb transactions é possível.
 
 > *ACID Transactions* é um acrônimo para *Atomic Consistent Isolated Durable transactions*.
 
-#### DynamoDB Indexes
+### DynamoDB Indexes
 
 O dynamodb também permite a criação de indexes em suas tabelas, permitindo maior flexibilidade e rapidez na captura de alguns dados, que não necessariamente dependem da partition key.
 
 Os indexes são divididos em dois tipos: **Local Secondary Index** e **Global Secondary Index**.
 
-**Local Secondary Index**
+#### Local Secondary Index
 
-Os Local Secondary Indexes podem ser criados **somente** no momento de **criação da tabela**, eles utilizam a **mesma partition key** (pk) porém **diferente sort key**.
+Podem ser criados **somente** no momento de **criação da tabela**, eles utilizam a **mesma partition key** (pk) porém **diferente sort key**.
 
-**Global Secondary Index**
+#### Global Secondary Index
 
-Os Global Secondary Indexes são muito mais flexíveis, podem ser **criados a qualquer momento**, não dependem da partition key, podendo escolher **qualquer atributo como pk e sk**.
+São muito mais flexíveis, podem ser **criados a qualquer momento**, não dependem da partition key, podendo escolher **qualquer atributo como pk e sk**.
+
+### Query And Scans
+
+#### Queries
+
+As Queries são o modo mais performático de capturarmos dados no dynamodb, porém a partition key é obrigatória e a sort key opcional em qualquer busca.
+
+Caso exista uma sort key, os resultados retornados sempre serão ordenados por ela, se ele for numérico será ordenado na ordem crescente e se for ASCII, utilizará o valor de cada uma para ordenação. Porém é possível definir a propriedade ```ScanIndexForward``` para ```false``` e assim retornar na ordem inversa.
+
+Por padrão as queries sempre utilizam o modelo de consistência eventual nas buscas, porém podemos explicitamente definir as queries para utilizarem o modelo de forte consistência.
+
+Caso necesitamos apenas de algumas propriedades da tabela durante a consulta podemos defini-las utilizando *ProjectionExpressions*.
+
+#### Scans
+
+Os Scans são o modo menos performático possível de capturar dados, pois ele primeiramente (por padrão) irá carregar toda a tabela e após aplicar filtros em cima. As *ProjectionExpressions* também podem ser usadas nos scans.
+
+Podemos aumentar a performance dos scans utilizando *Parallel Scans*, porém possui grande impacto na performance se a aplicação já estiver com um alto fluxo de consumo. Outra opção é definir um page size menor, assim ele irá realizar mais requisições em background, não causando um possível throttling na tabela para longas operações. E caso os scans sejam realmente necessários, uma última opção é duplicar os dados em 2 tabelas e usar uma somente para os scans e outra para o tráfego de workloads críticos.
+
+> SEMPRE OPTE POR QUERIES EM VEZ DE SCANS!
 
 ## DynamoDB Access Control
 
