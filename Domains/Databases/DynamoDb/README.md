@@ -99,29 +99,35 @@ A chave composta é uma **combinação única** entre a *partition key* e uma *s
 - **SSD Storage** - Performance.
 - **Spread across 3 distinct data centers** - Resiliência.
 
-### DynamoDB Consistency Types
+## DynamoDB Consistency Types
 
-#### **Eventual Consistent Reads**
+### **Eventual Consistent Reads**
 
 O modelo de leitura com consistência eventual deve ser uma opção quando é necessário melhor performance, pois para garantir uma melhor performance, ele pode ou não retornar os dados mais atualizados.
 
 > Geralmente leva 1 segundo para os dados serem escritos nos 3 data centers. Portanto se tentarmos capturar o objeto que acabou de ser escrito ou atualizado dentro de 1 segundo, sua versão mais atualizada poderá ser encontrada ou não, por isso o nome de consistência eventual.
 
-#### **Strongly Consistent Reads**
+### **Strongly Consistent Reads**
 
 O modelo de leitura com 'forte' consistência deve ser uma opção quando é necessário garantirmos que estaremos sempre capturando o dado mais atualizado. Porém tem um impacto na performance, pois os 3 data center serão atualizados de uma só vez.
 
-### Capacity Units
+## Provisioned x On Demand Capacities
 
-Os capacity units são utilizados para configurarmos a quantidade de leitura e escrita que nossa aplicação realizará em nossas tabelas, sendo divididos em **Read Capacity Units** e **Write Capacity Units**.
+### Provisioned Capacity
+
+A capacidade provionada estabelece a quantidade de leitura e escrita que iremos realizar em nossas tabelas, previamente. Portanto, devem ser utilizados quando é possível prever o fluxo de leitura/escrita a ser utilizado pela aplicação. Além dos custos serem mais facilmente calculados pois dependem exclusivamente do valor informado para as Read Capacity Units e Write Capacity Units.
 
 #### Read Capacity Units
 
-As capacidades de leitura por sua vez são divididas nos tipos de consistência mencionados acima. **Strongly Consistent** são capazes de realizar a leitura de **4 Kbytes por segundo** e a **Eventually Consistent** o dobro da strongly, ou seja, **8 Kbytes por segundo**.
+As capacidades de leitura, por sua vez são divididas nos tipos de consistência mencionados acima. **Strongly Consistent** são capazes de realizar a leitura de **4 Kbytes por segundo** e a **Eventually Consistent** o dobro da strongly, ou seja, **8 Kbytes por segundo**.
 
 #### Write Capacity Units
 
 As capacidades de leitura conseguem por sua vez escrever **1 Kbyte por segundo**.
+
+### On Demand Capacity
+
+A capacidade sob demanda não requer que estabelecemos um valor previamente configurado, pois irá escalar e reduzir com base na utilização da própria aplicação, porém será cobrado por leitura, escrita e armazenamento. É uma boa opção para aplicações com fluxos imprevisíveis ou quando se deseja pagar pelo uso (pay por request).
 
 ## Use Cases
 
