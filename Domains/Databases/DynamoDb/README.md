@@ -61,6 +61,13 @@ Podemos aumentar a performance dos scans utilizando *Parallel Scans*, porém pos
 
 O controle de acesso é realizado por meio do IAM através de duas formas: **IAM Permissions** para nossos usuários ou **IAM Roles**, podendo conceder inclusive acesso temporário.
 
+Lembrando que as permissões também valem para as requisições feitas através do aws cli para as API's do dynamodb ou qualquer outro serviço.
+
+Exemplo: Capturar um item da tabela
+
+- Comando: ```aws dynamodb get-item``` 
+- IAM Policy: ```dynamodb:GetItem:*```
+
 ### Restricting Access
 
 Caso nossa aplicação tenha que restringir acesso permitindo ao usuário consumir apenas os próprios dados dentro da tabela, isso pode ser realizado através da alteração do **IAM Policy** adicionando uma **IAM Condition** que irá verificar se PK (partition key) da tabela corresponde ao id do usuário que está tentando consumir os dados através da propriedade ***dynamodb:LeadingKeys***, como pode ser visto no exemplo abaixo.
