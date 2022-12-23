@@ -21,6 +21,16 @@ O dynamo possui suporte para ***All-Or-Nothing transactions***, ou seja, caso se
 
 > *ACID Transactions* é um acrônimo para *Atomic Consistent Isolated Durable transactions*.
 
+## DynamoDB Access Control
+
+O controle de acesso é realizado por meio do IAM através de duas formas: **IAM Permissions** para nossos usuários ou **IAM Roles**, podendo conceder inclusive acesso temporário.
+
+### Restricting Access
+
+Caso nossa aplicação tenha que restringir acesso permitindo ao usuário consumir apenas os próprios dados dentro da tabela, isso pode ser realizado através da alteração do **IAM Policy** adicionando uma **IAM Condition** que irá verificar se PK (partition key) da tabela corresponde ao id do usuário que está tentando consumir os dados através da propriedade ***dynamodb:LeadingKeys***, como pode ser visto no exemplo abaixo.
+
+<img width=700px; alt="dynamodb-iam-condition-example" src="../../../images/dynamodb-iam-condition-example.png" />
+
 ## Use Cases
 
 Devido ao dynamo ser extremamente flexível, ele usualmente é uma boa opção em diversos tipos de aplicações, como *mobile*, *web*, *gaming*, *IoT* e outras aplicações.
