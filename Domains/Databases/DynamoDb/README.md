@@ -16,6 +16,7 @@ DynamoDB is aws' own NoSQL Database.
 - [Support for ACID Transactions (*DynamoDB transactions*)](#dynamodb-transactions)
 - [DynamoDB Indexes](#dynamodb-indexes)
 - [Query & Scans](#query-and-scans)
+- [DynamodDB Accelerator (DAX)](#dynamodb-accelerator-dax)
 
 ### DynamoDB Transactions
 
@@ -56,6 +57,18 @@ Os Scans são o modo menos performático possível de capturar dados, pois ele p
 Podemos aumentar a performance dos scans utilizando *Parallel Scans*, porém possui grande impacto na performance se a aplicação já estiver com um alto fluxo de consumo. Outra opção é definir um page size menor, assim ele irá realizar mais requisições em background, não causando um possível throttling na tabela para longas operações. E caso os scans sejam realmente necessários, uma última opção é duplicar os dados em 2 tabelas e usar uma somente para os scans e outra para o tráfego de workloads críticos.
 
 > SEMPRE OPTE POR QUERIES EM VEZ DE SCANS!
+
+### DynamoDB Accelerator (DAX)
+
+O DAX é um **serviço de memory cache** (*in-memory cache service*) para o dynamodb. Através dele podemos **diminuir o tempo de resposta** (*improve response time*) em operações de leitura para microsegundos.
+
+Os dados são salvos no SSD interno do dynamodb e no DAX ao mesmo tempo.
+
+É possível que sua aplicação tenha integração direta com o DAX, apontando as requisições diretamente para ele. Caso o item solicitado ainda não esteja em cache, ele irá realizar uma *GetItem operation* ao próprio dynamodb, salvar em memória e retornar ao usuário. Caso uma nova solicitação para o mesmo item seja feita, ele apenas irá retornar o item já *'cacheado'*.
+
+O DAX é uma boa opção para aplicações que necessitam de uma melhoria no tempo de resposta na casa dos microssegundos e aplicações que realizam as mesmas consultas repetidas vezes e apenas pode ser usado em conjunto com o modelo de consistência eventual (*eventually consistency model*) nunca com o modelo de consistência forte (*strongly consistency model*).
+
+Importante lembrar também que o DAX não deve ser uma opção em cenários em que é necessária uma melhoria na performance de escrita.
 
 ## DynamoDB Access Control
 
