@@ -14,12 +14,27 @@ DynamoDB is aws' own NoSQL Database.
 ### Features
 
 - [Support for ACID Transactions (*DynamoDB transactions*)](#dynamodb-transactions)
+- [DynamoDB Indexes](#dynamodb-indexes)
 
 #### DynamoDB Transactions
 
 O dynamo possui suporte para ***All-Or-Nothing transactions***, ou seja, caso seja necessário concluirmos uma série de passos antes de criarmos ou atualizarmos um registro no banco de dados, através do dynamodb transactions é possível.
 
 > *ACID Transactions* é um acrônimo para *Atomic Consistent Isolated Durable transactions*.
+
+#### DynamoDB Indexes
+
+O dynamodb também permite a criação de indexes em suas tabelas, permitindo maior flexibilidade e rapidez na captura de alguns dados, que não necessariamente dependem da partition key.
+
+Os indexes são divididos em dois tipos: **Local Secondary Index** e **Global Secondary Index**.
+
+**Local Secondary Index**
+
+Os Local Secondary Indexes podem ser criados **somente** no momento de **criação da tabela**, eles utilizam a **mesma partition key** (pk) porém **diferente sort key**.
+
+**Global Secondary Index**
+
+Os Global Secondary Indexes são muito mais flexíveis, podem ser **criados a qualquer momento**, não dependem da partition key, podendo escolher **qualquer atributo como pk e sk**.
 
 ## DynamoDB Access Control
 
