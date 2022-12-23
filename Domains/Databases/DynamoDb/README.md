@@ -74,27 +74,6 @@ Caso nossa aplicação tenha que restringir acesso permitindo ao usuário consum
 
 <img width=700px; alt="dynamodb-iam-condition-example" src="../../../images/dynamodb-iam-condition-example.png" />
 
-## Use Cases
-
-Devido ao dynamo ser extremamente flexível, ele usualmente é uma boa opção em diversos tipos de aplicações, como *mobile*, *web*, *gaming*, *IoT* e outras aplicações.
-
-## DynamoDB underlying architecture
-
-- **SSD Storage** - Performance.
-- **Spread across 3 distinct data centers** - Resiliência.
-
-### DynamoDB Consistency Types
-
-#### **Eventual Consistent Reads**
-
-O modelo de leitura com consistência eventual deve ser uma opção quando é necessário melhor performance, pois para garantir uma melhor performance, ele pode ou não retornar os dados mais atualizados.
-
-> Geralmente leva 1 segundo para os dados serem escritos nos 3 data centers. Portanto se tentarmos capturar o objeto que acabou de ser escrito ou atualizado dentro de 1 segundo, sua versão mais atualizada poderá ser encontrada ou não, por isso o nome de consistência eventual.
-
-#### **Strongly Consistent Reads**
-
-O modelo de leitura com 'forte' consistência deve ser uma opção quando é necessário garantirmos que estaremos sempre capturando o dado mais atualizado. Porém tem um impacto na performance, pois os 3 data center serão atualizados de uma só vez.
-
 ## How DynamoDB tables works?
 
 O dynamodb internamente divide todos os itens do banco em pequenas partições que utilizarão a *partition key* como *hash* para identificar as partições e items consequentemente.
@@ -114,3 +93,36 @@ A *partition key* deve sempre corresponder a um identificador (id) de um item no
 A chave composta é uma **combinação única** entre a *partition key* e uma *sort key*, em que a *partition key* é geralmente um identificador, porém neste cenário, ele pode se repetir e uma sort key que juntamente a partition key irá identificar aquele item no banco.
 
 > Exemplo: PartitionKey - document_number=123456, SortKey - course_name=aws_developer_course.
+
+## DynamoDB underlying architecture
+
+- **SSD Storage** - Performance.
+- **Spread across 3 distinct data centers** - Resiliência.
+
+### DynamoDB Consistency Types
+
+#### **Eventual Consistent Reads**
+
+O modelo de leitura com consistência eventual deve ser uma opção quando é necessário melhor performance, pois para garantir uma melhor performance, ele pode ou não retornar os dados mais atualizados.
+
+> Geralmente leva 1 segundo para os dados serem escritos nos 3 data centers. Portanto se tentarmos capturar o objeto que acabou de ser escrito ou atualizado dentro de 1 segundo, sua versão mais atualizada poderá ser encontrada ou não, por isso o nome de consistência eventual.
+
+#### **Strongly Consistent Reads**
+
+O modelo de leitura com 'forte' consistência deve ser uma opção quando é necessário garantirmos que estaremos sempre capturando o dado mais atualizado. Porém tem um impacto na performance, pois os 3 data center serão atualizados de uma só vez.
+
+### Capacity Units
+
+Os capacity units são utilizados para configurarmos a quantidade de leitura e escrita que nossa aplicação realizará em nossas tabelas, sendo divididos em **Read Capacity Units** e **Write Capacity Units**.
+
+#### Read Capacity Units
+
+As capacidades de leitura por sua vez são divididas nos tipos de consistência mencionados acima. **Strongly Consistent** são capazes de realizar a leitura de **4 Kbytes por segundo** e a **Eventually Consistent** o dobro da strongly, ou seja, **8 Kbytes por segundo**.
+
+#### Write Capacity Units
+
+As capacidades de leitura conseguem por sua vez escrever **1 Kbyte por segundo**.
+
+## Use Cases
+
+Devido ao dynamo ser extremamente flexível, ele usualmente é uma boa opção em diversos tipos de aplicações, como *mobile*, *web*, *gaming*, *IoT* e outras aplicações.
