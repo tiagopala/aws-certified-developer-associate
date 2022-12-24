@@ -94,7 +94,7 @@ Através do DynamoDB Streams, é possível capturar qualquer alteração no esta
 
 Os dados destes eventos ficam armazenados em uma tabela específica do dynamodb streams por apenas 24 horas, podendo serem consultados por uma api específica (*aws dynamodbstreams*).
 
-No exemplo abaixo, temos uma aplicação de pagamentos que possui uma tabela de pagamentos confirmados. No momento em que um novo pagamento é confirmado, um novo registro é inserido nesta tabela, o dynamodb streams captura o evento de inserção com os dados do produto e do pagamento e '*trigga*' duas lambdas responsáveis por retirar o produto do estoque e solicitar entrega do produto comprado.
+No exemplo abaixo, temos uma aplicação de pagamentos que possui uma tabela de pagamentos confirmados, no momento em que um novo pagamento é confirmado, um novo registro é inserido na tabela, o dynamodb streams captura o evento de inserção com os dados do produto e do pagamento e '*trigga*' duas lambdas responsáveis por retirar o produto do estoque e solicitar entrega do produto comprado.
 
 ![dynamodb-streams-workflow.drawio.png](../../../images/dynamodb-streams-workflow.drawio.png)
 
@@ -165,6 +165,8 @@ As capacidades de leitura, por sua vez são divididas nos tipos de consistência
 #### Write Capacity Units
 
 As capacidades de leitura conseguem por sua vez escrever **1 Kbyte por segundo**.
+
+> Caso começarmos a receber o seguinte retorno ```ProvisionedThroughputExceededException```, significa que provavelmente chegamos ao limite da capacidade escolhida, podemos implementar um controle de fluxo utilizando o ***exponential backoff*** ou verificar se é necessário um **aumento das capacidades** de leitura e escrita de nossa tabela. Importante lembrar que o AWS SDK já implementam por default o exponential backoff em suas requisições.
 
 ### On Demand Capacity
 
