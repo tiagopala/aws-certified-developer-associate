@@ -17,6 +17,7 @@ DynamoDB is aws' own NoSQL Database.
 - [DynamoDB Indexes](#dynamodb-indexes)
 - [Query & Scans](#query-and-scans)
 - [DynamodDB Accelerator (DAX)](#dynamodb-accelerator-dax)
+- [DynamoDB TTL](#dynamodb-ttl-time-to-live)
 
 ### DynamoDB Transactions
 
@@ -69,6 +70,20 @@ Os dados são salvos no SSD interno do dynamodb e no DAX ao mesmo tempo.
 O DAX é uma boa opção para aplicações que necessitam de uma melhoria no tempo de resposta na casa dos microssegundos e aplicações que realizam as mesmas consultas repetidas vezes e apenas pode ser usado em conjunto com o modelo de consistência eventual (*eventually consistency model*) nunca com o modelo de consistência forte (*strongly consistency model*).
 
 Importante lembrar também que o DAX não deve ser uma opção em cenários em que é necessária uma melhoria na performance de escrita.
+
+### DynamoDB TTL (Time To Live)
+
+O DynamoDB TTL é uma feature permite a remoção de items da tabela que não são mais necessários.
+
+Devemos possuir uma "coluna" (attribute) com dados no formato Epoch Time / Unix Timestamp e escolher esta "coluna" para ser utilizada pelo TTL.
+
+Assim, sempre que o Current Datetime for maior que o valor indicado nesta "coluna", ele será marcado para remoção e em até 48 horas os items serão removidos da tabela.
+
+Esta feature é aconselhável em casos em que os items não tem mais utilidade, são atualmente irrelevantes, dados temporários e até registros antigos. 
+
+> Exemplo: Dados de sessão do usuário e log de eventos muito antigos.
+
+A utilização do TTL pode implicar até em redução do custo da tabela, visto que estamos apagando dados irrelevantes, poupando armazenamento.
 
 ## DynamoDB Access Control
 
