@@ -73,17 +73,17 @@ Importante lembrar também que o DAX não deve ser uma opção em cenários em q
 
 ### DynamoDB TTL (Time To Live)
 
-O DynamoDB TTL é uma feature permite a remoção de items da tabela que não são mais necessários.
+O DynamoDB TTL é uma feature permite a **remoção de items** da tabela que **não são mais necessários** de forma **automática** pelo próprio dynamodb. 
 
-Devemos possuir uma "coluna" (attribute) com dados no formato Epoch Time / Unix Timestamp e escolher esta "coluna" para ser utilizada pelo TTL.
+Devemos possuir uma "coluna" (*attribute*) com dados no formato *Epoch Time* / *Unix Timestamp* e escolher esta "coluna" para ser utilizada pelo TTL.
 
-Assim, sempre que o Current Datetime for maior que o valor indicado nesta "coluna", ele será marcado para remoção e em até 48 horas os items serão removidos da tabela.
+Assim, sempre que o *Current Datetime* for maior que o valor indicado nesta "coluna", ele será marcado para remoção e em até 48 horas os items serão removidos da tabela.
 
-Esta feature é aconselhável em casos em que os items não tem mais utilidade, são atualmente irrelevantes, dados temporários e até registros antigos. 
+Esta feature é aconselhável em casos em que os items não tem mais utilidade, são atualmente irrelevantes, dados temporários e até registros antigos, como por exemplo, dados de sessão do usuário e log de eventos muito antigos.
 
-> Exemplo: Dados de sessão do usuário e log de eventos muito antigos.
+![dynamodb-ttl-example](../../../images/dynamodb-ttl-example.png)
 
-A utilização do TTL pode implicar até em redução do custo da tabela, visto que estamos apagando dados irrelevantes, poupando armazenamento.
+> A utilização do TTL pode implicar até em redução de custos da tabela, visto que estamos apagando dados irrelevantes, poupando armazenamento.
 
 ## DynamoDB Access Control
 
