@@ -18,6 +18,7 @@ DynamoDB is aws' own NoSQL Database.
 - [Query & Scans](#query-and-scans)
 - [DynamodDB Accelerator (DAX)](#dynamodb-accelerator-dax)
 - [DynamoDB TTL](#dynamodb-ttl-time-to-live)
+- [DynamoDB Streams](#dynamodb-streams)
 
 ### DynamoDB Transactions
 
@@ -73,17 +74,29 @@ Importante lembrar também que o DAX não deve ser uma opção em cenários em q
 
 ### DynamoDB TTL (Time To Live)
 
-O DynamoDB TTL é uma feature permite a **remoção de items** da tabela que **não são mais necessários** de forma **automática** pelo próprio dynamodb. 
+O DynamoDB TTL é uma feature permite a **remoção de itens** da tabela que **não são mais necessários** de forma **automática** pelo próprio dynamodb. 
 
 Devemos possuir uma "coluna" (*attribute*) com dados no formato *Epoch Time* / *Unix Timestamp* e escolher esta "coluna" para ser utilizada pelo TTL.
 
-Assim, sempre que o *Current Datetime* for maior que o valor indicado nesta "coluna", ele será marcado para remoção e em até 48 horas os items serão removidos da tabela.
+Assim, sempre que o *Current Datetime* for maior que o valor indicado nesta "coluna", ele será marcado para remoção e em até 48 horas os itens serão removidos da tabela.
 
-Esta feature é aconselhável em casos em que os items não tem mais utilidade, são atualmente irrelevantes, dados temporários e até registros antigos, como por exemplo, dados de sessão do usuário e log de eventos muito antigos.
+Esta feature é aconselhável em casos em que os itens não tem mais utilidade, são atualmente irrelevantes, dados temporários e até registros antigos, como por exemplo, dados de sessão do usuário e log de eventos muito antigos.
 
 ![dynamodb-ttl-example](../../../images/dynamodb-ttl-example.png)
 
 > A utilização do TTL pode implicar até em redução de custos da tabela, visto que estamos apagando dados irrelevantes, poupando armazenamento.
+
+### DynamoDB Streams
+
+É uma feature de **disparo de eventos ordenados** (sequencialmente por tempo) para **alterações nas tabelas** do dynamodb.
+
+Através do DynamoDB Streams, é possível capturar qualquer alteração no estado dos itens armazenados na tabela, sejam eles, operações de **adição**, **atualização** ou **remoção**. Podemos ainda, '*triggar*' lambdas com base nestes eventos e assim realizar ações à partir das próprias tabelas.
+
+Os dados destes eventos ficam armazenados em uma tabela específica do dynamodb streams por apenas 24 horas, podendo serem consultados por uma api específica (*aws dynamodbstreams*).
+
+No exemplo abaixo, temos uma aplicação de pagamentos que possui uma tabela de pagamentos confirmados. No momento em que um novo pagamento é confirmado, um novo registro é inserido nesta tabela, o dynamodb streams captura o evento de inserção com os dados do produto e do pagamento e '*trigga*' duas lambdas responsáveis por retirar o produto do estoque e solicitar entrega do produto comprado.
+
+![dynamodb-streams-workflow.drawio.png](../../../images/dynamodb-streams-workflow.drawio.png)
 
 ## DynamoDB Access Control
 
@@ -104,7 +117,7 @@ Caso nossa aplicação tenha que restringir acesso permitindo ao usuário consum
 
 ## How DynamoDB tables works?
 
-O dynamodb internamente divide todos os itens do banco em pequenas partições que utilizarão a *partition key* como *hash* para identificar as partições e items consequentemente.
+O dynamodb internamente divide todos os itens do banco em pequenas partições que utilizarão a *partition key* como *hash* para identificar as partições e itens consequentemente.
 
 ### Primary Key
 
