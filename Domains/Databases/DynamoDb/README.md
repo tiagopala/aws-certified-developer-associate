@@ -166,7 +166,7 @@ As capacidades de leitura, por sua vez são divididas nos tipos de consistência
 
 As capacidades de leitura conseguem por sua vez escrever **1 Kbyte por segundo**.
 
-> Caso começarmos a receber o seguinte retorno ```ProvisionedThroughputExceededException```, significa que provavelmente chegamos ao limite da capacidade escolhida, podemos implementar um controle de fluxo utilizando o ***exponential backoff*** ou verificar se é necessário um **aumento das capacidades** de leitura e escrita de nossa tabela. Importante lembrar que o AWS SDK já implementam por default o exponential backoff em suas requisições.
+> Caso começarmos a receber o seguinte retorno ```ProvisionedThroughputExceededException```, significa que provavelmente chegamos ao limite da capacidade escolhida, podemos implementar um controle de fluxo utilizando o ***exponential backoff*** ou verificar se é necessário um **aumento das capacidades** de leitura e escrita de nossa tabela. Importante lembrar que o AWS SDK já implementa por default o exponential backoff em suas requisições.
 
 ### On Demand Capacity
 
@@ -175,3 +175,49 @@ A capacidade sob demanda não requer que estabelecemos um valor previamente conf
 ## Use Cases
 
 Devido ao dynamo ser extremamente flexível, ele usualmente é uma boa opção em diversos tipos de aplicações, como *mobile*, *web*, *gaming*, *IoT* e outras aplicações.
+
+## Tips for the exam
+
+### Hard x Soft limits
+
+- Temos um **hard limit** (não pode ser aumentado) de máximo **5 local secondary indexes**.
+- Temos um **soft limit** (pode ser aumentado) de **20 global secondary indexes**, porém pode ser aumentado via chamado à aws.
+- O **throughput** de uma tabela no dynamodb possui um **soft limit** e também pode ser aumentado via chamado à aws.
+
+### Improve Performance
+
+- Reduzir o *page size* retornando menos itens por página.
+- Rodar scans em paralelo (*parallel scans*).
+
+### Local & Global Secondary Indexes
+
+- Local Secondary Indexes pode sem criados somente no momento da criaçao da tabela e não podem ser removidos posteriormente.
+- Global Secondary Indexes podem ser criados, alterados ou removidos a qualquer momento.
+
+### CLI
+
+- O comando responsável para capturar múltiplas itens da tabela é o **aws dynamodb batch-get-item**.
+
+### Calculate Capacity Units
+
+| Consistency Type      | Read Capacity     | Write Capacity   |
+| ----------------      | -------------     | --------------   |
+| Strongly Consistent   | 4 Kbytes / second | 1 Kbyte / second |
+| Eventually Consistent | 8 Kbytes / second | 1 Kbyte / second |
+
+Uma aplicação precisa ler 25 itens por segundo e cada item possui 13Kb. Quantos eventually consistent capacity units e strongly consistent capacity units para esta aplicação?
+
+13/4 = 3,25 -> Arredondando = 4.
+
+4 Read Units = 1  item
+x Read Units = 25 itens
+
+**x = 100 strongly consistent units**
+
+Lembrando que o eventually consistent units possui o dobro da performance do strongly, basta dividir por 2 a quantidade de read units usada no strongly.
+
+x/2 = y
+
+100/2 = y
+
+**y = 50 eventually consistent units**
