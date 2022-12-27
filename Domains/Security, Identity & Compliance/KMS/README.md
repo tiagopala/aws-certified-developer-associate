@@ -19,3 +19,28 @@ S3, RDS, DynamoDB, Lambda, EBS, EFS, CloudTrail, Developer Tools, entre outros.
 ## What is CMK?
 
 **Customer Master Key** (CMK) atualmente chamado de **KMS keys**, pode criptografar ou descriptografar dados até 4 Kbytes. Através dele, podemos também gerar uma **Data Key** a qual não possui limitação de tamanho, podendo criptografar/descriptografar dados maiores que 4 kb.
+
+### CMK Concepts
+
+- **Alias** - Podemos criar aliases para nos referir as nossas chaves.
+- **Creation Date** - Data da criação.
+- **Description** - Descrição da chave.
+- **Key State** - Status da chave -> enabled, disabled, pending deletione unavailable.
+- **Key Material** - Material utilizado, pode ser informado pelo usuário ou pela própria aws (kms ou cloud hsm).
+- **Inside AWS** - Não é possível exportar as chaves para fora do ambiente da aws.
+
+### How to setup a CMK?
+
+1. Informar o alias, description e key material.
+2. Definir as permissões de gerenciamento da chave (Users/Roles + admin permissions).
+3. Definir as permissões de usabilidade da chave (Users/Roles + usage permissions).
+
+## Managed Keys Types
+
+### AWS Managed Keys
+
+São chaves criadas e gerenciadas automaticamente pela própria aws quando escolhemos utilizar a criptografia do kms em algum outro serviço.
+
+### Customer Managed Keys
+
+São chaves criadas e gerenciadas pelo próprio usuário.
