@@ -31,6 +31,14 @@ Devemos utilizar o KMS quando nossas aplicações estão lidando com **informaç
 2. Definir as permissões de gerenciamento da chave (Users/Roles + admin permissions).
 3. Definir as permissões de usabilidade da chave (Users/Roles + usage permissions).
 
+### Envelope Encryption
+
+O processo de utilizarmos a nossa *data key* (*envelope key*) é chamado de ***envelope encryption*** e o processo de criptografia se dá por meio da geração da *data key*, a qual será utilizada para criptografar nossos arquivos maiores que 4kb.
+
+#### Why should we use the data key instead of the aws kms api calls?
+
+O grande segredo por trás da utilização da *data key* é a **performance**, pois apenas iremos trafegar apenas a *data key* para ser criptografada/descriptografada dentro dos servidores internos do kms, permitindo a criptografia dos arquivos localmente, sendo extremamente mais performático do que trafegar grandes arquivos pela rede.
+
 ## Managed Keys Types
 
 ### AWS Managed Keys
