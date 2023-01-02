@@ -19,6 +19,20 @@ Um ponto importante para lembrarmos é que o SQS utiliza um sistema **pull-based
 ![sqs-workflow](../../../images/sqs-workflow.drawio.png)
 <!-- <img height=100px; alt="step_functions_logo" src="../../../images/sqs.png" /> -->
 
+## SQS Types
+
+- Standard Queue (Default)
+- FIFO Queue
+
+### Comparisons
+
+**Standard Queue** | **FIFO Queue** |
+:----------------- | :------------- |
+Pode ser entregue **fora de ordem** | **Ordem preservada** |
+Mensagens são entregues **pelo menos 1** vez | Mensagens são entregues **apenas 1** vez |
+Pode haver mensagens **duplicadas** | Mensagens **únicas** |
+**Default** (padrão) - Usada na maioria dos cenários | Deve ser usadas em aplicações em que ordenação e idempotência deve ser garantida por padrão, exemplo: banking apps |
+
 ## Features
 
 - [Visibility Timeout](#visibility-timeout)
