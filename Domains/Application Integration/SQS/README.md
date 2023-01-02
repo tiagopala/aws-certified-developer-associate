@@ -17,7 +17,6 @@ O produtor fica responsável por enviar novas mensagens a fila a qual serão rec
 Um ponto importante para lembrarmos é que o SQS utiliza um sistema **pull-based**, para captura das mensagens, ou seja, as nossas instâncias ficarão realizando o pulling na fila do SQS para capturar novas mensagens.
 
 ![sqs-workflow](../../../images/sqs-workflow.drawio.png)
-<!-- <img height=100px; alt="step_functions_logo" src="../../../images/sqs.png" /> -->
 
 ## SQS Types
 
@@ -40,6 +39,7 @@ Basicamente temos duas opções de polling, a primeira é o **Short Polling** qu
 ## Features
 
 - [Visibility Timeout](#visibility-timeout)
+- [SQS Delay Queues](#sqs-delay-queues)
 
 ### Visibility Timeout
 
@@ -49,6 +49,14 @@ O Visibility Timeout por **default** é de **30 segundos** e podemos aumentar at
 
 > Importante lembrar que caso suas mensagens estejam sendo processadas mais de uma vez, uma das causas é que o tempo de processamento é inferior ao *visibility timeout*. Para resolvermos o problema devemos aumentar o tempo dado ao *visibility timeout* ou diminuir o tempo de processamento da mensagem.
 
+### SQS Delay Queues
+
+Está é uma feature a qual permite aplicar um delay na fila assim toda nova mensagem que chegar na fila ficará invisível durante aquele período de tempo configurado. É uma opção para aplicações que necessitam esperar por um tempo antes de serem processadas.
+
+O tipo de fila utilizado também implica em algumas particularidades para cada uma delas, nas filas do tipo standard esta nova configuração apenas surtirá efeito em novas mensagens e em filas do tipo fifo será aplicado também para mensagens que já estejam na fila.
+
+O tempo **default é 0 segundos** e pode ser até no **máximo 900 segundos**.
+
 ## Characteristics of the messages
 
 As mensagens tem **tamanho máximo de 256 kbytes** e podem ser enviadas nos seguintes formatos de texto: **json**, **xml** e **plaintext** (texto puro).
@@ -56,3 +64,9 @@ As mensagens tem **tamanho máximo de 256 kbytes** e podem ser enviadas nos segu
 O período de retenção (***retention period***) **default** é de **4 dias**, porém podendo ser entre 1 minuto e **máximo** de **14 dias**.
 
 Uma garantia que temos com o SQS é que todas as mensagens serão processadas ao menos uma vez.
+
+### How to deal with bigger messages?
+
+Para mensagens com tamanho superior a 256 kbytes até 2GB, será necessário utilizarmos o **S3** para armazenamento de mensagens, o **SQS SDK** e utilizarmos a **ExtendedClient library** da linguagem que você estiver trabalhando.
+
+O fluxo se dá por meio do armazenamento da mensagem no s3, envio de identificador desta mensagem através do sqs, a qual será capturado pelo consumidor para fazer o download da mensagem e exclusão após o seu processamento.
