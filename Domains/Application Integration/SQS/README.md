@@ -24,14 +24,18 @@ Um ponto importante para lembrarmos é que o SQS utiliza um sistema **pull-based
 - Standard Queue (Default)
 - FIFO Queue
 
-### Comparisons
-
 **Standard Queue** | **FIFO Queue** |
 :----------------- | :------------- |
 Pode ser entregue **fora de ordem** | **Ordem preservada** |
 Mensagens são entregues **pelo menos 1** vez | Mensagens são entregues **apenas 1** vez |
 Pode haver mensagens **duplicadas** | Mensagens **únicas** |
 **Default** (padrão) - Usada na maioria dos cenários | Deve ser usadas em aplicações em que ordenação e idempotência deve ser garantida por padrão, exemplo: banking apps |
+
+## Short Polling x Long Polling
+
+Basicamente temos duas opções de polling, a primeira é o **Short Polling** que basicamente **sempre retorna uma response**, mesmo que não tenha nenhuma mensagem para ser consumida, podendo ter aumento nos custos, visto que a cobrança é por requisições. A segunda opção é o **Long Polling**, a qual o polling será **realizado periodicamente** e somente retornará uma response quando uma **nova mensagem estiver presente** para ser consumida ou o **tempo de timed for alcançado**.
+
+> Sempre que possível devemos optar pelo Long Polling visto que é uma opção mais rentável.
 
 ## Features
 
@@ -40,6 +44,8 @@ Pode haver mensagens **duplicadas** | Mensagens **únicas** |
 ### Visibility Timeout
 
 Uma das principais características do SQS é a segurança no processamento de mensagens, através do **Visibility Timeout**, que é o número de tempo em segundos que a mensagem ficará invisível para outros consumidores durante seu processamento. Caso aconteça algo com o consumidor e a mensagem não consiga ser processada corretamente, a mensagem irá retornar a fila quando o tempo de visibilidade acabar.
+
+O Visibility Timeout por **default** é de **30 segundos** e podemos aumentar até o **máximo de 12 horas**.
 
 > Importante lembrar que caso suas mensagens estejam sendo processadas mais de uma vez, uma das causas é que o tempo de processamento é inferior ao *visibility timeout*. Para resolvermos o problema devemos aumentar o tempo dado ao *visibility timeout* ou diminuir o tempo de processamento da mensagem.
 
