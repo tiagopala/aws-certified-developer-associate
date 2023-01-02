@@ -12,10 +12,6 @@ Serviço totalmente gerenciado, permitindo fácil integração com outros servi�
 
 Devemos utilizar o KMS quando nossas aplicações estão lidando com **informações sensíveis** como, dados de usuários, dados financeiros, senhas de bancos de dados, secrets ou credenciais.
 
-## Which services easily integrates with KMS?
-
-S3, RDS, DynamoDB, Lambda, EBS, EFS, CloudTrail, Developer Tools, entre outros.
-
 ## What is CMK?
 
 **Customer Master Key** (CMK) atualmente chamado de **KMS keys**, pode criptografar ou descriptografar dados até 4 Kbytes. Através dele, podemos também gerar uma **Data Key** a qual não possui limitação de tamanho, podendo criptografar/descriptografar dados maiores que 4 kb.
@@ -44,3 +40,15 @@ São chaves criadas e gerenciadas automaticamente pela própria aws quando escol
 ### Customer Managed Keys
 
 São chaves criadas e gerenciadas pelo próprio usuário.
+
+## Most Important KMS API Calls 
+
+- ***aws kms encrypt*** - Criptografa um texto puro em ciphertext (texto cifrado) utilizando uma customer master key.
+- ***aws kms decrypt*** - Descriptografa um ciphertext que foi criptografado previamente por uma CMK em texto puro, também utiliza uma customer master key.
+- ***aws kms re-encrypt*** - Descriptografa e já criptografa um arquivo criptografado. Usado quando for necessário trocar a CMK ou realizar a rotação das chaves manualmente.
+- ***aws kms enable-key-rotation*** - Habilita a rotação automática das chaves.
+- ***aws kms generate-data-key*** - Realização a criação de uma data key para criptografar/descriptografar arquivos maiores que 4kb.
+
+## Which services easily integrates with KMS?
+
+S3, RDS, DynamoDB, Lambda, EBS, EFS, CloudTrail, Developer Tools, entre outros.
