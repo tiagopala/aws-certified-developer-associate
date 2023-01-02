@@ -54,7 +54,7 @@ São chaves criadas e gerenciadas pelo próprio usuário.
 - ***aws kms encrypt*** - Criptografa um texto puro em ciphertext (texto cifrado) utilizando uma customer master key.
 - ***aws kms decrypt*** - Descriptografa um ciphertext que foi criptografado previamente por uma CMK em texto puro, também utiliza uma customer master key.
 - ***aws kms re-encrypt*** - Descriptografa e já criptografa um arquivo criptografado. Usado quando for necessário trocar a CMK ou realizar a rotação das chaves manualmente.
-- ***aws kms enable-key-rotation*** - Habilita a rotação automática das chaves.
+- ***aws kms enable-key-rotation*** - Habilita a rotação automática das chaves a cada 365 dias.
 - ***aws kms generate-data-key*** - Realização a criação de uma data key para criptografar/descriptografar arquivos maiores que 4kb.
 
 ## Which services easily integrates with KMS?
