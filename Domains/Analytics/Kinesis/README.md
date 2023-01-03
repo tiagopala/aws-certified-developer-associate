@@ -26,7 +26,11 @@ Os **shards** possuem um p**eríodo de retenção** entre **24 horas** e **365 d
 
 Ele é dividido em dois serviços: **data streams** and **video streams**.
 
-### Kinesis Firehose
+#### Representação:
+
+![kinesis-data-streams-workflow](../../../images/kinesis-data-streams-workflow.drawio.png)
+
+### Kinesis Data Firehose
 
 O Firehose permite a **captura**, **transformação** e **carregamento** dos streams para análise do dados quase em tempo real através de ferramentas de BI.
 
@@ -34,8 +38,12 @@ Diferente do data streams, o firehose não possui shards, portanto os **dados co
 
 Prevê a utilização de ferramentas de BI para análise dos dados quase em tempo real.
 
+![kinesis-data-firehose-workflow](../../../images/kinesis-data-firehose-workflow.drawio.png)
+
 ### Kinesis Data Analytics
 
 O Data Analytics permite a análise, querying e **transformação dos dados em tempo real através de SQL**.
 
 Basicamente, pode utilizar o data streams ou firehose para coleta dos dados, porém utiliza queries SQL para transformação dos dados e envio ao s3, redshift ou opensearch.
+
+![kinesis-data-analytics-workflow](../../../images/kinesis-data-analytics-workflow.drawio.png)
