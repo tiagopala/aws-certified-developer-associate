@@ -26,9 +26,20 @@ Os **shards** possuem um p**eríodo de retenção** entre **24 horas** e **365 d
 
 Ele é dividido em dois serviços: **data streams** and **video streams**.
 
-#### Representação:
-
 ![kinesis-data-streams-workflow](../../../images/kinesis-data-streams-workflow.drawio.png)
+
+#### Kinesis Shards & Consumers
+
+O consumo dos *shards* é feito através do **Kinesis Client Library (KCL)**, responsável por realizar o consumo dos dados entre todas as instâncias de consumidores através dos **Record Processors**. Por meio do KCL, a divisão dos *Record Processors* é realizado de forma nativa, funcionando como se fosse um load balancer.
+
+Dessa forma, toda vez que fizermos o **resharding** (aumentar o número de *shards*) a própria library do kinesis irá identificar esta alteração e adicionar o número de *Record Processors* necessários, mantendo sempre o número de *shards* igual ao número de *record processors*.
+
+> Não é porque adicionamos novos *shards* que devemos adicionar novas instâncias. Pelo contrário, se quisermos ter um *auto scaling group* em nossos consumidores, devemos nos basear no CPU de cada instância e não no número de *shards*.
+
+Representação dos shards entre os consumidores:
+
+![kinesis-data-streams-workflow-4-shards](../../../images/kinesis-data-streams-workflow-4-shards.drawio.png)
+![kinesis-data-streams-workflow-4-shards-2-consumers](../../../images/kinesis-data-streams-workflow-4-shards-2-consumers.drawio.png)
 
 ### Kinesis Data Firehose
 
