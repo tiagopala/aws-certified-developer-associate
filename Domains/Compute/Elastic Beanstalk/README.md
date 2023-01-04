@@ -24,6 +24,23 @@ Em instâncias do tipo **Amazon Linux 2**, podemos criar um arquivo chamado ```B
 >
 > Exemplo: ```.platform/hooks/prebuild```
 
+## RDS Inside x Outside Beanstalk Environment
+
+Basicamente temos duas formas de integrarmos nosso *environment* do Beanstalk com uma base de dados RDS, porém devemos nos atentar aos detalhes de cada uma.
+
+### RDS Inside Beanstalk
+
+Neste primeiro cenário nosso RDS fica junto aos outros recursos dentro do próprio *environment* do Beanstalk. Porém esta opção não deve ser utilizada em um ambiente produtivo, pois caso seja necessário realizar o *shut down* do *environment*, perderemos todo os dados presentes em nossa base de dados, pois ela será excluida juntamente ao nosso *environment*. Deve ser uma opção apenas para os ambientes de *dev* e *testing*.
+
+### RDS Outside Beanstalk
+
+Neste segundo cenário, nossa base de dados RDS fica apartada, assim caso seja necessário realizar o shut down do *environment*, não teremos impactos em nossa base de dados. Este cenário é aconselhável para um ambiente produtivo.
+
+Porém, para estabelecermos essa integração devemos:
+
+1. Criar um *security group* adicional
+2. Informar a *connection string* e *database password* nas *environment properties* do *beanstalk environment*.
+
 ## Deployment Types
 
 ### All At Once Deployment
@@ -34,7 +51,7 @@ Realiza o deploy em todas as instâncias de uma só vez. Implica interrupção t
 
 ### Rolling Deployment (Batches)
 
-Capacidade reduzida durante o deploy, pois uma parte (batch) ficará indisponível enquanto o deploy é realizado, tendo perda partical na capacidade, o mesmo cenário ocorre para o rollback.
+Capacidade reduzida durante o deploy, pois uma parte (batch) ficará indisponível enquanto o deploy é realizado, tendo perda parcial na capacidade, o mesmo cenário ocorre para o rollback.
 
 ![elastic-beanstalk-rolling-deployment](../../../images/elastic-beanstalk-rolling-deployment.drawio.png)
 
