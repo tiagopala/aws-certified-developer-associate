@@ -38,7 +38,7 @@ Neste segundo cenário, nossa base de dados RDS fica apartada, assim caso seja n
 
 Porém, para estabelecermos essa integração devemos:
 
-1. Criar um *security group* adicional
+1. Criar um *security group* adicional.
 2. Informar a *connection string* e *database password* nas *environment properties* do *beanstalk environment*.
 
 ## Deployment Types
@@ -70,6 +70,12 @@ O deploy consiste em subir primeiro as novas instâncias que possuem a nova vers
 ### Traffic Splitting
 
 Deploy ocorre da mesma forma do immutable porém somente parte das requisições são direcionadas para esta nova versão, permite ***Canary Testing***.
+
+## Migrating existing .NET applications
+
+A AWS aconselha o uso de uma ferramenta chamada **Windows Web Application Migration Assistant** para migração de aplicações .NET que estão atualmente rodando em *windows servers* em seu próprio data center para o *elastic beanstalk*.
+
+É uma ferramenta *open source*, que utiliza *PowerShell* por debaixo dos panos para realizar a migração da aplicação, ela também é usualmente chamada de **.NET Migration Assistant** pela comunidade.
 
 ## Programming Languages
 
