@@ -10,6 +10,20 @@ O Elastic Beanstalk é o serviço mais **fácil e rápido** de se realizar **dep
 
 O controle dos recursos pode ficar apenas como responsabilidade do Beanstalk, porém é possível "assumir o controle" e gerenciar os recursos por conta própria, alterando suas configurações, como também alterar a arquitetura provisiondada por ele.
 
+> Para realizar o deploy de novas versões basta subirmos a nova versão para o elastic beanstalk, selecionarmos o environment (ambiente) e pronto, o elastic beanstalk se encarregará de fazer o deploy de acordo com as configurações presentes na seção **rolling updates and deployments**.
+
+## How to Customize EB Environment?
+
+Podemos customizar nossos ambientes através de diferentes maneiras. A primeira diferença que temos é devido ao tipo de sistema operacional que estamos utilizando, divididos em Amazon Linux 1 e 2.
+
+Em instâncias do tipo **Amazon Linux 1**, devemos criar um folder chamado ```.ebextensions``` na raíz (top-level directory) do bundle da aplicação e os arquivos devem possuir a extensão ```.config```, como por exemplo: ```myautoscaling.config```.
+
+Em instâncias do tipo **Amazon Linux 2**, podemos criar um arquivo chamado ```Buildfile``` no diretório raíz da nossa aplicação para comandos que são finalizados após execução (exemplo: shell scripts). Podemos criar um arquivo chamado ```Procfile``` para processos de longa duração (*long-running processes*) e também podemos criar **Platform Hooks** de acordo com o seguinte exemplo: ```.platform/hooks/ENVIRONMENT_NAME```, para execução de scripts e executáveis em diferentes estágios do provisionamento das instâncias EC2. 
+
+> Os environments podem ser: ```prebuild```, ```predeploy``` e ```postdeploy```.
+>
+> Exemplo: ```.platform/hooks/prebuild```
+
 ## Deployment Types
 
 ### All At Once Deployment
