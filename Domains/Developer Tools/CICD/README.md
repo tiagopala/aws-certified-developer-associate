@@ -12,31 +12,23 @@ Basicamente o conceito de CI/CD aborda os temas de **Continuous Integration** e 
 
 A AWS apresenta os 4 serviços abaixo para configuração e utilização do CI/CD:
 
-## CodeCommit
+## [CodeCommit](./CodeCommit/README.md)
 
-É o serviço responsável por ser basicamente o git da própria amazon (repositório de códigos da amazon).
+É o serviço responsável por ser basicamente o **git da própria amazon** (repositório de códigos da amazon).
 
-- [Mais Detalhes](./CodeCommit/README.md)
+## [CodeBuild](./CodeBuild/README.md)
 
-## CodeBuild
+Serviço responsável pela **automatização da compilação do código**, por **rodar os testes** (unitários, funcionais...) e **produzir os artefatos** (packages) que serão '*deployados*' pelo CodeDeploy.
 
-Serviço responsável pela automatização da compilação do código, por rodar os testes (unitários, funcionais...) e produzir os artefatos (packages) que serão '*deployados*' pelo CodeDeploy.
+## [CodeDeploy](./CodeDeploy/README.md)
 
-- [Mais detalhes](./CodeBuild/README.md)
-
-## CodeDeploy
-
-Serviço responsável pela automatização do *deployment* do artefato gerado no step do CodeBuild. 
+Serviço responsável pela **automatização do *deployment*** do artefato gerado no step do CodeBuild. 
 
 > Pode realizar o deploy para instância EC2, lambdas e até deployments em seu ambiente on-premises.
 
-- [Mais detalhes](./CodeDeploy/README.md)
+## [CodePipeline](./CodePipeline/README.md)
 
-## CodePipeline
-
-Serviço responsável pelo gerenciamento do fluxo de implantação inteiro, desde a alteração do código no repositório, realização do build do artefato, verificação dos testes e *deployment*.
-
-- [Mais detalhes](./CodePipeline/README.md)
+Serviço responsável pelo **gerenciamento do fluxo de implantação inteiro**, desde a alteração do código no repositório, realização do build do artefato, verificação dos testes e *deployment*.
 
 ## AWS Docs
 
