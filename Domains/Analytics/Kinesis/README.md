@@ -22,7 +22,7 @@ O que define a capacidade de streaming é justamente o número de shards, portan
 
 Cada registro possui um número sequencial que o identifica, portanto a **ordem** dos dados **sempre é mantida**.
 
-Os **shards** possuem um p**eríodo de retenção** entre **24 horas** e **365 dias**.
+Os **shards** possuem um **período de retenção** entre **24 horas** e **365 dias**.
 
 Ele é dividido em dois serviços: **data streams** and **video streams**.
 
@@ -35,6 +35,8 @@ O consumo dos *shards* é feito através do **Kinesis Client Library (KCL)**, re
 Dessa forma, toda vez que fizermos o **resharding** (aumentar o número de *shards*) a própria library do kinesis irá identificar esta alteração e adicionar o número de *Record Processors* necessários, mantendo sempre o número de *shards* igual ao número de *record processors*.
 
 > Não é porque adicionamos novos *shards* que devemos adicionar novas instâncias. Pelo contrário, se quisermos ter um *auto scaling group* em nossos consumidores, devemos nos basear no CPU de cada instância e não no número de *shards*.
+>
+> O número de consumidores nunca pode ser superior ao número de shards. Por exemplo, se tivermos 4 shards devemos ter no máximo 4 instâncias para consumo.
 
 Representação dos shards entre os consumidores:
 
