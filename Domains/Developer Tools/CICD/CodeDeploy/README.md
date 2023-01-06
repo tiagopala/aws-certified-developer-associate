@@ -51,3 +51,9 @@ Não possui suporte para lambdas | Possui suporte para lambdas |
 ***Roll back*** prevê ***re-deploy*** | Apenas **apontar** para o ***environment*** desejado, não requer '*re-deploy*' |
 Deve ser usado para o primeiro *deploy* de suas peças | Não é aconselhável em ambientes produtivos |
 Preço se mantém | **Custos adicionais** por ter 2 *environments* rodando lado a lado |
+
+## Run Order / Lifecycle Event Hooks
+
+### In-Place Deployment
+
+TODO: Create workflow scheme to visualize de deployment flow.
