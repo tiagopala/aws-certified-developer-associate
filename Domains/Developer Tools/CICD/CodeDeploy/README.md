@@ -54,6 +54,8 @@ Preço se mantém | **Custos adicionais** por ter 2 *environments* rodando lado 
 
 ## Run Order / Lifecycle Event Hooks
 
-### In-Place Deployment
+### Deployment Phases
+
+> For In-Place Deployment
 
 ![code-deploy-phases-workflow](../../../../images/code-deploy-phases-workflow.drawio.png)
