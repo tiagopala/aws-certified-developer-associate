@@ -4,9 +4,25 @@
 
 <p>&nbsp;</p>
 
-AWS CodeDeploy is a developer tool service responsible to automated the deployment of new versions of your code to your production environment.
+AWS CodeDeploy is a **developer tool service** responsible to **automate the deployment** of new versions of your code to your production environment.
 
 Através do CodeDeploy, podemos automatizar todo o fluxo de deployment para os nossos ambientes em especial para o ambiente de produção.
+
+## AppSpec File
+
+É através do arquivo AppSpec, iremos informar os parâmetros necessários para a configuração do nosso *deploy*.
+
+Ele é um arquivo com a extensão .yml (```appspec.yml```), dividido em 4 seções: **version**, **os**, **files** e **hooks**.
+
+Este arquivo deverá sempre estar na raíz (root) da nossa *revision/version*.
+
+Uma boa prática é criarmos pastas específicas que irão possuir arquivos, *scripts* ou configurações necessárias durante o deploy. Como pode ser visto no exemplo abaixo, estamos utilizando os *folders*: ```Config/```, ```Source/``` e ```Scripts/```, todos localizados também na raiz.
+
+Exemplo de um arquivo **appspec.yml** para deploy de instâncias EC2:
+
+![code-deploy-appspec-example](../../../../images/code-deploy-appspec-example.png)
+
+> Dependendo da aplicação de destino que iremos realizar o *deploy*, o arquivo *appspec.yml* pode variar um pouco.
 
 ## Deployment Types and their peculiarities
 
