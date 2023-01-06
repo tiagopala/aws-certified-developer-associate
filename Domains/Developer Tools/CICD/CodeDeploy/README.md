@@ -20,7 +20,7 @@ Uma boa prática é criarmos pastas específicas que irão possuir arquivos, *sc
 
 Exemplo de um arquivo **appspec.yml** para deploy de instâncias EC2:
 
-![code-deploy-appspec-example](../../../../images/code-deploy-appspec-example.png)
+<img width=450px; alt="code-deploy-appspec-example" src="../../../../images/code-deploy-appspec-example.png" />
 
 > Dependendo da aplicação de destino que iremos realizar o *deploy*, o arquivo *appspec.yml* pode variar um pouco.
 
