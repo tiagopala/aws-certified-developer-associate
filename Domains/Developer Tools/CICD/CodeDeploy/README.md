@@ -56,4 +56,4 @@ Preço se mantém | **Custos adicionais** por ter 2 *environments* rodando lado 
 
 ### In-Place Deployment
 
-TODO: Create workflow scheme to visualize de deployment flow.
+![code-deploy-phases-workflow](../../../../images/code-deploy-phases-workflow.drawio.png)
