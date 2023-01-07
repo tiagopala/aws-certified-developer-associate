@@ -20,6 +20,10 @@ A AWS apresenta os 4 serviços abaixo para configuração e utilização do CI/C
 
 Serviço responsável pela **automatização da compilação do código**, por **rodar os testes** (unitários, funcionais...) e **produzir os artefatos** (packages) que serão '*deployados*' pelo CodeDeploy.
 
+## [CodeArtifact](./CodeArtifact/README.md)
+
+Serviço responsável por ser o **gerenciador de artefatos** internos ou externos.
+
 ## [CodeDeploy](./CodeDeploy/README.md)
 
 Serviço responsável pela **automatização do *deployment*** do artefato gerado no step do CodeBuild. 
