@@ -58,4 +58,22 @@ Preço se mantém | **Custos adicionais** por ter 2 *environments* rodando lado 
 
 > For In-Place Deployment
 
+Para facilitar o entendimento do fluxo, vamos separar em três fases, a primeira fica responsável por remover a instância do *target group* do *load balancer*, para que possamos iniciar o processo de *deploy* da nova versão, a segunda etapa envolve todos os scripts que realizam de fato o *deploy* e a última fase fica responsável por adicionar novamente a instância no *target group* do *load balancer*.
+
 ![code-deploy-phases-workflow](../../../../images/code-deploy-phases-workflow.drawio.png)
+
+> Importante lembrar que cada um destes steps são opcionais, devemos adicionar conforme a necessidade de cada aplicação/deployment.
+
+Abaixo, podemos ver detalhadamente todos os steps envolvidos em cada uma das fases no processo de *deploy*.
+
+#### **Phase 1 - De-register from load balancer**
+
+![code-deploy-phase-1-workflow](../../../../images/code-deploy-phase-1-workflow.drawio.png)
+
+#### **Phase 2 - Deployment scripting**
+
+![code-deploy-phase-2-workflow](../../../../images/code-deploy-phase-2-workflow.drawio.png)
+
+#### **Phase 3 - Re-register from load balancer**
+
+![code-deploy-phase-3-workflow](../../../../images/code-deploy-phase-3-workflow.drawio.png)
