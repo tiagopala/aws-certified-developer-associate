@@ -83,8 +83,22 @@ As linguagens permitidas atualmente são: .NET, Java, PHP, Python, Ruby, Go e No
 
 ## Managed Platforms
 
-Podemos realizar o deploy da nossa aplicação em um servidor Apache Tomcat ou realizar o deploy através de uma imagem/container via Docker.
+Podemos realizar o *deploy* da nossa aplicação em um servidor Apache Tomcat ou realizar o deploy através de uma imagem/container via Docker.
+
+### Deploying using Docker Containers
+
+Através do *deploy* via docker containers, temos duas opções: **single docker container** ou **multi-container docker**.
+
+Para a opção *single docker container*, o Elastic Beanstalk irá provisionar uma única instância ec2 para rodar seu docker container.
+
+Já se escolhermos o deploy de múltiplos containers (*multi-container docker*) o Elastic Beanstalk irá criar um **cluster ecs** para rodar os múltiplos containers. 
+
+> Através da página de versões da aplicação (application versions page) podemos voltar para uma versão anterior (previous version) realizando o deploy desta versão novamente em nosso ambiente.
 
 ## AWS Resources
 
 Alguns dos recursos que o Beanstalk pode promover são: EC2, RDS, S3, Elastic Load Balancer, Auto Scaling Groups, entre outros.
+
+## Tips
+
+> A código fonte '*deployado*' através do elastic beanstalk também pode ser armazenado no CodeCommit, além de ser realizado manualmente via uploado do zip no próprio console da aws.
