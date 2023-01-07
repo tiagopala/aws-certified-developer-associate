@@ -15,3 +15,8 @@ O ECS utiliza o ECR (Elastic Container Registry) para armazenamento das imagens 
 Atualmente podemos executar nossos containers utilizando instâncias **ec2** ou instâncias **fargate**.
 
 Se o objetivo é possuir maior controle sobre a instalação, configuração e gerenciamento do ambiente devemos utilizar instâncias ec2. Porém, podemos utilizar as instâncias do tipo **fargate** pois são **serverless**, não tendo que gerenciar toda essa infraestrutura, deixando esta responsabilidade para a amazon.
+
+## AWS Docs for containers and microservices
+
+- [Running Containerized Microservices on AWS (pdf)](https://d1.awsstatic.com/whitepapers/DevOps/running-containerized-microservices-on-aws.pdf)
+- [The Twelve Factors](https://12factor.net/) - *Metholody for building sas apps*
