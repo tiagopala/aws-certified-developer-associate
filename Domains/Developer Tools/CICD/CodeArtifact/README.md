@@ -12,6 +12,6 @@ Através dele podemos definir quais as versões de pacotes são permitidas dentr
 
 ## External Connection
 
-A captura de pacotes públicos pode ser feita através da criação de um ***upstream repository*** com uma **conexão externa** para capturar pacotes de um repositório público de pacotes como nuget.org, npmjs.com, maven.org, entre outros.
+A captura de pacotes públicos pode ser feita através da criação de um ***upstream repository*** com uma **conexão externa** para capturar pacotes de um **repositório público** de pacotes como *nuget.org*, *npmjs.com*, *maven.org*, entre outros.
 
 ![code-artifact-upstream-repository-workflow](../../../../images/code-artifact-upstream-repository-workflow.drawio.png)

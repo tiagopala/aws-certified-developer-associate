@@ -1,4 +1,4 @@
-# EC2 - Elastic Compute Cloud
+# Amazon EC2 - Elastic Compute Cloud
 
 <img height=100px; alt="ec2_logo" src="../../../images/ec2.svg" />
 
