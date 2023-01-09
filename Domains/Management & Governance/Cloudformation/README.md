@@ -142,3 +142,44 @@ Outputs:
     Description: Public IP address of the newly created EC2 instance
     Value: !GetAtt [EC2Instance, PublicIp]
 ```
+
+## SAM (Serverless Application Model) 
+
+O SAM é uma **Extensão do CloudFormation** para construção de **aplicações serverless** utilizando um **template específico** e seu próprio CLI, o **AWS SAM CLI**.
+
+Os templates via SAM possuem uma configuração mais simples e possui uma fácil integração com outros recursos serverless. Sempre que estiver trabalhando com recursos serverless a utilização do SAM é fortemente indicada.
+
+Ele pode ser baixado diretamente da documentação da aws, de acordo com o seguinte link: [Installing AWS SAM CLI](https://docs.aws.amazon.com/serverless-application-model/latest/developerguide/install-sam-cli.html#install-sam-cli-instructions).
+
+SAM Template Example:
+
+```yml
+AWSTemplateFormatVersion: 2010-09-09
+Description: >-
+  sam-app
+Transform:
+- AWS::Serverless-2016-10-31
+
+Resources:
+  helloFromLambdaFunction:
+    Type: AWS::Serverless::Function
+    Properties:
+      Handler: src/handlers/hello-from-lambda.helloFromLambdaHandler
+      Runtime: nodejs12.x
+      Architectures:
+        - x86_64
+      MemorySize: 128
+      Timeout: 100
+      Description: A Lambda function that returns a static string.
+      Policies:
+        - AWSLambdaBasicExecutionRole
+```
+
+> Uma grande feature do AWS SAM, é podermos testar nossas *lambdas* em ambiente local.
+
+### Some SAM CLI Commands
+
+- ```sam package``` - Criar um pacote de deployment da sua aplicação e subir para um bucket S3 informado.
+
+- ```sam deploy``` - Realizar o deploy da sua aplicação serverless à partir um template SAM localizado no bucket s3 informado.
+  > Por baixo dos panos o SAM irá realizar o deploy via Cloudformation.
