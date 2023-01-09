@@ -27,7 +27,62 @@ O Cloudformation irá realizar o *upload* de seu template para o S3 e irá come�
 
 ### Cloudformation Template
 
-Exemplo:
+Algumas das seções em que se divide o cloudformation são: **Metadata**, **Description**, **Parameters**, **Mappings**, **Transform**, **Resources** e **Outputs**. Porém todas são opcionais com exceção da seção de resources que é obrigatória e destinada ao provisionamento dos serviços.
+
+Importante lembrar que a seção Transform, pode ser usada tanto para referenciar códigos - e.g. código lambda - ou *templates snippets* - partes de templates reutilizáveis - promovendo a reutilização de código.
+
+- [Cloudformation Template Example](#cloudformation-template-example)
+
+### Cloudformation Stack Values
+
+Basicamente os stack values são utilizados para **importar e exportar variáveis** provenientes de **diferentes cloudformation templates**.
+
+Imagine o seguinte cenário: O departamento de CloudSecOps possui um template responsável por provisionar uma nova VPC contendo uma *public subnet* e uma *private subnet*, um *security group*, um *network acl* e um *internet gateway*, que será utilizado pelos outros departamentos para lançar suas próprias instâncias ec2. Agora imagine um sub departamento querendo lançar algumas instâncias ec2 a qual estarão seus respectivos produtos. Para que este vínculo seja feito corretamente, o time de CloudSecOps apenas tem que exportar as variáveis referentes as *subnets* e *security groups* em seu template e assim que os times forem lançar seus produtos, em seus respectivos *cloudformation templates* devem apenas adicionar como parâmetro de entrada o nome da *stack* à qual provisionou a VPC e dar um *replace* dentro de seu cloudformation, como pode ser visto nos exemplos abaixo.
+
+Exemplo CloudSecOps VPC Template:
+```yml
+Outputs:
+  VPCId:
+    Description: Newly created VPC
+    Value: !Ref "VPC"
+    Export: 
+      Name: !Sub "${AWS::StackName}-VPCID"
+  PublicSubnet:
+    Description: Newly created subnet from VPC above
+    Value: !Ref "PublicSubnet"
+    Export:
+      Name: !Sub "${AWS::StackName}-SubnetID"
+  WebServerSecurityGroup:
+    Description: Newly created security group from subnet above
+    Value: !GetAtt WebServerSecurityGroup.GroupId
+    Export:
+      Name: !Sub "${AWS::StackName}-SecurityGroupID" 
+```
+
+Exemplo Other Departments Template:
+```yml
+Parameters:
+  NetworkStackParameter:
+    Type: String
+Resources:
+  WebServerInstance:
+    Type: AWS::EC2::Instance
+    Properties:
+      InstanceType: t2.micro
+      ImageId: ami-0ed9277fb7eb570c9
+      NetworkInterfaces:
+      - GroupSet:
+        - Fn::ImportValue:
+            Fn::Sub: "${NetworkStackParameter}-SecurityGroupID"
+        AssociatePublicIpAddress: 'true'
+        DeviceIndex: '0'
+        DeleteOnTermination: 'true'
+        SubnetId:
+          Fn::ImportValue:
+            Fn::Sub: "${NetworkStackParameter}-SubnetID"     
+```
+
+##### Cloudformation Template Example
 
 ```yml
 AWSTemplateFormatVersion: '2010-09-09'
@@ -87,7 +142,3 @@ Outputs:
     Description: Public IP address of the newly created EC2 instance
     Value: !GetAtt [EC2Instance, PublicIp]
 ```
-
-Algumas das seções em que se divide o cloudformation são: **Metadata**, **Description**, **Parameters**, **Mappings**, **Transform**, **Resources** e **Outputs**. Porém todas são opcionais com exceção da seção de resources que é obrigatória e destinada ao provisionamento dos serviços.
-
-Importante lembrar que a seção Transform, pode ser usada tanto para referenciar códigos - e.g. código lambda - ou *templates snippets* - partes de templates reutilizáveis - promovendo a reutilização de código.
