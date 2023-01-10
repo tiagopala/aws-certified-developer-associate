@@ -143,6 +143,27 @@ Outputs:
     Value: !GetAtt [EC2Instance, PublicIp]
 ```
 
+### Cloudformation Nested Stacks
+
+O **Cloudformation Nested Stacks** é uma feature que permite a um cloudformation template referenciar um outro template, possibilitando a não geração de duplicidade de código, faciltiando o gerenciamento de recursos compartilhados por diversas stacks e principalmente tendo o reaproveitamento de templates cloudformation.
+
+> Como o próprio nome diz é uma feature para gerar *cloudformation template* aninhados.
+
+Para criarmos um cloudformation que referencia à outro (nested stack template), simplesmente devemos criar um recurso com do tipo ```AWS::CloudFormation::Stack``` e referenciar o template localizado dentro de seu bucket de acordo com o exemplo abaixo:
+
+```yml
+AWSTemplateFormatVersion: '2010-09-09'
+Resources:
+  myStack:
+    Type: AWS::CloudFormation::Stack
+    Properties:
+      TemplateURL: https://s3.amazonaws.com/cloudformation-templates-tiagopala/S3_Bucket.template # Único campo obrigatório
+      TimeoutInMinutes: '60'
+Outputs:
+  StackRef:
+    Value: !Ref myStack
+```
+
 ## SAM (Serverless Application Model) 
 
 O SAM é uma **Extensão do CloudFormation** para construção de **aplicações serverless** utilizando um **template específico** e seu próprio CLI, o **AWS SAM CLI**.
