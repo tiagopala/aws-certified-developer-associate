@@ -16,7 +16,7 @@ Amazon Cognito is an **identity service** which provides a **centralized identit
 
 Através do Cognito, é possível realizarmos o ***sign up*** ou ***sign in*** através de **identidades federativas** como Amazon, Google, Facebook, de modo que toda a responsabilidade de autenticação e geração de credenciais seja realizada de forma independente pelo próprio Cognito, não sendo necessário nenhuma implementação pela aplicação.
 
-O fluxo acontece conforme a ilustração abaixo, o usuário se autentica na identidade federativa, o jwt é retornado ao usuário e através do cognito, ele realiza esta troca do jwt por IAM credentials para utilização dos serviços aws necessários.
+O fluxo acontece conforme a ilustração abaixo, o usuário se autentica na identidade federativa, o jwt é retornado ao usuário e através do cognito, ele realiza esta troca do jwt por credenciais do IAM (*IAM credentials*) para utilização dos serviços aws desejados.
 
 ![cognito-identity-federatio](../../../images/cognito-identity-federation.drawio.png)
 
