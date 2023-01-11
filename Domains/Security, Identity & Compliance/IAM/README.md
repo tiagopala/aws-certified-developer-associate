@@ -24,9 +24,29 @@ IAM is an AWS **Universal Service** responsible for user management and their le
 - **Users**: Pessoas
 - **Groups**: Conjunto de usuários/pessoas
 - **Roles**: Attach de uma "Função" para conceder um conjunto de permissões
-- **Policies**: Concessão de uma permissão específica (JSON)
+- [**Policies**](#policies): Concessão de uma permissão específica (JSON)
 
 > Users has not permissions when first created. Permissions need to be granted.
+
+### Policies
+
+#### AWS Managed Policies
+
+As **AWS Managed Policies**, são policies **criadas e gerenciadas pela própria AWS**, elas representam ***job functions***, ou seja, permitem acesso a um ou mais recursos que se referem à aquela função específica. 
+
+Seu objetivo é facilitar a concessão de permissões entre serviços e usuários, sem a necessidade de criar policies que muitas vezes se repetem, como por exemplo, a liberação de acesso de administrador para o serviço do EC2 que pode ser feito utilizando-se da *policy **AmazonEC2FullAccess***.
+
+> São policies apenas leitura (*read only policies*).
+
+#### Customer Managed Policies
+
+As **Customer Managed Policies** são policies **gerenciadas pelo próprio usuário**, ou seja, podemos criar, atualizar e deletar caso desejarmos.
+
+#### Inline Policies
+
+As **Inline Policies** também são criadas e gerenciadas pelo próprio usuário, porém elas estão **vinculadas exclusivamente em um usuário, grupo ou role específico**. Não é possível compartilhar inline policies.
+
+> Caso o usuário, grupo ou role seja excluído, a inline policy presente também será removida.
 
 ## Access Types
 
