@@ -26,6 +26,47 @@ Utilizando o comando acima com o paramêtro de paginação, ele irá sobrescreve
 
 Já utilizando o paramêtro --max-items, estamos definindo o valor máximo de itens a serem retornados, assim ele irá apenas retornar os primeiros itens de acordo com a quantidade informada pelo usuário (10).
 
+## STS
+
+Através da Api do STS (**Security Token Service**) é possível **conceder acesso temporário**, por meio de **credenciais com privilégio limitados** para usuários autenticados utilizando um *web identity provider* (*federated users*).
+
+### AssumeRoleWithWebIdentity
+
+Através do endpoint ```AssumeRoleWithWebIdentity``` é possível por conceder credenciais de acesso temporário para usuários que foram autenticados em uma aplicação web ou mobile através de um *web identity provider*. 
+
+Seu fluxo é bem parecido com o fluxo realizado pelo identity pools, porém quem realiza a troca do JWT para as credenciais da aws, neste caso é a API do STS.
+
+![sts-assumerolewithwebidentity-workflow](../images/sts-assumerolewithwebidentity-workflow.drawio.png)
+
+Exemplo de response:
+```xml
+<AssumeRoleWithWebIdentityResponse xmlns="https://sts.amazonaws.com/doc/2011-06-15/">
+  <AssumeRoleWithWebIdentityResult>
+    <SubjectFromWebIdentityToken>amzn1.account.AF6RHO7KZU5XRVQJGXK6HB56KR2A</SubjectFromWebIdentityToken>
+    <Audience>client.5498841531868486423.1548@apps.example.com</Audience>
+    <AssumedRoleUser>
+      <Arn>arn:aws:sts::123456789012:assumed-role/FederatedWebIdentityRole/app1</Arn>
+      <AssumedRoleId>AROACLKWSDQRAOEXAMPLE:app1</AssumedRoleId>
+    </AssumedRoleUser>
+    <Credentials>
+      <SessionToken>AQoDYXdzEE0a8ANXXXXXXXXNO1ewxE5TijQyp+IEXAMPLE</SessionToken>
+      <SecretAccessKey>wJalrXUtnFEMI/K7MDENG/bPxRfiCYzEXAMPLEKEY</SecretAccessKey>
+      <Expiration>2014-10-24T23:00:23Z</Expiration>
+      <AccessKeyId>ASgeIAIOSFODNN7EXAMPLE</AccessKeyId>
+    </Credentials>
+    <SourceIdentity>SourceIdentityValue</SourceIdentity>
+    <Provider>www.amazon.com</Provider>
+  </AssumeRoleWithWebIdentityResult>
+  <ResponseMetadata>
+    <RequestId>ad4156e9-bce1-11e2-82e6-6b6efEXAMPLE</RequestId>
+  </ResponseMetadata>
+</AssumeRoleWithWebIdentityResponse>
+```
+
+Dos dados retornados, os principais são o ```AssumedRoleUser.Arn``` e ```AssumedRoleUser.AssumedRoleId``` que representam a role temporária criada e o ```Credentials.SecretAccessKey``` e ```Credentials.AccessKeyId``` que são os dados programáticos a qual serão utilizados para conseguirmos nos comunicar com os serviços da aws temporariamente.
+
+> Importante lembrar que para aplicações mobile, a AWS fortemente indica a utilização do Cognito em vez do uso da API do STS para concessão das credenciais.
+
 ## Best practices
 
 - **Least Privilege** - Sempre de o mínimo acesso necessário.
