@@ -53,6 +53,31 @@ As **Inline Policies** também são criadas e gerenciadas pelo próprio usuário
 - **Console**
 - **Programmatic Access** - Necessário para utilização do AWS CLI, SDKs e API calls
 
+## Cross Account Access using Roles
+
+Basicamente, para conseguirmos estabelecer um acesso entre contas, devemos seguir os passos abaixo:
+
+Primeiramente na conta de destino, em nosso exemplo será a de conta de prod, devemos:
+
+1. Criar uma IAM Policy que possuirá as permissões necessárias de acordo com o objetivo proposto, em nosso caso, as permissões necessárias para listar o conteúdo de um *bucket* específico.
+2. Criar uma IAM Role em que a *trusted entity* deverá ser a conta que irá estabelecer o *cross-account*, para isso devemos informar o *account id* da conta de origem, em nosso exemplo a conta de *development*.
+
+Após realizadas as configurações da conta de destino (prod), iremos realizar as seguintes configurações na conta de dev:
+
+3. Criar um grupo de usuários.
+4. Criar um usuário e vincular ao grupo criado acima.
+5. Criar uma *Inline Policy* que permita o *AssumeRole* da *IAM Role* criada na conta de produção no grupo de usuários criado anteriormente.
+
+> A parte do grupo é opcional mas fortemente indicado, porém existe a possibilidade de criarmos a *inline IAM policy* diretamente no usuário criado.
+>
+> Podemos também, em vez de criar uma *inline policy*, podemos criar uma *customer managed policy* e vincular (*attach*) ao grupo criado.
+
+Finalizadas essas configurações já é possível realizar o *cross-account access*. 
+
+Para facilitar a visualização, o fluxo ficará igual ao representado abaixo:
+
+![iam-cross-account-access](../../../images/iam-cross-account-access.drawio.png)
+
 ## Tools
 
 ### Policy Simulator
