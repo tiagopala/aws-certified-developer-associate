@@ -30,10 +30,10 @@ Através do CloudWatch Agent podemos **criar nossas próprias métricas** e *plo
 
 Algumas das métricas que compõem as *Operating System-Level Metrics* são:
 
-- Uso de memória.
-- Processos que estão rodando na instância.
-- Quantidade de espaço livre em disco.
-- Tempo de CPU ocioso.
+- **Memory Use**.
+- **Processes running in the instance**.
+- **Free space disk**.
+- **CPU Idle time**.
 
 > As métricas são armazenadas por tempo indefinido e podem ser recuperadas mesmo após as instâncias do EC2 terem sido terminadas.
 
