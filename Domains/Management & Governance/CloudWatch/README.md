@@ -15,6 +15,7 @@ A gama de serviços que o CloudWatch atualmente suporta é incrivelmente extensa
 - [CloudWatch Monitoring](#cloudwatch-monitoring-metrics)
 - [CloudWatch Logs](#cloudwatch-logs)
 - [CloudWatch Alarms](#cloudwatch-alarms)
+- [CloudWatch Actions](#)
 
 ### CloudWatch Monitoring (Metrics)
 
@@ -60,6 +61,10 @@ O CloudWatch Alarms é bem sugestivo, através do monitoramento das peças e ser
 
 Basicamente, através dele temos muita flexibilidade para criarmos alarmes ou executar tarefas baseadas no monitoramento de seus recursos e aplicações assim que atingem thresholds específicos.
 
+### CloudWatch Actions
+
+
+
 ## Some CloudWatch Concepts to Remember
 
 ### CloudWatch Metrics
@@ -70,7 +75,7 @@ Exemplo: *CPU usage of EC2 instance*.
 
 ### CloudWatch Namespaces
 
-Os *namespaces* são basicamente container de agrupamento de métricas no console.
+Os *namespaces* são basicamente containers de agrupamento de métricas no console.
 
 Podemos criar nossos próprios *namespaces*, para agrupar aplicações que possuem uma correlação.
 
