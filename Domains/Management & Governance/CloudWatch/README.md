@@ -61,9 +61,40 @@ O CloudWatch Alarms é bem sugestivo, através do monitoramento das peças e ser
 
 Basicamente, através dele temos muita flexibilidade para criarmos alarmes ou executar tarefas baseadas no monitoramento de seus recursos e aplicações assim que atingem thresholds específicos.
 
-### CloudWatch Actions
+#### CloudWatch Actions
 
+As CloudWatch Actions ações que podem ser utilizadas para publicar, monitorar e alertar caso com base em diversas métricas.
 
+Devido a lista de actions extensa, segue [link para consulta](https://docs.aws.amazon.com/AmazonCloudWatch/latest/APIReference/API_Operations.html).
+
+Podemos pensar nas actions como operações ou endpoints disponíveis pelo CloudWatch.
+
+Por exemplo, a operação ```PutMetricData``` realiza o envio de dados para uma métrica, conforme exemplo abaixo.
+
+```
+aws cloudwatch put-metric-data \
+--metric-name ErrorCounter \
+--namespace ServiceName \
+--value 1 \
+--timestamp 2023-01-01T00:00:000Z
+```
+
+Já a operação ```PutMetricAlarm``` é responsável por criar alarms baseado em alguma métrica, podendo ser inclusive a métrica customizada acima, como podemos ver no exemplo:
+
+```
+aws cloudwatch put-metric-alarm \
+--alarm-name ErrorCounterReached  \
+--alarm-description "ErrorCounter Monitor" \
+--metric-name ErrorCounter \
+--namespace ServiceName \
+--statistic SampleCount \
+--period 300 \
+--threshold 1 \
+--comparison-operator GreaterThanThreshold \
+--evaluation-periods 1
+```
+
+> Cada action possui uma responsabilidade específica, como seus parâmetros obrigatórios e podem ser consultadas no link mencionado anteriormente.
 
 ## Some CloudWatch Concepts to Remember
 
