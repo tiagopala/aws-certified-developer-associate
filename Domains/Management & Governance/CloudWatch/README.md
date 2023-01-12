@@ -12,9 +12,9 @@ A gama de serviços que o CloudWatch atualmente suporta é incrivelmente extensa
 
 ## Features
 
-- CloudWatch Monitoring
-- CloudWatch Logs
-- CloudWatch Alarms
+- [CloudWatch Monitoring](#cloudwatch-monitoring-metrics)
+- [CloudWatch Logs](#cloudwatch-logs)
+- [CloudWatch Alarms](#cloudwatch-alarms)
 
 ### CloudWatch Monitoring (Metrics)
 
@@ -59,3 +59,31 @@ O CloudWatch Logs como o próprio nome diz armazena os logs quase em tempo real 
 O CloudWatch Alarms é bem sugestivo, através do monitoramento das peças e serviços, é possível '*triggar*' alarmes para praticamente qualquer cenário que esteja ocorrendo em sua conta. Podemos criar desde alarmes de cobrança sempre que a conta atinge um limite previamente estabelecido até executarmos uma policy de escalabilidade para adicionar um novo POD no Auto Scaling Group toda vez que uma instância chega aos 80% de uso de CPU, como diversos outros cenários.
 
 Basicamente, através dele temos muita flexibilidade para criarmos alarmes ou executar tarefas baseadas no monitoramento de seus recursos e aplicações assim que atingem thresholds específicos.
+
+## Some CloudWatch Concepts to Remember
+
+### CloudWatch Metrics
+
+As métricas são basicamente variáveis para monitorarmos.
+
+Exemplo: *CPU usage of EC2 instance*.
+
+### CloudWatch Namespaces
+
+Os *namespaces* são basicamente container de agrupamento de métricas no console.
+
+Podemos criar nossos próprios *namespaces*, para agrupar aplicações que possuem uma correlação.
+
+Exemplo: Todas as métricas referentes ao *EC2* estão no namespace *AWS/EC2*.
+
+### CloudWatch Dimensions
+
+As *dimensions* são simplesmente filtros para buscarmos métricas específicas.
+
+Exemplo: Para o *InstaceId*, iremos capturar todas as métricas que se referem somente a esta instância.
+
+### CloudWatch Dashboards
+
+São painéis que agrupam importantes métricas para suas aplicações produtivas vinculados a uma operação.
+
+Exemplo: Agrupamento das métricas de CPU e Memoria de suas aplicações.
