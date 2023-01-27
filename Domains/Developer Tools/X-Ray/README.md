@@ -41,3 +41,30 @@ O formato em que os dados são salvos é através de ***key-value pairs*** de ac
 - API Gateway
 
 > Podemos utilizar o x-ray com as seguintes linguagens: .NET, Java, NodeJS, Go, Ruby e Python.
+
+## Tips
+
+- Se quisermos integrar o X-Ray com nossas instâncias EC2, devemos:
+    1. Instalar o X-Ray Daemon no EC2 ou servidor On-Premises.
+    2. Instrumentar a aplicação através do X-Ray SDK.
+
+- Caso quisermos integrar o X-Ray em um Cluster ECS devemos fazer o deploy da imagem do X-Ray Daemon em um container próprio dentro do nosso cluster ECS.
+
+- Se quisermos integrar o X-Ray com um cluster ECS com instâncias Fargate, devemos fazer o deploy do X-Ray Daemon como um sidecar container e conceder as devidas permissões para a IAM task role para o respectivo container. 
+
+- É possível utilizar o X-Ray para realizar o Debug and Trace cross-account.
+
+- O X-Ray sampling gerencia o X-Ray SDK para saber quantas requisições devem ser armazenadas com base em algum critério, ou seja, com ele podemos controlar a quantidade de registros que estão sendo enviados ao X-Ray. Podemos realizar alterações no controle de sampling, com a instância no rodando, não sendo necessário um redeploy.
+    > Caso a aplicação não esteja conseguindo enviar os dados para o X-Ray, o X-Ray Sampling não possui nenhum atuação.
+
+- O principal objetivo do X-Ray é o Tracing end-to-end entre todas as aplicações e recursos.
+
+- O X-Ray utiliza annotations como forma de filtrar e indexar os traces.
+
+- Para ser possível realizar o tracing cross-account devemos:
+    1. Criar uma conta que será responsável por fazer o tracing entre todas as contas.
+    2. Criar uma role nesta conta que possuirá as devidas permissõe para o X-Ray.
+    3. Configurar cada sub-account para assumir esta role.
+    4. Instrumentar o X-Ray SDK em cada instância.
+
+- Para garantir que o X-Ray Daemon seja encontrado pelo cluster ECS devemos configurar a seguinte X-Ray environment variable: AWS_XRAY_DAEMON_ADDRESS.
