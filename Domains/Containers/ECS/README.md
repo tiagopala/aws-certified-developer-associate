@@ -20,3 +20,7 @@ Se o objetivo é possuir maior controle sobre a instalação, configuração e g
 
 - [Running Containerized Microservices on AWS (pdf)](https://d1.awsstatic.com/whitepapers/DevOps/running-containerized-microservices-on-aws.pdf)
 - [The Twelve Factors](https://12factor.net/) - *Metholody for building sas apps*
+
+## Tips
+
+- Terminar instâncias que estão com status igual a STOPPED impactará em synchronization issues, fazendo com que o container não seja removido do cluster automaticamente.

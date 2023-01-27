@@ -76,3 +76,83 @@ Importante lembrar que o agrupamento dessas instências é realizado em família
 ## Load Balancing
 
 - [ELB](./ELB/README.md)
+
+## Tips
+
+### EC2
+
+- Os scripts informados no User Data são executados somente uma única vez no momento em que a instância for provisionada.
+    > Os scripts são executados com *root level permissions*.
+
+- Para consultar o public IP e private IP de uma instância devemos fazer um CURL no seguinte URI: 169.254.169.254/latest/metadata.
+
+- Instâncias do tipo "burstable performance" são desenhadas para terem uma linha base de performance de CPU, porém pode aumentar para um pico caso necessário. Nos primeiros 12 meses não haverá custo adicional sobre o tempo em que a instância utilizou este "crédito adicional".
+
+- As opções válidas para uma Spot Instance quando ela for finalizada devido seu aumento de preço são: Stop, Terminate ou Hibernate.
+
+- Caso reservarmos uma instância por um tempo determinado e passarmos deste tempo, tempos adicionais em que não foram reservados serão cobrados como OnDemand.
+
+- Se quisermos prover uma reserva de capacidade devemos utilizar Zonal Reserved Instances pois Regional Reserved Instances não provêm reserva de capacidade.
+
+- Se quisermos habilitar o monitoramento detalhado para instâncias que já estão rodando devemos usar o seguinte comando: ```aws ec2 monitor-instances --instance-ids <value>```, para subir novas instâncias já com monitoramento detalhado: ```aws ec2 run-instances --image-id <value> --monitoring Enabled=true```.
+
+### Auto Scaling Groups
+
+- Para configurarmos um Auto Scaling Group devemos informar o AMI ID e instance type no launch template.
+
+- ASG não podem provisionar instâncias entre regiões (ASG can't "spam" across regions).
+
+- ASG podem podem provisionar instâncias em 1 ou mais AZ's (AGS can "spam" across AZ's at the same region).
+
+- Caso uma AZ em que tenhamos instâncias provisionadas pelo ASG fique fora do ar, o próprio ASG se encarrega de provisionar essas instâncias em outra AZ com o objetivo de manter a mesma quantidade de instâncias necessário.
+
+- Para ASG's dentro de uma VPC, as instâncias serão provisionadas dentro de subnets.
+
+- Se a configuração de um ASG for feito pelo AWS Console ele irá por default com basic monitoring. Porém, se for realizado através do AWS CLI ou AWS SDK, por default ele virá com monitoramento detalhado.
+
+- Um ASG sempre respeita a capacidade máxima estipulada no processo de scaling.
+
+- ASG possuem um processo periódico para verificação de health checks, caso uma instância esteja unhealthy, ele irá terminar a instância e subir uma nova instância no lugar.
+
+### Elastic Load Balancer
+
+- Um dos focos do ELB é a disponibilidade (availability) visto que um dos seus papéis é verificar constantemente os health checks e distribuir o tráfego para os nós que estiverem "de pé".
+
+- O tráfego interno entre os Load Balancers e instâncias é feito através de IP's privados.
+
+- Os Target Groups de um ELB podem ser apenas instâncias na mesma região.
+
+- Classic Load Balancers distribuem o tráfego de forma inconsistente entre as instâncias de tipos diferentes optando sempre por instâncias que possuem maior capacidade.
+
+- Os tipos de roteamento a partir de rotas são: Path Based (example.com/api) e Host Based (api.example.com).
+
+- O Application Load Balancer permite os seguintes targets: Instance, IP e Lambda.
+
+- O ALB não permite especificarmos o roteamento utilizando-se de IPs públicos, devemos sempre utilizar blocos CIDR.
+
+- Para o ALB, se estivermos usando IPs como target, podemos rotear o tráfego para qualquer endereço de IP privado de 1 ou mais Network Interfaces.
+
+- Se tivermos um ELB em nossa arquitetura, os seguintes erros representam:
+  - 503 Service Unavailable: Esquecemos de registrar os target groups.
+  - 504 Gateway Timeout: Provavelmente corresponde a um server side problem, pois a origem não respondeu no tempo previsto.
+
+### Security Groups
+
+- Caso nossa instância EC2 seja um web server exposto para a internet, porém nossos usuários estão recebendo timeouts, pode significar um problema na configuração dos security groups.
+
+- EC2 Security Groups são stateful, portanto habilitar uma inbound port automaticamente também habilita uma outbound port.
+    > VPC Network ACL's são stateless, portanto devemos habilitar tanto inbound quanto outbound ports.
+
+### EBS Volumes
+
+- Se desejarmos compartilhar um EBS Volume com outra conta, podemos criar um snapshot, conceder as permissões necessárias para outra conta e compartilhá-lo.
+
+- EBS Volumes são AZ locked, ou seja, só podemos 'attachar' instâncias da mesma região em nosso EBS volume.
+
+- EBS Volumes possuem suporte tanto para in-flight quanto encryption at rest.
+
+- Sobre o tipo de volume Provisioned IOPS, a proporção entre o Provisioned IOPS pelo requested volume size é de 50:1. Portanto se tivermos um volume de 200 Gb, teremos no máximo 10.000 IOPS. (200 x 50).
+
+### Elastic IPs
+
+- Serviços de DNS são identificados a partir de IPs, portanto podemos criar um Elastic IP para mascarar a falha de uma instância ou software remapeando rapidamente para o endereço de IP de outra instâsncia.
