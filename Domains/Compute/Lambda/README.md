@@ -117,3 +117,5 @@ A lambda utilizará os seguintes dados para configurar um **Elastic Network Inte
 - Para fazer o deploy de uma lambda através do cloudformation:
     1. Zip da lambda, subir no s3, referenciar o arquivo s3 no template e realizar o deploy do template na aws.
     2. Escrever o próprio código da lambda inline no template e realizar o deploy do template na aws.
+
+- Para armazenarmos arquivos localmente durante a execução de uma lambda que serão removidos após seu processamento devemos usar o local directory /tmp.

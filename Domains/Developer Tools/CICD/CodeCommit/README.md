@@ -19,3 +19,13 @@ Uma das principais features do CodeCommit ou de qualquer *git repository* é o v
 É possível criar notificações para aberturas, atualizações e encerramentos de pull requests, comentários feitos em pull requests e quando comentários são adicionados a *commits*.
 
 Essas notificações podem ser criadas através do uso do **SNS** em conjunto com os **CloudWatch Event Rules**.
+
+## Tips
+
+- As formas de se comunicar com o CodeCommit são: git credentials, ssh keys e aws access keys através do aws cli. Não é possível usar um IAM user e password.
+
+- Os repositórios são sempre criptogrados in-transit e at rest.
+
+- A forma mais fácil de nos conectarmos com os repositórios de forma segura é através de git credentials geradas pelo IAM e fazer as requisições através de HTTPS. 
+
+- 

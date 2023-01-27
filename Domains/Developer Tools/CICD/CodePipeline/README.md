@@ -15,3 +15,12 @@ Um dos principais benefícios de se utilizar o CodePipeline é a automatização
 - AWS CI/CD services: CodeCommit, CodeBuild, CodeDeploy.
 - AWS general services: Elastic Beanstalk, Cloudformation, Lambda, Elastic Container Service...
 - Third-party services: Github, Jenkins...
+
+## Tips
+
+- Possui uma feature nativa para aprovações manuais.
+
+- Duas formas de trigar nossas pipelines do CodePipeline automaticamente quando temos uma nova versão são:
+    1. Usar o s3 como source e 'triggar' o CodePipeline sempre que um arquivo for atualizado ou adicionado.
+    2. Usar o CodeCommit e 'triggar' o CodePipeline sempre que é realizado um git push ou git merge.
+

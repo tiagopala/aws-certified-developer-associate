@@ -144,6 +144,8 @@ Importante lembrar que o agrupamento dessas instências é realizado em família
 
 - Sempre que o objetivo for performance devemos escolher o Network Load Balancer (NLB).
 
+- Para descobrirmos incoming requests e latências provenientes do ALB devemos consultar os ALB access logs.
+
 ### Security Groups
 
 - Caso nossa instância EC2 seja um web server exposto para a internet, porém nossos usuários estão recebendo timeouts, pode significar um problema na configuração dos security groups.
