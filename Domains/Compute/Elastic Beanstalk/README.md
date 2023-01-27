@@ -101,4 +101,43 @@ Alguns dos recursos que o Beanstalk pode promover são: EC2, RDS, S3, Elastic Lo
 
 ## Tips
 
-> A código fonte '*deployado*' através do elastic beanstalk também pode ser armazenado no CodeCommit, além de ser realizado manualmente via uploado do zip no próprio console da aws.
+- O código fonte '*deployado*' através do elastic beanstalk também pode ser armazenado no CodeCommit, além de ser realizado manualmente via uploado do zip no próprio console da aws.
+
+- As plataformas suportadas pelo Elastic Beanstalk são: .NET, Java, PHP, Python, Ruby, Go, Nodejs, Docker e Tomcat.
+
+- Sobre o modelo de configuração do Elastic Beanstalk:
+    1. Para instâncias do tipo Amazon Linux 1, devemos obrigatoriamente ter um folder chamado .ebextensions e arquivos de configuração com a extensão .config dentro.
+    2. Para instâncias do tipo Amazon Linux 2, o folder .ebextensions é opcional e devemos usar o BuildFile, ProcFile e Platform Hooks.
+
+- As cores utilizadas para indicar os status do deployment no Elastic Beanstalk são:
+    1. Gray: Updating
+    2. Yellow: Failed 1 or more health checks.
+    3. Red: Failed 3 or more health checks.
+    4. Green: Passed all health checks.
+
+- O Elastic Beanstalk não possui suporte para lambdas.
+
+- O Elastic Beanstalk Rolling Deployment possui capacidade reduzida porém não possui downtime durante deployment.
+
+- Se quisermos fazer o deploy de uma plataforma não suportada pelo Elastic Beanstalk podemos criar nossa própria plataforma utilizando-se do Packer.
+
+- Por baixo dos panos o Elastic Beanstalk utiliza o Cloudformation para provisionamento dos recursos.
+
+- Se quisermos provisionar um recurso junto ao nosso environment, devemos defini-lo dentro do nosso .ebextensions folder.
+
+- Os tipos de deployment Immutable e Traffic Splitting utilizam o burst balance acumulados.
+
+- Entre os tipos de deployment disponíveis, se quisermos maior rapidez em um cenário de falha que envolva rollback devemos optar pelo Immutable deployment.
+
+- Elastic Beanstalk consegue fazer deploy o deploy de containers no ECS utilizando instâncias EC2, se quisermos utilizar instâncias Fargate, devemos utilizar o EC2 + Fargate diretamente.
+
+- Para aplicações que executam um processo de longa duração, devemos utilizar Dedicated Worker environments.
+    > Eles também pode ser usadas para consumir mensagens provenientes do SQS.
+
+- Se quisermos possuir duas versões de uma aplicação rodando ao mesmo tempo utilizando o Elastic Beanstalk devemos criar um environment para cada uma delas.
+
+- Se tivermos um ALB provisionado dentro de nosso environment, que está sendo usado para armazenar a sessão do usuário, para cada novo deployment da aplicação iremos perder o conteúdo armazenado no ALB. Para isso é aconselhável que tenhamos um recurso definido externamente do nosso environment, como por exemplo um elasticache.
+
+- O Elastic Beanstalk possui suporte nativo a lifecycle policies. Através delas podemos, por exemplo, criar policies que deletem versões anteriores que não estão mais sendo utilizadas.
+
+- Se precisarmos definir tarefas repetitivas e "scheduladas" (agendadas), devemos criar um Worker Environment junto a um arquivo cron.yml.

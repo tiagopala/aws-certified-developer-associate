@@ -159,6 +159,11 @@ Importante lembrar que o agrupamento dessas instências é realizado em família
 
 - EBS Volumes possuem suporte tanto para in-flight quanto encryption at rest.
 
+- Para aumentarmos a performance de um EBS Volume devemos:
+    1. Colocar os volumes juntos no Raid 0.
+    2. Garantir que o tipo de instância utilizado pode ser otimizado.
+    3. Nunca planejar snapshots durante momentos de grande utilização da plataforma pois snapshots impactam na performance.
+
 - Sobre o tipo de volume Provisioned IOPS, a proporção entre o Provisioned IOPS pelo requested volume size é de 50:1. Portanto se tivermos um volume de 200 Gb, teremos no máximo 10.000 IOPS. (200 x 50).
 
 ### Elastic IPs

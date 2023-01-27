@@ -158,3 +158,11 @@ Em buckets, usualmente necessitamos capturar informações entre buckets, um exe
 - Se estivermos trabalhando com um bucket com SSE-S3 devemos criar uma bucket policy que permita somente o header ```x-amz-server-side-encryption:AES256```.
 
 - Entre os tipos de criptografia server side do S3, a única que obrigatoriamente necessita de uma conexão segura é a SSE-C, enquanto para SSE-S3 E SSE-KMS a comunicação segura é opcional.
+
+- Se quisermos capturar apenas uma parte das informações de um item armazenado no s3, por exemplo um arquivo csv composto por 10 colunas e quisermos capturar apenas 3 colunas podemos usar o S3 Select.
+
+- Se tivermos uma aplicação web que está sendo servida pelo S3 através do static website hosting e o usuário estiver recebendo timeouts, provavelmente faltou configurar as bucket policies.
+
+- Se estivermos utilizando a SSE-C, iremos controlar as próprias chaves de criptografia e para realizarmos por exemplo o upload de um arquivo criptografado no s3, devemos passar juntamente a chave na requisição.
+
+- O versionamento é referente a um bucket e quanto é habilitado, absolutamente, TODOS os arquivos dentro daquele bucket serão versionados.
