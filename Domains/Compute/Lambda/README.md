@@ -83,3 +83,37 @@ A lambda utilizará os seguintes dados para configurar um **Elastic Network Inte
 - Price per GB-second
 
 > O *Free Tier* da lambda é extremamente generoso, sendo um dos serviços mais baratos da aws (**extremely cost effective**).
+
+## Tips
+
+- Não é possível configurar o CPU de uma lambda, devemos aumentar a memória e a própria lambda irá aumentar proporcionalmente a quantidade de CPU. Inclusive, essa é uma forma de aumentarmos a performance de uma lambda, é justamente aumentando a memória, consequentemente o tempo de execução desta lambda também irá diminuir.
+
+- Uma boa prática para melhorar a performance das lambdas é extrair arquivos de inicializam e client database connections para fora do handler, para dentro da execution context para ser reaproveitado por outras execuções.
+
+- Sempre devemos optar primeiro pelas boas práticas, como a remoção de arquivos de inicializam comentados acima e só depois optarmos pelo aumento do poder computacional das lambdas.
+
+- Separar o handler do core business logic (regra de negócio) facilita tanto o reúso de código quanto a implementação de testes unitários.
+
+- Para uma lambda conseguir estabelecer conexão com uma subnet privada dentro de uma VPC, ela deve possuir em sua executation role as seguintes policies ec2:CreateNetworkInterface, ec2:DescribeNetworkInterface e ec2:DeleteNetworkInterface, além de habilitar acesso para a lambda no security group associado.
+
+- Sempre que uma lambda é "invokada" através de um unqualified ARN, é chaamdo o $LATEST que corresponde a versão mais atualizada desta lambda, a menos que seja passado o ALIAS ou VERSION.
+
+- A lambda possui diversos triggers, podendo eles serem síncronos ou assíncronos, alguns deles:
+    - Síncronos: Api Gateway, ALB
+    - Assíncronos: SNS Subscription
+
+- Lambda possuem environment variables, não possuem limite de quantidade de variáveis, porém todas as variáveis somadas não podem ter tamanho superior a 4 Kb.
+
+- Podemos criar lambdas como containers, para isso devemos criar a lambda function na mesma conta do ECR em que a imagem dela foi armazenada e que esta imagem possua uma implementação para a Lamda Runtime API.
+
+- Apesar da lambda ser um recurso serverless, podemos colocar um Auto Scaling na frente dela para gerenciarmos o uso da provisioned concurrency em um intervalo de tempo determinado.
+
+- O seguinte erro: "Error: Memory Size: XXX Mb Max Memory Used" significa que atingimos o limite de memória daquela lambda e devemos provisionar mais memória para futuras execuções.
+
+- Caso nossa lambda necessita de alguma dependência (library externa) devemos fazer o download destas dependências dentro da própria lambda em um folder específico, "zipar" a lambda junto as dependências e realizar o deploy.
+
+- Para fazer o deploy de lambdas globalmente devemos usar o Lambda@Edge.
+
+- Para fazer o deploy de uma lambda através do cloudformation:
+    1. Zip da lambda, subir no s3, referenciar o arquivo s3 no template e realizar o deploy do template na aws.
+    2. Escrever o próprio código da lambda inline no template e realizar o deploy do template na aws.
