@@ -221,3 +221,30 @@ x/2 = y
 100/2 = y
 
 **y = 50 eventually consistent units**
+
+## Tips
+
+- Local Secondary Indexes (LSI) sempre possuem a mesma Partition Key (PK) e podem ser criados somente no momento da criação da tabela. Enquanto Global Secondary Indexes (GSI) podem ter tanto Partition Key (PK) quanto Sort Key (SK) diferentes, além de poderem ser criadas a qualquer momento.
+
+- Alguns dos soft limits do DynamoDb são: aumento do número máximo de GSI e aumento do Provisioned Throughput da tabela.
+
+- Podemos atingir o limite máximo de throughput e estourar a ProvisionedThroughputExceededException tanto em nível de tabela quanto em nível de partição. Temos hot partitions e cold partitions, ou seja, isso significa que uma partição utiliza mais ou menos throughput.
+    > Hot Partitions geralmente estouram a exception em nível de partição.
+
+- DynamoDb possui suporte a ATOMIC Transaction ou All-Or-Nothing Transactions através da feature DynamoDb Transactions através de operações do tipo TransactWriteItems.
+
+- Atualmente as tabelas do dynamodb já são encrypted at rest por default.
+
+- Se quisermos garantir que um dado não seja sobrescrito por outro no dynamodb podemos utilizar condition expressions.
+
+- O tamanho máximo de um item no dynamodb é de 400 kb.
+
+- Para dar replace em um item inteiro no dynamodb podemos usar uma PutItem operation.
+
+- A operação UpdateItem atualiza um item caso já exista na tabela ou cria um novo registro.
+
+- Para garantirmos que estamos consumindo o valor mais atualizado de um item devemos usar o modelo Strongly Consistent Read durante a operação de captura do item.
+
+- O Backup gerado pelo dynamodb a qual é armazenado no s3 não pode ser acessado pelo usuário, somente a aws possui acesso a esses buckets.
+
+- A forma mais eficiente de apagar todos os dados de uma tabela que possui milhões de registros é apagando a tabela e recriando a mesma.
