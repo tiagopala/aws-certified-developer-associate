@@ -77,3 +77,20 @@ Abaixo, podemos ver detalhadamente todos os steps envolvidos em cada uma das fas
 #### **Phase 3 - Re-register from load balancer**
 
 ![code-deploy-phase-3-workflow](../../../../images/code-deploy-phase-3-workflow.drawio.png)
+
+## Tips
+
+- Os tipos de deployment disponíveis pelo CodeDeploy são: In-Place e Blue/Green Deployment.
+
+- O primeiro deploy deve ser sempre usando o tipo In-Place.
+
+- O arquivo usado pelo CodeDeploy chama-se appspec.yml e deve estar sempre na raíz (root) da aplicação (revision).
+
+- O CodeDeploy é compatível com OnPremises, Lambda, EC2 e ECS, porém não permite integração com o Kubernetes.
+
+- Se tivermos uma integração entre o CodeDeploy e o CodeCommit, devemos adicionar na execution role do EC2 uma policy que permita a utilização da seguinte action: Codecommit:GitPull. Dessa forma, o EC2 conseguirá se conectar no CodeCommit para capturar o código fonte a ser deployado.
+
+- Em caso de rollback automático ou manual, o CodeDeploy irá realizar o deploy da última revision que subiu corretamente primeiramente nas instâncias que falharam.
+    > Este novo deploy irá gerar um novo Deployment Id.
+
+- O CodeDeploy Agent é um software disponibilizado pelo próprio CodeDeploy a ser instalado e configurado nas instâncias ec2. Através dele o CodeDeploy realizará o deployment das novas revisions, além de possuir configurações para o backup das últimas revisions e de log files.

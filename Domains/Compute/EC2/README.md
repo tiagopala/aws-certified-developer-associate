@@ -96,6 +96,8 @@ Importante lembrar que o agrupamento dessas instências é realizado em família
 
 - Se quisermos habilitar o monitoramento detalhado para instâncias que já estão rodando devemos usar o seguinte comando: ```aws ec2 monitor-instances --instance-ids <value>```, para subir novas instâncias já com monitoramento detalhado: ```aws ec2 run-instances --image-id <value> --monitoring Enabled=true```.
 
+- Tanto Dedicated Instances quanto Dedicated Hosts são single-tenant, porém o dedicated hosts podem ser usados quando tivermos licenças e ainda podemos ver aonde os recursos estão locados em detrimento de serem um pouco mais custosos que as dedicated instances.
+
 ### Auto Scaling Groups
 
 - Para configurarmos um Auto Scaling Group devemos informar o AMI ID e instance type no launch template.
@@ -135,6 +137,12 @@ Importante lembrar que o agrupamento dessas instências é realizado em família
 - Se tivermos um ELB em nossa arquitetura, os seguintes erros representam:
   - 503 Service Unavailable: Esquecemos de registrar os target groups.
   - 504 Gateway Timeout: Provavelmente corresponde a um server side problem, pois a origem não respondeu no tempo previsto.
+
+- A TLS Termination é o termo utilizado quando temos uma comunicação segura e criptografada através do HTTPS. Se a TLS Termination estiver no ELB, a comunicação entre o cliente e o load balancer será criptografada, porém se quisermos ter uma comunicação segura de ponta a ponta devemos criar um secure listener e configurar nossa aplicação (instância ec2) para usar uma porta segura (443).
+
+- O ALB sempre vem com o Cross-Zone load balancing habilitado por default.
+
+- Sempre que o objetivo for performance devemos escolher o Network Load Balancer (NLB).
 
 ### Security Groups
 
