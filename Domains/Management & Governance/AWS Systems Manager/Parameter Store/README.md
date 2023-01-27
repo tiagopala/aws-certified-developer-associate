@@ -18,3 +18,7 @@ Os dados armazenados podem ser do tipo ```Plain Text``` ou ```Encrypted```.
 - CodeBuild
 - CodePipeline
 - CodeDeploy
+
+## Tips
+
+- Podemos aumentar o nível de segurança dos parâmetros armazenados através da utilização dos SecureStrings. Através dele os parâmetros são armazenados criptografados usando-se o AWS KMS.
