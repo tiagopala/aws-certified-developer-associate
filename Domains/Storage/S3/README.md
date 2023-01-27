@@ -126,3 +126,35 @@ Em buckets, usualmente necessitamos capturar informações entre buckets, um exe
 - Codes
 - Documents
 - Text files
+
+## Tips
+
+- O tamanho aconselhável para usar o S3 Multipart Upload é para arquivos com tamanho à partir de 100 MB.
+
+- O tamanho máximo de um arquivo no S3 é de 5 TB.
+
+- O tamanho máximo de um arquivo em uma única requisição é de 5 GB.
+
+- O modelo de consistência do S3 é strong read-after-write para PUT e DELETE operations.
+
+- Se o objetivo for termos server side encryption no S3, podemos habilitar o check box para criptografia no console ou criar uma bucket policy que permita somente requests que utilizem o seguinte header ```x-amz-server-side-encryption```.
+
+- A única forma de servir conteúdo do S3 com um custom domain name é a partir do Cloudfront.
+
+- Se quisermos restringir acesso aos folders/arquivos de cada usuário da aplicação, devemos utilizar IAM Policy Variables para conseguirmos o AccountName do próprio usuário e criarmos uma bucket policy universal que apenas habilite acesso a ele mesmo.
+
+- Quando temos um bucket compartilhado por várias contas, por padrão a conta que fez o upload de um arquivo será owner dele. Porém, podemos alterar o S3 Bucket Ownership para o próprio default bucket owner, assim o bucket owner terá acesso a todos os arquivos presentes naquele bucket, podendo o upload ter sido feito por ele ou por qualquer outra conta.
+
+- Sobre permissões e acessos no S3:
+    1. Resource-based policies (bucket policies), ACL (Access Control Lists) e AWS IAM policies concedem apenas acesso programático.
+    2. IAM Roles para ambos acessos via Console e acesso programático.
+
+- Se em nosso bucket tivermos uma bucket policy que permita somente o upload de arquivos criptografados usando o SSE-KMS, o usuário necessitará em suas policies da action KMS:GenerateDataKey, para conseguir gerar a DataKey para criptografar o arquivo no momento do upload.
+
+- Referente a replicação de arquivos para outro bucket no S3, as lifecycle rules não serão replicadas.
+
+- Cross-Region Replication ou Same-Region Replication podem ser configurados em bucket level, prefix level e object level.
+
+- Se estivermos trabalhando com um bucket com SSE-S3 devemos criar uma bucket policy que permita somente o header ```x-amz-server-side-encryption:AES256```.
+
+- Entre os tipos de criptografia server side do S3, a única que obrigatoriamente necessita de uma conexão segura é a SSE-C, enquanto para SSE-S3 E SSE-KMS a comunicação segura é opcional.
