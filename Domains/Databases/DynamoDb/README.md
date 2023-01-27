@@ -248,3 +248,5 @@ x/2 = y
 - O Backup gerado pelo dynamodb a qual é armazenado no s3 não pode ser acessado pelo usuário, somente a aws possui acesso a esses buckets.
 
 - A forma mais eficiente de apagar todos os dados de uma tabela que possui milhões de registros é apagando a tabela e recriando a mesma.
+
+- Uma GSI pode ser a causa do throttling quando temos heavy write activities (atividades com forte escrita), pois o dynamodb terá de realizar estas escritas tanto na base local, quanto também na base global, usando os recursos disponíveis para as duas operações simultâneas.

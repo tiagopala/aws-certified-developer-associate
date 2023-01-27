@@ -46,3 +46,15 @@ Por exemplo, caso tenhamos uma imagem em nosso bucket exposta na internet, podem
 - **Cloudfront Edge Location** - Local (físico) aonde o conteúdo será cacheado.
 - **Cloudfront Origin** - Origem (fonte), pode ser: **s3 bucket**, **ec2 instance**, **elb**, **route 53** ou até um web server próprio.
 - **Cloudfront Distribution** - Nome da configuração dá distruição de conteúdo já configurada.
+
+## Tips
+
+- Um dos protocolos disponibilizados pelo CloudFront é o Viewer Protocol Policy.
+
+- Se o CloudFront retornou um HTTP Status Code 504 (gateway timeout), provavelmente indica um server side problem, pois a origem não conseguiu responder no tempo esperado.
+
+- No CloudFront, quando estamos criando Signed URL's, a publicy key fica com o CloudFront enquanto a private key é usada em parte da URL gerada. Quando estamos usando a root account para gerenciar as CloudFront keys podemos ter somente até 2 key pairs por conta, porém se estivermos usando o CloudFront key groups, podemos associar um número maior de chaves.
+
+- CloudFront permite uma conexão segura tanto com o client quanto com o backend, ou seja, tanto client-side quanto server-side.
+
+- CloudFront pode servir tanto conteúdos estáticos quanto dinâmicos com baixa latência para usuários globalmente com múltiplas origens.
