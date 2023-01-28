@@ -60,3 +60,9 @@ O Data Analytics permite a análise, querying e **transformação dos dados em t
 Basicamente, pode utilizar o data streams ou firehose para coleta dos dados, porém utiliza queries SQL para transformação dos dados e envio ao s3, redshift ou opensearch.
 
 ![kinesis-data-analytics-workflow](../../../images/kinesis-data-analytics-workflow.drawio.png)
+
+## Tips
+
+- O Kinesis pode ser usado junto ao WAF para capturar informações referentes ao Web ACL.
+
+- 

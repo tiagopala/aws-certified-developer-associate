@@ -37,3 +37,11 @@ Autenticação | Credenciais de acesso temporário aos recursos AWS |
 O **Cognito Push Synchronization** é uma feature do Cognito que possibilita a **sincronização dos dados** dos usuários em **todos os lugares** (computador, tablet, celular, notebook...) que o usuário **tenha se logado**, mantendo os dados atualizados independentemente de qual plataforma o usuário esteja.
 
 > A sincronização dos dados é realizada através de push notifications disparadas pelo SNS.
+
+## Tips
+
+### Cognito Identity Pool
+
+- O Cognito Identity Pool pode fornecer acesso guest.
+
+- 

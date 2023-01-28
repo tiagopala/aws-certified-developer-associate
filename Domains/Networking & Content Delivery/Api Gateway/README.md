@@ -36,3 +36,11 @@ API significa ***Application Programming Interface*** e seu papel é de fazer um
 ## AWS Services Integration
 
 Atualmente o API Gateway pode integrar-se com diversos serviços como, ec2, lambda, elastic beanstalk, dynamodb e kinesis.
+
+## Tips
+
+- O Api Gateway possui stage variables fazendo com que ele possa interagir com diferentes backends.
+
+- O Api Gateway Mapping Templates pode ser usado para mapear outros formatos de requests/responses.
+
+- O Api Gateway Usage Plans permite controlar quem pode acessar a nossa API.

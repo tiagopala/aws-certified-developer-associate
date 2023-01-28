@@ -58,3 +58,5 @@ Por exemplo, caso tenhamos uma imagem em nosso bucket exposta na internet, podem
 - CloudFront permite uma conexão segura tanto com o client quanto com o backend, ou seja, tanto client-side quanto server-side.
 
 - CloudFront pode servir tanto conteúdos estáticos quanto dinâmicos com baixa latência para usuários globalmente com múltiplas origens.
+
+- Os recursos interativos do CloudFront também inclui o HTTP Method Delete.

@@ -123,3 +123,9 @@ Exemplo: Para o *InstaceId*, iremos capturar todas as métricas que se referem s
 São painéis que agrupam importantes métricas para suas aplicações produtivas vinculados a uma operação.
 
 Exemplo: Agrupamento das métricas de CPU e Memoria de suas aplicações.
+
+## Tips
+
+- Os possíveis status do CloudWatch são: OK, ALARM e INSUFFICIENT_DATA
+
+- 

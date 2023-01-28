@@ -204,3 +204,27 @@ Resources:
 
 - ```sam deploy``` - Realizar o deploy da sua aplicação serverless à partir um template SAM localizado no bucket s3 informado.
   > Por baixo dos panos o SAM irá realizar o deploy via Cloudformation.
+
+## Tips
+
+- O CloudFormation Change Sets pode ser usado para verificar antecipadamente quais recursos serão adicionados, atualizados ou removidos.
+
+- Para proteger recursos individuais de remoção podemos usar o DefinitionPolicy para Retain, porém se quisermos proteger todos os recursos da stack devemos alterar o StackTerminationPolicy para Enabled.
+
+- As sessões válidas no CloudFormation são: Description, Metadata, Parameters, Mappings, Conditions, Transform, Resources e Outputs.
+
+- As conditions definidas podem ser referenciadas apenas nas sessões: Resources e Outputs.
+
+- No CloudFormation devemos utilizar a sessão dos Parameters para incluir variáveis que serão usadas em runtime durante o deploy do template.
+
+- Para exportar variáveis no CloudFormation devemos usar a export property na outputs section, e para importar variáveis devemos usar a função Fn::ImportValue.
+  > Exported Output Values devem possuir nomes únicos por região.
+
+- A função do CloudFormation !FindInMap sempre passa o MapName mais até 2 níveis, exemplo: !FindInMap[MapName, TopLevelKey, SecondTopLevelKey].
+
+
+
+## SAM (Serverless Application Model)
+
+- O SAM possui alguns tipos específicos para criar serviços serverless como: aws::serverless::api, aws::serverless::application, aws::serverless::function, aws::serverless::httpapi, aws::serverless::layerVersion, aws::serverless::simpleTable e aws::serverless::stateMachine.
+

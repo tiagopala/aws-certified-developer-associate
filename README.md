@@ -74,3 +74,9 @@ Para facilitar a leitura vamos dividir em nos seguintes domínios:
 - [Running Containerized Microservices on AWS](https://d1.awsstatic.com/whitepapers/DevOps/running-containerized-microservices-on-aws.pdf)
 - [Optimizing Enterprise Economics with Serverless Architectures](https://docs.aws.amazon.com/pdfs/whitepapers/latest/optimizing-enterprise-economics-with-serverless/optimizing-enterprise-economics-with-serverless.pdf#optimizing-enterprise-economics-with-serverless)
 - [Security Pillar](https://docs.aws.amazon.com/pdfs/wellarchitected/latest/security-pillar/wellarchitected-security-pillar.pdf)
+
+## Tips
+
+- Os principais recursos para guardar a sessão do usuário são: DynamoDb, elasticache com sticky sessions e rds.
+
+- A AWS necessita de pelo menos 5 semanas para começar a gerar previsões de budget.

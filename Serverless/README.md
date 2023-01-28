@@ -45,3 +45,7 @@ Basicamente o conceito de serverless significa "**sem servidor**", na verdade os
 ### **[<img height=15px; alt="s3-icon" src="../images/s3.png" /> S3 - Simple Storage Service](/Domains/Storage/S3/README.md)** 
 
 - Serviço para armazenamento de conteúdo estáticos.
+
+## Tips
+
+- O AWS Serverless Application Repository (SAR) é o repositório gerenciado para aplicações serverless.

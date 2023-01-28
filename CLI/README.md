@@ -76,3 +76,13 @@ Dos dados retornados, os principais são o ```AssumedRoleUser.Arn``` e ```Assume
 ## Remember
 
 Lembre-se que a visualização da sua Secret Access Key é única, em caso de perda, você deverá criar uma nova.
+
+## Tips
+
+- O AWS CLI STS AssumeRoleWithWebIdentity retorna as credenciais temporárias assim como o AccessKeyId, SecretAccessKey e um security token além do ARN e o AssumedRoleId que o usuário poderá assumir.
+
+- Se estivermos recebendo o retorno de timeout durante a listagem de recursos, podemos diminuir o page-size.
+
+- O AWS possui um cli específico para criptografia chamada aws encryption CLI a qual usa por baixo dos panos a AWS Encryption SDK.
+
+- 

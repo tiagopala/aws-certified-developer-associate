@@ -21,3 +21,9 @@ AWS Pricing Caculator
 Serviço responsável por realizar simulações de custo com serviços da AWS.
 
 Link do [site](https://calculator.aws/#/addService).
+
+## Tips
+
+- Por default, usuários não possuem acesso ao Billing & Cost Management, para conceder acesso é necessário ativar o usuário além de "attachar" uma policy que permita acesso aos recursos necessários.
+    > O ativação do usuário deve ser feita apenas 1 vez.
+

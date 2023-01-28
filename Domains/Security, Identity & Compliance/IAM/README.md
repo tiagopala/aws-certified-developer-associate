@@ -110,3 +110,13 @@ Quando for conceder acesso a serviços, sempre opte por ***roles*** e ***policie
 - Alterações em policies que estão *'attached'* a uma role são aplicadas instantâneamente.
 
 - Podemos '*attach*' ou '*detach*' roles sem pararmos (stop) ou terminarmos nossas instâncias. Esta operação pode ser feita com a instância em execução.
+
+- O IAM Access Analyzer permite identificarmos acessos compartilhados com external entities que caracterizam uma falha na segurança, em outras palavras devemos utilizá-lo quando queremos descobrir se estamos dando mais permissões do que o necessário para algum user, group ou role.
+
+- O IAM Access Advisor deve ser usado para identificarmos roles que não estão mais sendo utilizas em nossa conta, aconselhando a remove-las.
+
+- A única resource-based policy que o IAM possui são as Trust Policies.
+
+- A root account não possui suporte ao MFA através de mensagens de texto SMS, apenas virtual/hardware MFA e U2F (dispositivo de autenticação USB).
+
+- 

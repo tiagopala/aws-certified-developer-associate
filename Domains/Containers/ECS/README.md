@@ -24,3 +24,9 @@ Se o objetivo é possuir maior controle sobre a instalação, configuração e g
 ## Tips
 
 - Terminar instâncias que estão com status igual a STOPPED impactará em synchronization issues, fazendo com que o container não seja removido do cluster automaticamente.
+
+- A role responsável por dar permissão aos PODs no ECS é a task execution role e deve ser 'attachada' na task.
+
+- Para escalarmos as PODs (tasks) dentro de um cluster ECS, podemos usar target tracking policies para métricas pré definidas pelos recursos, por exemplo, do Auto Scaling Group ou Application Load Balancer.
+
+- 
