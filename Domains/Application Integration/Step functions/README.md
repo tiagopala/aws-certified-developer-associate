@@ -59,3 +59,11 @@ Cada step é executado de acordo com a regra de negócio, sendo o output de uma 
     <summary>Branching Workflow</summary>
     <img width=400px; alt="step-functions-branching-workflow" src="../../../images/step-functions-branching-workflow.png" />
 </details>
+
+## Tips
+
+- No Step Functions uma task sempre remete a uma unidade de trabalho (unit of work). Portanto, o parâmetro Resource é obrigatório, pois refere-se a lambda que será executada neste step.
+
+- Step Functions Express Workflows são usados para eventos de grandes volumes porém de curta duração.
+
+- Step Functions Standard Workflows são usados para tasks de longa duração, duráveis e auditáveis em que repetir o workflow pode ser custoso ou impactante.

@@ -44,3 +44,14 @@ Atualmente o API Gateway pode integrar-se com diversos serviços como, ec2, lamb
 - O Api Gateway Mapping Templates pode ser usado para mapear outros formatos de requests/responses.
 
 - O Api Gateway Usage Plans permite controlar quem pode acessar a nossa API.
+
+- O Api Gateway não possui suporte para o STS.
+
+- O Api Gateway possui os tipos: Rest Api, HTTP Api e Web Socket.
+
+- Através de uma HTTP Api, não é possível integrar-se com o AWS Web Application FireWall (WAF), apenas através de uma Rest Api.
+    > As HTTP Api são mais simples e portanto não possuem grande parte das features que da Rest Api.
+
+- Devemos utilizar lambda authorizers quando o objetivo for  realizar uma autenticação customizada utilizando um token JWT, como o OAuth ou SAML.
+
+- Api gateway possui suporte nativo para criação de Mocks.

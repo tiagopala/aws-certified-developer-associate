@@ -95,3 +95,11 @@ Importante lembrar também que uma vez ligado a criptografia, todos os níveis a
 ### How to encrypt an unencrypted instance?
 
 Basicamente, para "ligarmos" a criptografia, devemos criar um snapshot da base, criptografá-lo e restaurar a base de dados à partir deste snapshot criptografado e pronto, já teremos nossa base criptografada.
+
+## Tips
+
+- O RDS possui uma feature chamada IAM Authentication e funciona com as seguintes engines: Aurora MySQl, Aurora Postgresql, MySQl, Postgresql e MariaDB.
+
+- O RDS Automated Backups cria backups em uma única região, enquanto Snapshots e Read Replicas podem ser criados em qualquer região.
+
+- O RDS Read Replicas Cross-Region pode eventualmente ser considerada uma ferramenta de backups por ser capaz de ser promovida a uma base própria em cenário de falha.

@@ -65,4 +65,16 @@ Basicamente, pode utilizar o data streams ou firehose para coleta dos dados, por
 
 - O Kinesis pode ser usado junto ao WAF para capturar informações referentes ao Web ACL.
 
-- 
+- O Kinesis Data Streams possui um registro ordenado, real time, é uma possível mais flexível entre os possíveis destinos e eventualmente mais barato que o Firehose.
+
+- O Kinesis Data Streams pode armazenar os dados por até 365 dias, inclusive, os dados consumidos posteriormente também serão ordenados.
+
+- O Kinesis Data Firehose é near real time, comunica-se praticamente com o S3, RedShift e ElasticSearch e possibilita uso de ferramentas de BI.
+
+- A partition key do Kinesis Data Streams é usada para segregar data records que pertencem a um stream em múltiplos shards. Caso a partition key não esteja distruída corretamente, os dados ficarão "presos" em apenas alguns shards, não utilizando todos os shards disponíveis, tendo hot "shards" e "cold" shards.
+
+- A maneira mais ideal de configurar o Kinesis Data Streams é através do Kinesis Agent instalado em cada um dos consumidores (ec2). Através dele temos monitoramento constante dos arquivos, envio de novos dados além de feature como: file rotation, checkpointing e retry upon failures.
+
+- O Kinesis Producer Librar (KPL) é uma lib, ou seja, uma abstração para facilitar envio de dados ao Kinesis Data Streams.
+
+- O Elasticache não é uma opção válida como destino do Kinesis Data Firehose.

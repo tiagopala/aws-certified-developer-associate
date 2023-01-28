@@ -119,4 +119,10 @@ Quando for conceder acesso a serviços, sempre opte por ***roles*** e ***policie
 
 - A root account não possui suporte ao MFA através de mensagens de texto SMS, apenas virtual/hardware MFA e U2F (dispositivo de autenticação USB).
 
+- Os serviços/recursos responsáveis por limitar acesso na AWS são:
+    1. Permissions Boundary: Managed Policy que define permissões máximas para usuários/roles.
+    2. AWS Organizations Service Control Policy: Serviço que define permissões máximas para account members ou organization units (OU).
+
+- Nas IAM Policies denies sempre sobressaem allows (denies always override allows).
+
 - 

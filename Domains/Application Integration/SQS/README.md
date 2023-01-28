@@ -70,3 +70,11 @@ Uma garantia que temos com o SQS é que todas as mensagens serão processadas ao
 Para mensagens com tamanho superior a 256 kbytes até 2GB, será necessário utilizarmos o **S3** para armazenamento de mensagens, o **SQS SDK** e utilizarmos a **ExtendedClient library** da linguagem que você estiver trabalhando.
 
 O fluxo se dá por meio do armazenamento da mensagem no s3, envio de identificador desta mensagem através do sqs, a qual será capturado pelo consumidor para fazer o download da mensagem e exclusão após o seu processamento.
+
+## Tips
+
+- O SQS Visibility Timeout default é de 30 segundos.
+
+- Não possuímos um limite de mensagens para uma fila SQS, porém temos um limite de 120.000 para mensagens in-flight.
+
+- Tanto filas do tipo Standard quanto FIFO podem ser criptografadas utilizando o KMS.

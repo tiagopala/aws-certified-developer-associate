@@ -29,4 +29,6 @@ Se o objetivo é possuir maior controle sobre a instalação, configuração e g
 
 - Para escalarmos as PODs (tasks) dentro de um cluster ECS, podemos usar target tracking policies para métricas pré definidas pelos recursos, por exemplo, do Auto Scaling Group ou Application Load Balancer.
 
+- Caso desejarmos escalar nossos PODs (tasks) com base em algum parâmetro de nossa base de dados, quantidade de requisições por segundo na aplicação ou por exemplo na quantidade de mensagens disponíveis em nossas filas, devemos criar uma CloudWatch Custom Metric, criar um Alarm à partir desta métrica e utilizar este alarme como um target em nosso Auto Scaling Group para nossas instâncias EC2.
+
 - 

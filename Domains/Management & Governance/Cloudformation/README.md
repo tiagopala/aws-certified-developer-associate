@@ -222,9 +222,18 @@ Resources:
 
 - A função do CloudFormation !FindInMap sempre passa o MapName mais até 2 níveis, exemplo: !FindInMap[MapName, TopLevelKey, SecondTopLevelKey].
 
+- Os parâmetros suportados pelo CloudFormation como inputs são: string, number, List<number>, CommaDelimitedList, aws::ec2::keypair, aws::ec2::securityGroup, aws::ec2::subnet::id, aws::ec2::VPC::id, List de VPC Ids, List de security group Ids e List de subnet Ids.
 
+- CloudFormation Change Sets é uma feature para avaliar as mudanças feitas em sua stack como adição, alteração e remoção de recursos antes de se realizar o deploy do template.
+
+- CloudFormation Drift Detection é uma feature que permite verificarmos se existem e quais são as diferenças entre a stack que foi deployada e o próprio ambiente.
+
+- A função !Ref deve ser usada para referenciar inputs, ou seja, variáveis informadas nos parameters.
+
+- A função !GetAtt deve ser usada para referenciar atributos utilizados dentro do próprio template.
+
+- 
 
 ## SAM (Serverless Application Model)
 
 - O SAM possui alguns tipos específicos para criar serviços serverless como: aws::serverless::api, aws::serverless::application, aws::serverless::function, aws::serverless::httpapi, aws::serverless::layerVersion, aws::serverless::simpleTable e aws::serverless::stateMachine.
-

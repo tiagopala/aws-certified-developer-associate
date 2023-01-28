@@ -166,3 +166,6 @@ Em buckets, usualmente necessitamos capturar informações entre buckets, um exe
 - Se estivermos utilizando a SSE-C, iremos controlar as próprias chaves de criptografia e para realizarmos por exemplo o upload de um arquivo criptografado no s3, devemos passar juntamente a chave na requisição.
 
 - O versionamento é referente a um bucket e quanto é habilitado, absolutamente, TODOS os arquivos dentro daquele bucket serão versionados.
+
+- As 4 maneiras de controlar acesso no S3 são: IAM policies, bucket policies, ACL's e query string authentication através das pre-signed URL's.
+

@@ -23,3 +23,9 @@ Através dele podemos enviar e receber emails, sendo os emails recebidos enviado
 Serviço de envio de **emails (somente)** | Serviço de **pub/sub** para envio de mensagens, integração com **diferentes formatos/protocolos** |
 Pode enviar e receber emails (1) | Envio para múltiplos endpoints diferentes |
 Requer apenas o endereço de email de destino | Consumidores precisam se **inscrever no tópico** para receber as notificações |
+
+## Tips
+
+- O SES possui soft limits para o número máixmo de e-mails que podem ser enviados de forma simultânea. Caso alcançarmos o limite eventualmente, podemos aplicar a técnica do exponential backoff para resolver o problema, porém se voltar a ocorrer de forma persistente devemos solicitar o aumento do número máximo de e-mails que podem ser enviados simultaneamente.
+
+ 

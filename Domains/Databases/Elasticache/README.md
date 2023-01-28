@@ -66,3 +66,17 @@ Possível também suporte a ordenação, ranqueamento de dados e utilização de
 **OLAP Queries**
 
  - Quando estamos tendo um grande fluxo de consultas analíticas, neste caso devemos utilizar um data warehouse, como Redshift.
+
+## Tips
+
+- O Elasticache Redis é sempre uma opção mais completa que o Elasticache MemcacheD. 
+
+- O Elasticache Redis possibilita permite habilitarmos o Cluster Mode para aumento de disponibilidade (availability) e confiabilidade (reliability).
+
+- O Elasticache deve ser uma opção nos seguintes cenários:
+    1. Read-Heavy workloads.
+    2. Compute-Intensive workloads.
+
+- Comparando serviços com features de caching e o Elasticache:
+    - Entre o Elasticache e adicionar RDS Read Replicas, o Elasticache é a opção mais performática e menos custosa.
+    - Entre o Elasticache e Load Balancer Stickness, o Elasticache é mais indicado devido ser um serviço totalmente gerenciado para armazenamento de conteúdo em cache.

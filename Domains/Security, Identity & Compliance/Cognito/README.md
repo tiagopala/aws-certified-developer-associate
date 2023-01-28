@@ -40,8 +40,13 @@ O **Cognito Push Synchronization** é uma feature do Cognito que possibilita a *
 
 ## Tips
 
-### Cognito Identity Pool
+- O Cognito é um serviço 100% gerenciado.
+
+- Através do Cognito User Pool podemos realizar o Sign Up/In de usuários além de integrar-se com external identity providers.
+
+- O Cognito User Pool possui suporte a MFA.
 
 - O Cognito Identity Pool pode fornecer acesso guest.
 
-- 
+- O Cognito pode ser integrado com o Api Gateway para autenticar os usuários.
+

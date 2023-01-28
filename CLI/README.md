@@ -79,10 +79,12 @@ Lembre-se que a visualização da sua Secret Access Key é única, em caso de pe
 
 ## Tips
 
-- O AWS CLI STS AssumeRoleWithWebIdentity retorna as credenciais temporárias assim como o AccessKeyId, SecretAccessKey e um security token além do ARN e o AssumedRoleId que o usuário poderá assumir.
-
 - Se estivermos recebendo o retorno de timeout durante a listagem de recursos, podemos diminuir o page-size.
 
-- O AWS possui um cli específico para criptografia chamada aws encryption CLI a qual usa por baixo dos panos a AWS Encryption SDK.
+- Através do AWS CLI podemos verificar se temos acesso para executar um respectivo comando através da flag ```--dry-run```. Se tivermos permissão, será exibida a seguinte mensagem "DryRunOperation", porém se não tivermos acesso aparecerá "Unauthorized Operation".
 
-- 
+- O AWS CLI STS AssumeRoleWithWebIdentity retorna as credenciais temporárias assim como o AccessKeyId, SecretAccessKey e um security token além do ARN e o AssumedRoleId que o usuário poderá assumir.
+
+- Caso estivermos realizando chamadas através do AWS CLI e recebermos o seguinte retorno "You are not authorized to perform this operation. Encoded authorization failure message: XXX", devemos utilizar o STS DecodeAuthorizationMessage para realizar o decode do conteúdo da mensagem.
+
+- O AWS possui um cli específico para criptografia chamada aws encryption CLI a qual usa por baixo dos panos a AWS Encryption SDK.
