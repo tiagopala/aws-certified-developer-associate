@@ -55,3 +55,5 @@ Atualmente o API Gateway pode integrar-se com diversos serviços como, ec2, lamb
 - Devemos utilizar lambda authorizers quando o objetivo for  realizar uma autenticação customizada utilizando um token JWT, como o OAuth ou SAML.
 
 - Api gateway possui suporte nativo para criação de Mocks.
+
+- Se nosso Api Gateway possuir caching, podemos invalidá-lo através de uma requisição HTTP incluindo o header ```Cache-Control``` com o valor ```max-age=0```. Lembrando que para conseguirmos passar este parâmetro, devemos possuir as devidas permissões.

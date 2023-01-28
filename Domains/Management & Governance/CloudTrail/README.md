@@ -14,4 +14,6 @@ Para facilitar o entendimento o CloudTrail é um serviço de segurança provendo
 
 - O CloudTrail por default consegue fazer o tracking de somente bucket level actions, para fazer o tracing de object level actions devemos habilitar o Amazon S3 data events.
 
+- Se estivermos trabalhando com um bucket compartilhado para os registros do CloudTrail, além de sermos bucket-owner, devemos também ser object-owner para conseguirmos acessar os logs de object-level APIs.
+
 - Para realizar o tracking de várias contas podemos criar uma Organization Trail. Member Accounts podem visualizar a Organization Trail porém não poderão alterar ou remove-la.

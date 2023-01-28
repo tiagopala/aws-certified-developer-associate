@@ -60,3 +60,7 @@ São chaves criadas e gerenciadas pelo próprio usuário.
 ## Which services easily integrates with KMS?
 
 S3, RDS, DynamoDB, Lambda, EBS, EFS, CloudTrail, Developer Tools, entre outros.
+
+## Tips
+
+- O KMS possui suporte nativo a rotação automática de chaves.

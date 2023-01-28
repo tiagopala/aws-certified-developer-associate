@@ -26,4 +26,4 @@ Já no cenário abaixo, modificamos um pouco a arquitetura da aplicação para c
 
 - O Alias Record já pode ser utilizado para referenciar o próprio Apex Zone. No exemplo acima, poderíamos utilizar para referenciar o próprio example.com.
 
-- 
+- Assim como o ELB pode ser usado para fazer a distribuição de tráfego.

@@ -125,4 +125,9 @@ Quando for conceder acesso a serviços, sempre opte por ***roles*** e ***policie
 
 - Nas IAM Policies denies sempre sobressaem allows (denies always override allows).
 
-- 
+- Para termos acesso compartilhado de recursos cross account devemos:
+    1. Criar uma policy que possua as devidas permissões para acessar o recurso desejado na conta destino.
+    2. Na conta destino, criar uma role e 'attachar' a policy acima em que a trusted entity é o AccountId da conta de origem.
+    3. Na conta de origem, criar uma policy que possa fazer o AssumeRole da role criada na conta destino.
+    4. Criar um usuário ou grupo e 'attachar' a policy acima na conta de origem.
+

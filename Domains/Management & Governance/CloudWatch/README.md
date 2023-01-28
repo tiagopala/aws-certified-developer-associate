@@ -128,4 +128,9 @@ Exemplo: Agrupamento das métricas de CPU e Memoria de suas aplicações.
 
 - Os possíveis status do CloudWatch são: OK, ALARM e INSUFFICIENT_DATA
 
-- 
+- Se quisermos enviar os logs para o s3, podemos habilitar a "CloudWatch Integration Feature for S3".
+
+- Se quisermos capturar métricas customizadas como a memória RAM de instâncias, devemos criar CloudWatch Custom Metrics.
+
+- Os CloudWatch Logs são automaticamente criptografados por default, e opcionalmente podemos optar por adicionar nossa própria chave de criptografia através do KMS.
+    > Pode ser realizado através do seguinte comando: ```aws logs associate-kms-key```.

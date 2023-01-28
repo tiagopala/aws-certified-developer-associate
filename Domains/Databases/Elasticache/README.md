@@ -80,3 +80,12 @@ Possível também suporte a ordenação, ranqueamento de dados e utilização de
 - Comparando serviços com features de caching e o Elasticache:
     - Entre o Elasticache e adicionar RDS Read Replicas, o Elasticache é a opção mais performática e menos custosa.
     - Entre o Elasticache e Load Balancer Stickness, o Elasticache é mais indicado devido ser um serviço totalmente gerenciado para armazenamento de conteúdo em cache.
+
+- Sobre o Elasticache Redis Cluster Mode:
+    - Cluster mode vem desabilitado por default
+    - Todos os nós do cluster ficam na mesma região.
+    - Enquanto o cluster mode estiver habilitado, não podemos promover algum nó para primário, é necessário o Multi-AZ estar habilitado e só é possível alterar a estrutura do cluster fazendo um restore de um backup.
+    - Sempre que é criado um novo nó, todos os dados são automaticamente replicados do nó primário, após a sua criação, toda atualização é realizada de forma assíncrona.
+    - Se não tivermos nenhuma replica e os nó primário falhar, todos os dados serão perdidos.
+    - Adicionar novos replica nodes melhora a performance de leitura, nunca de escrita.
+    - Se o cluster mode estiver desabilitado, apenas é possível fazer o scale vertical, com ele habilitado temos a opção de fazer também o scale horizontal.
