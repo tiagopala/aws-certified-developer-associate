@@ -1,8 +1,12 @@
-# AWS Certified Developer Associate - Personal study guide
+# AWS Certified Developer Associate
 
 <img height=250px; src="./images/aws_certified_developer_associate_logo.png" />
 
-<p>&nbsp;</p>
+### Welcome, :wave:! This is my personal study guide for the AWS Certified Developer Associate Exam!
+
+I hope the content presented here helps you at your own studies as well! Any doubts feel free to reach me. Good studies!
+
+---
 
 Projeto de estudos pessoal criado durante a preparação para certificação AWS Certified Developer Associate.
 
