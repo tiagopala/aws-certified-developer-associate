@@ -1,4 +1,4 @@
-# AWS Certified Developer Associate - Tiago Pala study guide
+# AWS Certified Developer Associate - Personal study guide
 
 <img height=250px; src="./images/aws_certified_developer_associate_logo.png" />
 
