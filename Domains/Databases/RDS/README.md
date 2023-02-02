@@ -103,3 +103,5 @@ Basicamente, para "ligarmos" a criptografia, devemos criar um snapshot da base, 
 - O RDS Automated Backups cria backups em uma única região, enquanto Snapshots e Read Replicas podem ser criados em qualquer região.
 
 - O RDS Read Replicas Cross-Region pode eventualmente ser considerada uma ferramenta de backups por ser capaz de ser promovida a uma base própria em cenário de falha.
+
+- Quando é necessário realizar o *patching* das instâncias do RDS, se estivermos com o Multi-AZ habilitado, primeiro será realizado o *patching* na instância *stand by database*, uma vez finalizado, esta instância será promovida para *primary database*, e a antiga *primary* se tornará *stand by* e em seguida realizará o *patching*.
