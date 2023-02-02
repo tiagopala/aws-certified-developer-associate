@@ -118,6 +118,8 @@ Importante lembrar que o agrupamento dessas instências é realizado em família
 
 - ASG possuem um processo periódico para verificação de health checks, caso uma instância esteja unhealthy, ele irá terminar a instância e subir uma nova instância no lugar.
 
+- Se tivermos uma integração entre um ASG e um ELB, o ideal é que em vez de deixarmos a configuração default dos health checks do ASG apontando para as próprias instâncias, é aconselhável que apontemos para os health checks do ELB.
+
 ### Security Groups
 
 - Caso nossa instância EC2 seja um web server exposto para a internet, porém nossos usuários estão recebendo timeouts, pode significar um problema na configuração dos security groups.

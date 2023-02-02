@@ -119,3 +119,7 @@ A lambda utilizará os seguintes dados para configurar um **Elastic Network Inte
     2. Escrever o próprio código da lambda inline no template e realizar o deploy do template na aws.
 
 - Para armazenarmos arquivos localmente durante a execução de uma lambda que serão removidos após seu processamento devemos usar o local directory /tmp.
+
+- Referente ao modelo de concorrência das lambdas, a quantidade máxima de lambdas que podem ser invocadas simultaneamente por conta AWS possui um soft limit. Porém, em cenários que uma lambda seja crítica e precisamos garantir que tenha poder computacional disponível para ela escalar sem causar *throttling*, podemos usar a *reserved concurrency*. Dessa forma, essas lambdas ficam "reservadas" apenas para esta lambda caso seja necessário.
+
+- Outro recurso que é importante termos em mente sobre lambdas é o *provisioned concurrency*, ele nos permite aumentar a performance de nossas lambdas através do *warm up* prévio das lambdas.
