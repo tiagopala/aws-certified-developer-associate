@@ -78,3 +78,7 @@ Basicamente, pode utilizar o data streams ou firehose para coleta dos dados, por
 - O Kinesis Producer Librar (KPL) é uma lib, ou seja, uma abstração para facilitar envio de dados ao Kinesis Data Streams.
 
 - O Elasticache não é uma opção válida como destino do Kinesis Data Firehose.
+
+- Podemos aumentar a performance do Kinesis Data Streams através da feature *Enhanced Fanout*.
+
+- Se atingirmos o limite de capacidade provisionado para nosso Kinesis Data Streams, iremos começar a receber a seguinte *exception*: *ProvisionedThroughtException*.
