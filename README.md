@@ -26,11 +26,11 @@ Os conteúdos apresentados são basicamente um material de apoio para consulta b
 
 ## Before The Exam
 
-Após o estudo aprofundado em cada um dos serviços apresentados nos domínios presentes neste material, antes de realizar o exame, é importante a leitura dos seguintes *FAQs* e *WhitePapers* para relembrar pontos vistos anteriormente além de ter outra perspectiva de alguns serviços, abordagens e implementações.
+Após o estudo aprofundado em cada um dos serviços apresentados nos domínios presentes neste material, antes de realizar o exame, é importante realizar a leitura dos seguintes *FAQs* e *WhitePapers* para relembrar pontos vistos anteriormente além de ter outra perspectiva de alguns serviços, abordagens e implementações.
 
 ### FAQ's (Frequently Asked Questions)
 
-Para facilitar a leitura vamos dividir em nos seguintes domínios:
+Para facilitar a leitura vamos dividir nos seguintes domínios:
 
 #### Serverless
 
