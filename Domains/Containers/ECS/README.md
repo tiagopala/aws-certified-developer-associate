@@ -31,4 +31,4 @@ Se o objetivo é possuir maior controle sobre a instalação, configuração e g
 
 - Caso desejarmos escalar nossos PODs (tasks) com base em algum parâmetro de nossa base de dados, quantidade de requisições por segundo na aplicação ou por exemplo na quantidade de mensagens disponíveis em nossas filas, devemos criar uma CloudWatch Custom Metric, criar um Alarm à partir desta métrica e utilizar este alarme como um target em nosso Auto Scaling Group para nossas instâncias EC2.
 
-- 
+- Caso seja necessário rodar 2 containers em um cluster ECS com recursos compartilhados, podemos colocá-los em uma única *single task definition* no *Fargate launch type*.
