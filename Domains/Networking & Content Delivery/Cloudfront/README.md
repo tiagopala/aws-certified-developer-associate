@@ -60,3 +60,7 @@ Por exemplo, caso tenhamos uma imagem em nosso bucket exposta na internet, podem
 - CloudFront pode servir tanto conteúdos estáticos quanto dinâmicos com baixa latência para usuários globalmente com múltiplas origens.
 
 - Os recursos interativos do CloudFront também inclui o HTTP Method Delete.
+
+- O CloudFront apenas redireciona o tráfego para uma origem secundária após a origem primária falhar, os métodos levados em consideração no processo de redirecionamento são: GET, HEAD, OPTIONS.
+
+- É necessário de pelo menos 2 origens para habilitar a *Origin Failover*.

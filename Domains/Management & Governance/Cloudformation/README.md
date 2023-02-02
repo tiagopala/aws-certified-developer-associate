@@ -232,7 +232,7 @@ Resources:
 
 - A função !GetAtt deve ser usada para referenciar atributos utilizados dentro do próprio template.
 
-- 
+- A melhor forma de armazenarmos nossos cloudformation templates é através de buckets s3.
 
 ## SAM (Serverless Application Model)
 
