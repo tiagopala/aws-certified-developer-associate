@@ -2,8 +2,6 @@
 
 <img height=100px; alt="aws_logo" src="../images/aws-logo.png" />
 
-<p>&nbsp;</p>
-
 ## Domains and Services
 
 - [Analytics](./Analytics/README.md)
