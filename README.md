@@ -2,7 +2,9 @@
 
 <img height=250px; src="./images/aws_certified_developer_associate_logo.png" />
 
-### Welcome, :wave:! This is my personal study guide for the AWS Certified Developer Associate Exam!
+### Welcome, :wave:! 
+
+#### This is my personal study guide for the AWS Certified Developer Associate Exam!
 
 I hope the content presented here helps you at your own studies as well! Any doubts feel free to reach me. Good studies!
 
