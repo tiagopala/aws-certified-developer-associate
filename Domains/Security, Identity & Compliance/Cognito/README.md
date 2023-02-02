@@ -42,11 +42,16 @@ O **Cognito Push Synchronization** é uma feature do Cognito que possibilita a *
 
 - O Cognito é um serviço 100% gerenciado.
 
+- O Cognito pode ser integrado com o Api Gateway para autenticar os usuários.
+
+- Não é possível integrar o Cognito com o CloudFront, porém podemos nos integrar diretamente com um ALB.
+
+## Cognito User Pool
+
 - Através do Cognito User Pool podemos realizar o Sign Up/In de usuários além de integrar-se com external identity providers.
 
 - O Cognito User Pool possui suporte a MFA.
 
+## Cognito Identity Pool
+
 - O Cognito Identity Pool pode fornecer acesso guest.
-
-- O Cognito pode ser integrado com o Api Gateway para autenticar os usuários.
-

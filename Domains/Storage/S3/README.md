@@ -135,7 +135,9 @@ Em buckets, usualmente necessitamos capturar informações entre buckets, um exe
 
 - O tamanho máximo de um arquivo em uma única requisição é de 5 GB.
 
-- O modelo de consistência do S3 é strong read-after-write para PUT e DELETE operations.
+- O modelo de consistência do S3 é strong read-after-write para PUT (adição e modificação de itens) e DELETE operations.
+
+- Para buckets, ainda temos o modelo de consistência eventual, ou seja, se deletarmos um bucket e instantaneamente listarmos os buckets, ele pode eventualmente ainda aparecer na listagem.
 
 - Se o objetivo for termos server side encryption no S3, podemos habilitar o check box para criptografia no console ou criar uma bucket policy que permita somente requests que utilizem o seguinte header ```x-amz-server-side-encryption```.
 

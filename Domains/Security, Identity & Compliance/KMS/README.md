@@ -64,3 +64,5 @@ S3, RDS, DynamoDB, Lambda, EBS, EFS, CloudTrail, Developer Tools, entre outros.
 ## Tips
 
 - O KMS possui suporte nativo a rotação automática de chaves.
+
+- O KMS possui suporte para arquivos de até 4Kb, para arquivos maiores devemos utilizar o *envelope encryption*.
