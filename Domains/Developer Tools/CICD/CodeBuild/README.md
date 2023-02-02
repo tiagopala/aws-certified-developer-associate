@@ -15,3 +15,5 @@
 - Para aumentar a performance do CodeBuild, uma boa prática é utilizar o cache em s3 de dependências utilizadas durante o build, para que não seja necessário baixá-las novamente.
 
 - Caso seja necessário criptografar nossos artefatos automaticamente após a execução do CodeBuild, devemos associar uma chave KMS a ele.
+
+- Caso seja necessário executar localmente para propósitos de debug e troubleshooting, podemos testar localmente através do *CodeBuild agent*.

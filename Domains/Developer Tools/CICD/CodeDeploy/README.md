@@ -94,3 +94,5 @@ Abaixo, podemos ver detalhadamente todos os steps envolvidos em cada uma das fas
     > Este novo deploy irá gerar um novo Deployment Id.
 
 - O CodeDeploy Agent é um software disponibilizado pelo próprio CodeDeploy a ser instalado e configurado nas instâncias ec2. Através dele o CodeDeploy realizará o deployment das novas revisions, além de possuir configurações para o backup das últimas revisions e de log files.
+
+- Para definirmos diferentes configurações de deployments como o tipo de instância que será deployado, podemos criar vários CodeDeploy Deployment Groups.
