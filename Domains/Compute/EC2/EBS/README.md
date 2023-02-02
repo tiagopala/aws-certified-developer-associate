@@ -47,3 +47,20 @@ São volumes - podemos imaginar como sendo HDD (hard disk drives) na nuvem - a q
 - Volumes criados a partir de snapshots criptografados criarão automaticamente volumes criptografados.
 
 - Volumes criados a partir de snapshots não criptografados poderão ou não serem criptografados.
+
+## Tips
+
+- A criptografia dos volumes pode ser habilitada por default em nível de região. Assim todos os novos volumes deverão obrigatoriamente serem criptografados.
+
+- Se desejarmos compartilhar um EBS Volume com outra conta, podemos criar um snapshot, conceder as permissões necessárias para outra conta e compartilhá-lo.
+
+- EBS Volumes são AZ locked, ou seja, só podemos 'attachar' instâncias da mesma região em nosso EBS volume.
+
+- EBS Volumes possuem suporte tanto para in-flight quanto encryption at rest.
+
+- Para aumentarmos a performance de um EBS Volume devemos:
+    1. Colocar os volumes juntos no Raid 0.
+    2. Garantir que o tipo de instância utilizado pode ser otimizado.
+    3. Nunca planejar snapshots durante momentos de grande utilização da plataforma pois snapshots impactam na performance.
+
+- Sobre o tipo de volume Provisioned IOPS, a proporção entre o Provisioned IOPS pelo requested volume size é de 50:1. Portanto se tivermos um volume de 200 Gb, teremos no máximo 10.000 IOPS. (200 x 50).

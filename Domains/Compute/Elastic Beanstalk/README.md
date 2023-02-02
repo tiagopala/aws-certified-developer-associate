@@ -141,3 +141,5 @@ Alguns dos recursos que o Beanstalk pode promover são: EC2, RDS, S3, Elastic Lo
 - O Elastic Beanstalk possui suporte nativo a lifecycle policies. Através delas podemos, por exemplo, criar policies que deletem versões anteriores que não estão mais sendo utilizadas.
 
 - Se precisarmos definir tarefas repetitivas e "scheduladas" (agendadas), devemos criar um Worker Environment junto a um arquivo cron.yml.
+
+- Para realizar o deploy de um Elastic Beanstalk environment em outra conta AWS devemos salvar a configuração referente à aquele environment, fazer o download da configuração, subir o a configuração em um bucket s3 na conta de destino e a partir do próprio Beanstalk na conta de destino escolher a opção "from saved configurations".

@@ -60,3 +60,41 @@ Features
 ### 504 - Gateway Timeout
 
 Geralmente este erro ocorre quando o load balancer não consegue estabelecer a conexão com o target, sendo ele um web server, uma base de dados ou uma lambda. Indica geralmente que a aplicação está com problemas ou até fora do ar.
+
+## Tips
+
+- Um dos focos do ELB é a disponibilidade (availability) visto que um dos seus papéis é verificar constantemente os health checks e distribuir o tráfego para os nós que estiverem "de pé".
+
+- O tráfego interno entre os Load Balancers e instâncias é feito através de IP's privados.
+
+- Os Target Groups de um ELB podem ser apenas instâncias na mesma região.
+
+- Se tivermos um ELB em nossa arquitetura, os seguintes erros representam:
+  - 503 Service Unavailable: Esquecemos de registrar os target groups.
+  - 504 Gateway Timeout: Provavelmente corresponde a um server side problem, pois a origem não respondeu no tempo previsto.
+
+- A TLS Termination é o termo utilizado quando temos uma comunicação segura e criptografada através do HTTPS. Se a TLS Termination estiver no ELB, a comunicação entre o cliente e o load balancer será criptografada, porém se quisermos ter uma comunicação segura de ponta a ponta devemos criar um secure listener e configurar nossa aplicação (instância ec2) para usar uma porta segura (443).
+
+- Assim como o Route53 pode ser usado para distribuição de tráfego.
+
+## Application Load Balancer
+
+- Os tipos de roteamento a partir de rotas são: Path Based (example.com/api) e Host Based (api.example.com).
+
+- O Application Load Balancer permite os seguintes targets: Instance, IP e Lambda.
+
+- Para o ALB, se estivermos usando IPs como target, podemos rotear o tráfego para qualquer endereço de IP privado de 1 ou mais Network Interfaces.
+
+- O ALB não permite especificarmos o roteamento utilizando-se de IPs públicos, devemos sempre utilizar blocos CIDR.
+
+- O ALB sempre vem com o Cross-Zone load balancing habilitado por default.
+
+- Para descobrirmos incoming requests e latências provenientes do ALB devemos consultar os ALB access logs.
+
+## Network Load Balancer
+
+- Sempre que o objetivo for performance devemos escolher o Network Load Balancer (NLB).
+
+## Classic Load Balancer
+
+- Classic Load Balancers distribuem o tráfego de forma inconsistente entre as instâncias de tipos diferentes optando sempre por instâncias que possuem maior capacidade.

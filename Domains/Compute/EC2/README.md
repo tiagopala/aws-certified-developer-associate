@@ -98,6 +98,8 @@ Importante lembrar que o agrupamento dessas instências é realizado em família
 
 - Tanto Dedicated Instances quanto Dedicated Hosts são single-tenant, porém o dedicated hosts podem ser usados quando tivermos licenças e ainda podemos ver aonde os recursos estão locados em detrimento de serem um pouco mais custosos que as dedicated instances.
 
+- Caso desejarmos alterar o comportamento do atributo 
+
 ### Auto Scaling Groups
 
 - Para configurarmos um Auto Scaling Group devemos informar o AMI ID e instance type no launch template.
@@ -116,59 +118,12 @@ Importante lembrar que o agrupamento dessas instências é realizado em família
 
 - ASG possuem um processo periódico para verificação de health checks, caso uma instância esteja unhealthy, ele irá terminar a instância e subir uma nova instância no lugar.
 
-### Elastic Load Balancer
-
-- Um dos focos do ELB é a disponibilidade (availability) visto que um dos seus papéis é verificar constantemente os health checks e distribuir o tráfego para os nós que estiverem "de pé".
-
-- O tráfego interno entre os Load Balancers e instâncias é feito através de IP's privados.
-
-- Os Target Groups de um ELB podem ser apenas instâncias na mesma região.
-
-- Classic Load Balancers distribuem o tráfego de forma inconsistente entre as instâncias de tipos diferentes optando sempre por instâncias que possuem maior capacidade.
-
-- Os tipos de roteamento a partir de rotas são: Path Based (example.com/api) e Host Based (api.example.com).
-
-- O Application Load Balancer permite os seguintes targets: Instance, IP e Lambda.
-
-- O ALB não permite especificarmos o roteamento utilizando-se de IPs públicos, devemos sempre utilizar blocos CIDR.
-
-- Para o ALB, se estivermos usando IPs como target, podemos rotear o tráfego para qualquer endereço de IP privado de 1 ou mais Network Interfaces.
-
-- Se tivermos um ELB em nossa arquitetura, os seguintes erros representam:
-  - 503 Service Unavailable: Esquecemos de registrar os target groups.
-  - 504 Gateway Timeout: Provavelmente corresponde a um server side problem, pois a origem não respondeu no tempo previsto.
-
-- A TLS Termination é o termo utilizado quando temos uma comunicação segura e criptografada através do HTTPS. Se a TLS Termination estiver no ELB, a comunicação entre o cliente e o load balancer será criptografada, porém se quisermos ter uma comunicação segura de ponta a ponta devemos criar um secure listener e configurar nossa aplicação (instância ec2) para usar uma porta segura (443).
-
-- O ALB sempre vem com o Cross-Zone load balancing habilitado por default.
-
-- Sempre que o objetivo for performance devemos escolher o Network Load Balancer (NLB).
-
-- Para descobrirmos incoming requests e latências provenientes do ALB devemos consultar os ALB access logs.
-
-- Assim como o Route53 pode ser usado para distribuição de tráfego.
-
 ### Security Groups
 
 - Caso nossa instância EC2 seja um web server exposto para a internet, porém nossos usuários estão recebendo timeouts, pode significar um problema na configuração dos security groups.
 
 - EC2 Security Groups são stateful, portanto habilitar uma inbound port automaticamente também habilita uma outbound port.
     > VPC Network ACL's são stateless, portanto devemos habilitar tanto inbound quanto outbound ports.
-
-### EBS Volumes
-
-- Se desejarmos compartilhar um EBS Volume com outra conta, podemos criar um snapshot, conceder as permissões necessárias para outra conta e compartilhá-lo.
-
-- EBS Volumes são AZ locked, ou seja, só podemos 'attachar' instâncias da mesma região em nosso EBS volume.
-
-- EBS Volumes possuem suporte tanto para in-flight quanto encryption at rest.
-
-- Para aumentarmos a performance de um EBS Volume devemos:
-    1. Colocar os volumes juntos no Raid 0.
-    2. Garantir que o tipo de instância utilizado pode ser otimizado.
-    3. Nunca planejar snapshots durante momentos de grande utilização da plataforma pois snapshots impactam na performance.
-
-- Sobre o tipo de volume Provisioned IOPS, a proporção entre o Provisioned IOPS pelo requested volume size é de 50:1. Portanto se tivermos um volume de 200 Gb, teremos no máximo 10.000 IOPS. (200 x 50).
 
 ### Elastic IPs
 
