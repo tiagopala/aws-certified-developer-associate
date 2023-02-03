@@ -20,6 +20,10 @@ Os conteúdos apresentados são basicamente um material de apoio para consulta b
 
 - [AWS CLI](./CLI/README.md)
 
+## AWS Domains
+
+- [Domains](./Domains/README.md)
+
 ## Serverless Services
 
 - [Serverless](./Serverless/README.md)
